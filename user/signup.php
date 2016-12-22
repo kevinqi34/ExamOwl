@@ -1,0 +1,20 @@
+<?php
+  // Include Main Functions
+  require_once($_SERVER['DOCUMENT_ROOT'] . '/template/initfunc.php');
+
+
+  $title = "Exam Owl | Sign Up";
+  $keywords = "Study for Exams, Exam Community";
+  $description = "Exam Owl is an online community that helps students achieve excellence.";
+  $content = "/data/user/signup.php";
+  $css = ['css/user/user.css'];
+  $js = ['js/user.js'];
+  // Instantiate template
+  $template = new template($title, $keywords, $description, $content);
+  $template->add_style($css);
+  $template->add_script($js);
+
+
+  include($_SERVER['DOCUMENT_ROOT'] . '/template/template.php');
+
+?>

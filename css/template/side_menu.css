@@ -1,0 +1,60 @@
+
+#left {
+  left: 0px;
+	position: absolute;
+	width: 220px;
+  height: 100%;
+  overflow: auto;
+  border-right: 1px solid #808080;
+  min-height: 400px;
+  background-color: white;
+  z-index: 10;
+
+}
+
+#left a {
+  text-align: right;
+  width: 200px;
+  margin: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid #808080;
+  color: #808080;
+  display: block;
+  border-radius: 5px;
+
+
+}
+
+#left a img {
+  position: relative;
+  float: right;
+  margin-top: 4px;
+  margin-right: 25px;
+  margin-left: 10px;
+  height: 20px;
+
+
+}
+
+
+#left a:hover {
+  color: skyblue;
+  border-color: skyblue;
+
+}
+
+
+@media screen and (max-width : 1000px){
+
+#left {
+  left: -220px;
+
+}
+
+
+
+
+
+
+}

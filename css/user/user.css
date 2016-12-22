@@ -1,0 +1,86 @@
+
+#user {
+  width: 300px;
+  height: auto;
+  margin: auto;
+  position: relative;
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+
+}
+
+
+#user h1 {
+  font-weight: 100;
+  color: gray;
+  margin: 0px;
+  font-size: 30px;
+
+
+
+}
+
+
+#user form input {
+  height: 45px;
+  border: 2px solid gray;
+  background: transparent;
+  font-weight: 200;
+  width: 250px;
+  margin-top: 15px;
+  font-size: 15px;
+  border-radius: 5px;
+  text-indent: 5px;
+  color: gray;
+
+
+}
+
+
+#user form button {
+  margin-top: 15px;
+  vertical-align: middle;
+  padding: 10px; 16px;
+  font-size: 18px;
+  line-height: 1.3333;
+  border-radius: 6px;
+  border: 2px solid skyblue;
+  background-color: skyblue;
+  color: whitesmoke;
+  width: 256px;
+
+}
+
+
+#user form button:hover {
+  background-color: white;
+  color: skyblue;
+
+
+}
+
+
+
+#user a {
+  font-size: 18px;
+  color: gray;
+  margin-top: 15px;
+  font-weight: 200;
+
+
+}
+
+#user a:hover {
+  color: skyblue;
+
+}
+
+#content div.content_wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+
+
+}

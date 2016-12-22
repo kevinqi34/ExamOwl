@@ -1,0 +1,47 @@
+
+#content {
+  position: relative;
+  margin-left: 220px;
+  height: 100%;
+
+
+}
+
+
+
+
+div.content_wrapper {
+  position: relative;
+  height: 100%;
+  width: calc(100% - 50px);
+  margin: auto;
+
+
+}
+
+
+div.content_wrapper ul {
+  text-align: left;
+
+}
+
+div.content_wrapper a {
+  color: steelblue;
+
+}
+
+@media screen and (max-width : 1000px){
+
+#content {
+  width: 100%;
+  height: auto;
+  left: 0px;
+  margin-left: 0px;
+  z-index: 0;
+
+}
+
+
+
+
+}

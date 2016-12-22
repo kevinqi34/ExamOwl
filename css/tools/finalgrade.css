@@ -1,0 +1,22 @@
+div.calculate {
+  width: 100%;
+}
+
+div.calculate button {
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid black;
+
+
+}
+div.calculate input[type="text"] {
+  padding: 5px;
+  border: 1px solid black;
+
+
+}
+
+#results {
+width: 100%;
+
+}
