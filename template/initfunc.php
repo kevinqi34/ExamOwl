@@ -1,5 +1,6 @@
 <?php
-
+// Include Database
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/template/database/database.php');
 // Adds Citation
 $bool = 0;
 function set_boolTrue () {
@@ -157,12 +158,29 @@ class template {
 
 	public function display_title() {
 		// Grab Variables
-		$title = $_GET["title"];
-		if ($title) {
-			echo "Exam Owl | " . $title;
+		$category = $_GET["cat-id"];
+		$thread = $_GET["thread-id"];
+		if ($category) {
+			$query = "SELECT NAME FROM CATEGORY WHERE ID ='$category';";
+		} else if ($thread) {
+			$query = "SELECT TITLE FROM THREADS WHERE ID='$thread';";
+		} else {
+			$query = false;
+		}
+
+		if ($query) {
+			$db = new db();
+			$title = $db->select($query);
+			if ($title["NAME"]) {
+				echo "Exam Owl | " . $title["NAME"];
+			} else {
+				echo "Exam Owl | " . $title["TITLE"];
+			}
 		} else {
 			echo $this->title;
 		}
+
+
 
 	}
 

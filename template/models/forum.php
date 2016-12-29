@@ -158,9 +158,9 @@ class thread extends db {
   public $error;
 
   // Initialize with Date and Category
-  public function __construct($cat_name) {
+  public function __construct($cat_id) {
     $this->date = gmdate('Y-m-d H:i:s');
-    $this->cat_name = $cat_name;
+    $this->cat_id = $cat_id;
     parent::__construct();
   }
 
@@ -168,17 +168,16 @@ class thread extends db {
   public function create_header() {
     $error  = false;
     // Validation
-    $cat_name = new validation($this->cat_name);
-    $error = $cat_name->check_char();
+    $cat_id = new validation($this->cat_id);
+    $error = $cat_id->check_char();
     $this->error = $error;
     // Set Category ID
     if (!$error) {
-    $query = "SELECT * FROM CATEGORY WHERE SLUG = '$this->cat_name';";
+    $query = "SELECT * FROM CATEGORY WHERE ID = '$this->cat_id';";
     $id = parent::select($query);
-    $this->cat_id = $id['ID'];
     $this->cat_title = $id['NAME'];
     $this->cat_slug = $id['SLUG'];
-    $data = parent::select("SELECT * FROM CATEGORY WHERE ID = '$this->cat_id';");
+    $data = $id;
     // Create Header Template
     include($_SERVER['DOCUMENT_ROOT'] . '/data/forum/thread_header.php');
     } else {

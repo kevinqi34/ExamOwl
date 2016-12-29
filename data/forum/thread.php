@@ -3,7 +3,7 @@ date_default_timezone_set ( "UTC" );
 foreach($this->data as $thread) {
   $date = time_elapsed_string($thread["CREATE_DATE"]);
 ?>
-<a href="./?thread-id=<?php echo $thread["ID"]; ?>&slug=<?php echo $thread["SLUG"]; ?>&title=<?php echo $thread["TITLE"]; ?>">
+<a href="./?thread-id=<?php echo $thread["ID"]; ?>">
 <?php if ($thread["TYPE"] == 'STICK') { ?>
 <div class="thread stick">
 <?php } else { ?>
