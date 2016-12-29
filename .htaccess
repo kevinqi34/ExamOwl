@@ -1,4 +1,4 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteRule ^.*$ htaccess_tester.php
+    RewriteRule ?cat-id=$1 htaccess_tester.php
 </IfModule>
