@@ -2,11 +2,11 @@ function redirect() {
   var error = false;
   var redirect = getUrlParameter('redirect');
   var title = getUrlParameter('title');
-  var slug = getUrlParameter('return-id');
+  var id = getUrlParameter('cat-id');
   var error = $('#error').text();
 
   if (redirect && error == 0) {
-    window.location.href = "./?cat-id=" + slug + "&title=" + title;
+    window.location.href = "./?cat-id=" + redirect;
   } else if (error == "Redirect") {
     msg = "Please login to comment on posts.";
     window.location.href = "./user/login.php?msg=" + msg;
