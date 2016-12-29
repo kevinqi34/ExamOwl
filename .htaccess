@@ -1,4 +1,4 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteRule  ^category/([A-Za-z0-9-]+)/?$    ?cat-id=$1
+    RewriteRule  ^category/([A-Za-z0-9-]+)/?$    ?cat-id=$1&title=Advanced%20Placement
 </IfModule>
