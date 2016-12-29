@@ -1,4 +1,4 @@
 # Turn on URL rewriting
 RewriteEngine On
 
-RewriteRule /tool tools.php
+RewriteRule ^category/(.*)/?$ ?cat-id=$1
