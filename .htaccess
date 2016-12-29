@@ -1,4 +1,6 @@
-# Turn on URL rewriting
-RewriteEngine On
+Test.
 
-RewriteRule ^category/(.*)/?$ ?cat-id=$1
+# Set the default handler
+DirectoryIndex index.php index.html index.htm
+
+...
