@@ -1,4 +1,4 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteRule ^category/(.*)/?$    ?cat-id=$1
+    RewriteRule ^category/([.*]+)/?$    ?cat-id=$1t&title=$2
 </IfModule>
