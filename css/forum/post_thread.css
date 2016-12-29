@@ -1,0 +1,46 @@
+div.content_wrapper {
+  text-align: left;
+
+}
+
+div.content_wrapper p {
+  margin: 0px;
+
+}
+#error {
+  color:red;
+}
+
+div.content_wrapper textarea {
+  font-size: 15px;
+  padding: 10px;
+  width: calc(100% - 20px);
+}
+
+
+div.content_wrapper #submit {
+  vertical-align: middle;
+  padding: 8px; 16px;
+  font-size: 15px;
+  line-height: 1.3333;
+  border-radius: 6px;
+  border: 2px solid skyblue;
+  background-color: skyblue;
+  color: whitesmoke;
+  width: 120px;
+  margin-bottom: 10px;
+}
+
+div.content_wrapper button:hover {
+  background-color: white;
+  color: skyblue;
+
+
+}
+
+img.return {
+  width: 40px;
+  float: left;
+  margin-right: 10px;
+  margin-top: 2px;
+}

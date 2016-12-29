@@ -1,0 +1,83 @@
+div.post_header {
+  text-align: left;
+  overflow: auto;
+  border-bottom: 1px solid black;
+  padding: 10px;
+
+}
+div.post_header h2 {
+  margin-bottom: 0px;
+  line-height: 50px;
+
+}
+
+div.post_header p {
+  margin: 0px;
+  font-size: 13px;
+
+}
+
+
+div.post_header img.return {
+  width: 40px;
+  float: left;
+  margin-right: 10px;
+  margin-top: 2px;
+}
+
+div.post_content {
+  padding: 10px;
+  overflow: auto;
+  text-align: left;
+  border-bottom: 2px solid orange;
+
+}
+
+div.response {
+  text-align: left;
+  overflow: auto;
+  padding: 10px;
+}
+
+div.response textarea{
+  font-size: 15px;
+  padding: 10px;
+  width: calc(100% - 20px);
+
+
+}
+
+div.response #submit {
+  vertical-align: middle;
+  padding: 8px; 16px;
+  font-size: 15px;
+  line-height: 1.3333;
+  border-radius: 6px;
+  border: 2px solid skyblue;
+  background-color: skyblue;
+  color: whitesmoke;
+  width: 120px;
+}
+
+
+div.response #submit:hover {
+ background-color: white;
+ color: skyblue;
+
+}
+
+
+div.comment {
+  text-align: left;
+  overflow: auto;
+  border-bottom: 1px solid black;
+  padding: 10px;
+}
+
+
+div.comment p.info {
+  margin: 0px;
+  font-size: 13px;
+  color: gray;
+
+}

@@ -1,0 +1,88 @@
+
+div.thread_header {
+  text-align: left;
+  overflow: auto;
+  border-bottom: 1px solid black;
+  padding: 10px;
+  margin-bottom: 10px;
+
+}
+
+div.thread_header div.title {
+  position: relative;
+  float: left;
+  width: calc(100% - 150px);
+
+}
+
+div.thread_header h2 {
+  margin-bottom: 0px;
+
+}
+
+div.thread_header p {
+  line-height: 60px;
+  margin: 0px;
+
+}
+
+div.thread_header a {
+  border: 1px solid gray;
+  color: black;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+div.thread_header a:hover {
+  border-color: skyblue;
+  color: skyblue;
+
+
+}
+div.thread_header div.img {
+  height: 100px;
+  width: 100px;
+  margin: 25px;
+  margin-bottom: 0px;
+  position: relative;
+  float: left;
+}
+
+div.thread {
+  text-align: left;
+  padding: 25px;
+  margin: 10px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  color: black;
+
+}
+
+div.thread p {
+
+  font-size: 13px;
+  margin: 0px;
+
+}
+div.thread:hover {
+  border-color: skyblue;
+
+}
+div.thread:hover h3 {
+  color: skyblue;
+}
+
+div.stick {
+  border: 2px solid black;
+
+}
+
+@media screen and (max-width : 650px){
+
+div.thread_header div.title {
+  width: 100%;
+}
+
+
+}

@@ -31,7 +31,7 @@ class validation {
 
   // Check Characters
   public function check_char() {
-    if (!preg_match('/[a-zA-Z0-9\+\/\=$]/',$this->data)) {
+    if (preg_match('/[{}*]/',$this->data)) {
       return "No special characters are allowed.";
     } else {
       return false;

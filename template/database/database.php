@@ -26,17 +26,31 @@ class db {
   }
 
 
-  // Select Query
+  // Select Query for one Result
   public function select($query) {
     $result = $this->connection->query($query);
     $rows = array();
-    if ($result == false) {
-      return false;
-    } else {
+    if ($result) {
       while($row = $result->fetch_assoc()) {
         $rows = $row;
       }
-      return $rows;
+        return $rows;
+    } else {
+      return false;
+    }
+
+  }
+  // Select Query for multi Result
+  public function select_multi($query) {
+    $result = $this->connection->query($query);
+    $rows = array();
+    if ($result) {
+      while($row = $result->fetch_assoc()) {
+        $rows[] = $row;
+      }
+        return $rows;
+    } else {
+      return false;
     }
 
   }

@@ -1,0 +1,75 @@
+
+div.category {
+  border: 1px solid gray;
+  padding: 25px;
+  margin: 10px;
+  border-radius: 5px;
+  height: auto;
+  position: relative;
+  overflow: auto;
+  color: black;
+
+}
+
+div.category:hover {
+  border-color: skyblue;
+}
+
+div.category:hover h1 {
+  color: skyblue;
+}
+
+div.category h1 {
+  font-size: 30px;
+
+}
+
+div.title {
+  width: calc(100% - 150px);
+  position: relative;
+  float: left;
+
+
+}
+
+div.img {
+  height: 137px;
+  position: relative;
+  float: left;
+  width: 150px;
+
+}
+
+div.img img {
+  position: absolute;
+  margin: auto;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  max-height: 95%;
+  max-width: 95%;
+
+}
+
+@media screen and (max-width : 650px){
+
+div.content_wrapper {
+  width: 100%;
+}
+
+div.img {
+  display: none;
+}
+
+div.title {
+  width: 100%;
+
+}
+
+
+
+
+
+
+}
