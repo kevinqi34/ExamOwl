@@ -1,4 +1,4 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteRule ?cat-id=$1 htaccess_tester.php
+    RewriteRule ^category/(.*)/?$    ?cat-id=$1
 </IfModule>
