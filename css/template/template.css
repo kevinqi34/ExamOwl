@@ -33,6 +33,23 @@ a, img {
 
 }
 
+#load_more {
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
+	width: 150px;
+	margin: auto;
+	margin-top: 25px;
+	margin-bottom: 25px;
+
+
+
+}
+
+#load_more:hover {
+	border-color: skyblue;
+	color: gray;
+
+}
 
 
 

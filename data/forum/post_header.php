@@ -16,5 +16,6 @@ $date = time_elapsed_string($id["CREATE_DATE"]);
 
 </div>
 <?php } ?>
-
+<div id="content_box">
 <?php $this->display_comments(); ?>
+</div>

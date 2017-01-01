@@ -11,6 +11,9 @@ class user extends db {
   protected $name, $email, $password, $c_password;
   // Get Date
   private $date;
+  // Admin Variables
+  public $num_of_threads;
+  public $num_of_comments;
 
   // Error
   public $error;
@@ -283,6 +286,178 @@ class user extends db {
       mail($to,$subject,$msg,$headers);
       return true;
   }
+
+
+  // User Profile -- Displays User Threads
+  public function profile() {
+    // Grab User Data
+    $email = $_SESSION["email"];
+    // Validate
+    $error = false;
+    $val_email = new validation($email);
+    $error = $val_email->check_mail();
+    if (!$error) {
+      // Grab Data
+      $query = "SELECT * FROM USER WHERE EMAIL = '$email';";
+      if (parent::select($query)) {
+        $user_data = parent::select($query);
+        $user_id = $user_data["ID"];
+        // Grab Thread Data
+        $query = "SELECT * FROM THREADS WHERE USER_ID = '$user_id';";
+        $thread_data = parent::select_multi($query);
+        date_default_timezone_set ( "UTC" );
+        $date = time_elapsed_string($user_data["CREATE_DATE"]);
+        $size = sizeof($thread_data);
+        // Create Profile
+        include($_SERVER['DOCUMENT_ROOT'] . '/data/user/profile_header.php');
+
+      } else {
+          echo "Data not recieved.";
+          return false;
+      }
+    } else {
+      $this->error = $error;
+      return false;
+    }
+
+  }
+
+
+  public function profile_remove_threads() {
+    // Check Email
+    // Grab User Data
+    $email = $_SESSION["email"];
+    // Validate
+    $error = false;
+    $val_email = new validation($email);
+    $error = $val_email->check_mail();
+    if (!$error) {
+    // Check Connection
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      $id = $_POST['remove_thread'];
+      $cat_id = $_POST['remove_cat'];
+      if ($id != null) {
+        // Validate
+        if (!is_numeric($id)) {
+          return false;
+        } else {
+          // Remove Category
+          $query = "DELETE FROM THREADS WHERE ID = '$id';";
+          $query2 = "DELETE FROM COMMENTS WHERE THREAD_ID = '$id';";
+          if (parent::query($query) && parent::query($query2)) {
+            $query = "UPDATE CATEGORY SET NUM_OF_POSTS = NUM_OF_POSTS - 1 WHERE ID = '$cat_id';";
+            if (parent::query($query)) {
+              $this->error = "Success";
+              return true;
+            } else {
+              echo "Failed to update Categories.";
+              return false;
+            }
+          } else {
+            echo "Failed to delete thread.";
+            return false;
+          }
+        }
+      } else {
+        return false;
+      }
+
+    } else {
+      return false;
+    }
+
+  } else {
+    return false;
+  }
+  }
+
+
+  // Admin
+  public function admin () {
+    // if admin privilege, return user table
+    $this->email = $_SESSION['email'];
+    // check if null
+    if ($this->email != null) {
+      $query = "SELECT USER_TYPE FROM USER WHERE EMAIL = '$this->email';";
+      $data = parent::select($query);
+      if ($data) {
+          if ($data['USER_TYPE'] == 'admin') {
+            // Get Num of Threads
+            $query  = "SELECT COUNT(ID) FROM THREADS;";
+            $num_of_threads = parent::select($query);
+            $this->num_of_threads = $num_of_threads["COUNT(ID)"];
+            // Get Num of Comments
+            $query  = "SELECT COUNT(ID) FROM COMMENTS;";
+            $num_of_comments = parent::select($query);
+            $this->num_of_comments = $num_of_comments["COUNT(ID)"];
+            $query = "SELECT * FROM USER ORDER BY CREATE_DATE DESC;";
+            $user_table = parent::select_multi($query);
+            return $user_table;
+          } else {
+            return false;
+          }
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
+
+ // Manage Users
+ public function manage_users() {
+   // Get Admins
+   $query = "SELECT * FROM USER WHERE USER_TYPE='admin';";
+   $this->add_admin();
+   $this->remove_admin();
+   $data = parent::select_multi($query);
+   include($_SERVER['DOCUMENT_ROOT'] . '/data/admin/user.php');
+
+ }
+
+
+ // Add new admin
+ public function add_admin() {
+   // Check Connection
+   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+     $user_name = $_POST["add_username"];
+     if ($user_name) {
+       $query = "UPDATE USER SET USER_TYPE = 'admin' WHERE NAME = '$user_name';";
+       if (parent::query($query)) {
+         $this->error = "User added as admin.";
+       } else {
+         $this->error = "User not found.";
+         return false;
+       }
+     } else {
+       return false;
+     }
+   } else {
+     return false;
+   }
+ }
+
+ // Remove admin
+ public function remove_admin() {
+   // Check Connection
+   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+     $user_id = $_POST["remove_user"];
+     if ($user_id) {
+       $query = "UPDATE USER SET USER_TYPE = 'reg' WHERE ID = '$user_id';";
+       if (parent::query($query)) {
+         $this->error = "User removed as admin.";
+       } else {
+         $this->error = "User not removed.";
+         return false;
+       }
+     } else {
+       return false;
+     }
+   } else {
+     return false;
+   }
+ }
 
 
 

@@ -66,7 +66,7 @@ function check_login() {
 	if (!$user) {
 		// Redirect to Login
 		$msg = "Please login to use this feature.";
-		header("Location: ./user/login.php?msg=" . $msg);
+		header("Location: ". url() . "user/login.php?msg=" . $msg);
 	} else {
 		return false;
 	}

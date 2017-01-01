@@ -12,10 +12,12 @@ if (!$category_id && !$thread_id) {
 } else if ($category_id) {
 // Load Threads when Category is Selected
   $thread = new thread($category_id);
+  echo "<div id='content_box'>";
   $thread->create_header();
   $thread->delete_threads();
   $thread->return_threads();
   $thread->display_threads();
+  echo '</div>';
 
 } else if ($thread_id) {
 // Load Post when Thread is Selected

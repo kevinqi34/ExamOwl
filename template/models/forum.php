@@ -35,7 +35,7 @@ class category extends db {
             // Good to go
             $this->add_category();
             // To Powerful, disabled for safety
-            //$this->remove_category();
+            $this->remove_category();
             include($_SERVER['DOCUMENT_ROOT'] . '/data/admin/category.php');
 
           }
@@ -144,6 +144,7 @@ class thread extends db {
   private $date;
   // Get Data
   private $data = array();
+  private $limit;
   // Category Variables
   private $cat_name;
   private $cat_id;
@@ -189,7 +190,9 @@ class thread extends db {
 
   // Returns Threads From Database
   public function return_threads() {
-    $query = "SELECT * FROM THREADS WHERE CAT_ID = '$this->cat_id' ORDER BY TYPE DESC, CREATE_DATE DESC LIMIT 25;";
+    $limit = 20;
+    $this->limit = $limit;
+    $query = "SELECT * FROM THREADS WHERE CAT_ID = '$this->cat_id' ORDER BY TYPE DESC, CREATE_DATE DESC LIMIT $limit;";
     $data = parent::select_multi($query);
     if ($data) {
      $this->data = $data;
@@ -201,6 +204,7 @@ class thread extends db {
   // Displays Threads
   public function display_threads() {
     if (sizeof($this->data) > 0) {
+        $limit = $this->limit;
         // Create Threads
         include($_SERVER['DOCUMENT_ROOT'] . '/data/forum/thread.php');
     } else {
@@ -334,7 +338,26 @@ class thread extends db {
 
   }
 
+  // pagination
+  public function pagination($val, $size) {
+    // Validate Data
+    if (!is_numeric($this->cat_id) && !is_numeric($val) && !is_numeric($size)) {
+      return false;
+    } else {
+      // Grab Results
+      $start = $val * $size;
+      $limit = $size;
+      $query = "SELECT * FROM THREADS WHERE CAT_ID = '$this->cat_id' ORDER BY TYPE DESC, CREATE_DATE DESC LIMIT $start, $size;";
+      $data = parent::select_multi($query);
+      $this->data = $data;
+      // Create Comments
+      include($_SERVER['DOCUMENT_ROOT'] . '/data/forum/thread.php');
+    }
 
+
+
+
+  }
 
 }
 
@@ -412,7 +435,8 @@ class post extends db {
     if (!is_numeric($this->thread_id)) {
       return false;
     } else {
-      $query = "SELECT * FROM COMMENTS WHERE THREAD_ID = '$this->thread_id' ORDER BY CREATE_DATE;";
+      $limit = 30;
+      $query = "SELECT * FROM COMMENTS WHERE THREAD_ID = '$this->thread_id' ORDER BY CREATE_DATE LIMIT $limit;";
       $data = parent::select_multi($query);
       // Create Comments
       include($_SERVER['DOCUMENT_ROOT'] . '/data/forum/comment.php');
@@ -513,7 +537,7 @@ class post extends db {
         } else {
           // Remove Comment
           $query = "DELETE FROM COMMENTS WHERE ID = '$id';";
-          $query2 = "UPDATE THREADS SET NUM_OF_COMMENTS = NUM_OF_COMMENTS - 1;";
+          $query2 = "UPDATE THREADS SET NUM_OF_COMMENTS = NUM_OF_COMMENTS - 1 WHERE ID = '$this->thread_id';";
           if (parent::query($query) && parent::query($query2)) {
             $this->error = $success;
             return true;
@@ -530,6 +554,29 @@ class post extends db {
       return false;
     }
   }
+
+
+  // pagination
+  public function pagination($val, $size) {
+    // Validate Data
+    if (!is_numeric($this->thread_id) && !is_numeric($val) && !is_numeric($size)) {
+      return false;
+    } else {
+      // Grab Results
+      $start = $val * $size;
+      $limit = $size;
+      $query = "SELECT * FROM COMMENTS WHERE THREAD_ID = '$this->thread_id' ORDER BY CREATE_DATE LIMIT $start, $size;";
+      $data = parent::select_multi($query);
+      // Create Comments
+      include($_SERVER['DOCUMENT_ROOT'] . '/data/forum/comment.php');
+    }
+
+
+
+
+  }
+
+
 
 
 

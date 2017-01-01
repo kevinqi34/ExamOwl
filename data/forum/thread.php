@@ -28,3 +28,20 @@ foreach($this->data as $thread) {
 <?php
 }
 ?>
+<?php
+  $size = sizeof($this->data);
+  if ($size == $limit) {
+    if ($val) {
+      $val = $val + 1;
+    } else {
+      $val = 1;
+    }
+    echo '<div id="load">';
+    echo '<p id="load_more">Load More</p>';
+    echo '<input type="hidden" value="' . $limit . '" id="load_size" />';
+    echo '<input type="hidden" value="'. $val .'" id="load_val" />';
+    echo '<input type="hidden" value="thread" id="load_type" />';
+    echo '<input type="hidden" value="' . $this->cat_id . '" id="load_id" />';
+    echo '</div>';
+  }
+?>
