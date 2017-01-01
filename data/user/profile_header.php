@@ -15,14 +15,13 @@ if ($user_data["USER_TYPE"] == 'admin') {
 
 <?php } ?>
 
-
+<div class="profile_posts profile_header">
 <?php
 if ($size == 0) {
-  echo "You have not posted anything yet.";
+  echo "<p style='text-align:center;'>You have not posted anything yet.</p>";
 
 } else {
 ?>
-<div class="profile_posts profile_header">
   <h3>My Posts</h3>
 <?php
 
@@ -41,9 +40,11 @@ $date = time_elapsed_string($thread["CREATE_DATE"]);
     </form>
   </div>
 <?php } ?>
-</div>
+
 
 <?php } ?>
+</div>
+
 <?php
 $user_table = $this->admin();
 $num_of_users = sizeof($user_table);
