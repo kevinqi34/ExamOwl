@@ -1,0 +1,103 @@
+/* Define Output */
+
+
+
+#transparent {
+  height: 100%;
+  display: none;
+  z-index: 1000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0,0,0,0.6);
+
+
+}
+
+
+#output {
+  display: none;
+  margin: auto;
+  position: absolute;
+  z-index: 1024;
+  top: 0;
+  right: 0;
+  left: 0;
+  border: 2px solid white;
+  height: 350px;
+  width: 400px;
+  background-color: #404040;
+
+
+
+}
+
+#output span {
+
+  position: absolute;
+  z-index: 100;
+  color: white;
+  height: 35px;
+  width: 35px;
+  font-size: 25px;
+  text-align: center;
+  padding: 5px;
+  right: 0;
+  top: 0;
+
+
+
+}
+
+#output span img {
+  height: 35px;
+  width: 35px;
+
+}
+
+#output_content {
+  position: absolute;
+  z-index: 99;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+
+
+
+}
+
+
+#output p.output_msg {
+  margin: 0;
+  text-align: center;
+  font-size: 26px;
+  line-height: 30px;
+  color: white;
+  font-weight: 100;
+  padding: 20px;
+
+}
+
+
+@media (max-width: 408px) {
+
+  #output {
+    width: 300px;
+    height: 300px;
+
+
+
+
+
+  }
+
+
+
+}
