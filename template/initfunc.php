@@ -160,10 +160,13 @@ class template {
 		// Grab Variables
 		$category = $_GET["cat-id"];
 		$thread = $_GET["thread-id"];
+		$resource = $_GET["id"];
 		if ($category) {
 			$query = "SELECT NAME FROM CATEGORY WHERE ID ='$category';";
 		} else if ($thread) {
 			$query = "SELECT TITLE FROM THREADS WHERE ID='$thread';";
+		} else if ($resource) {
+			$query = "SELECT TITLE FROM RESOURCES WHERE ID='$resource';";
 		} else {
 			$query = false;
 		}

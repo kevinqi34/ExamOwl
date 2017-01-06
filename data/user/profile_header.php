@@ -57,7 +57,8 @@ if ($user_data["USER_TYPE"] == 'admin') {
   <p><span>Latest Registrant: </span><?php echo $latest_user; ?></p>
   <p><span># of Posts: </span><?php echo $this->num_of_threads; ?></p>
   <p><span># of Comments: </span><?php echo $this->num_of_comments; ?></p>
-
+  <p><span># of Resources: </span><?php echo $this->num_of_res; ?></p>
+  <p><span># of User Votes: </span><?php echo $this->num_of_votes; ?></p>
 </div>
 <?php
 

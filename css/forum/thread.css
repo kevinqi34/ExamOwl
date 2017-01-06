@@ -1,4 +1,9 @@
 
+h3 {
+  margin: 0px;
+  padding: 0px;
+}
+
 div.thread_header {
   text-align: left;
   overflow: auto;

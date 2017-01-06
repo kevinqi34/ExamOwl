@@ -14,6 +14,8 @@ class user extends db {
   // Admin Variables
   public $num_of_threads;
   public $num_of_comments;
+  public $num_of_res;
+  public $num_of_votes;
 
   // Error
   public $error;
@@ -390,6 +392,15 @@ class user extends db {
             $query  = "SELECT COUNT(ID) FROM COMMENTS;";
             $num_of_comments = parent::select($query);
             $this->num_of_comments = $num_of_comments["COUNT(ID)"];
+            // Get Num of Res
+            $query  = "SELECT COUNT(ID) FROM LINKS;";
+            $num_of_res = parent::select($query);
+            $this->num_of_res = $num_of_res["COUNT(ID)"];
+            // Get Num of Votes
+            $query  = "SELECT COUNT(ID) FROM LINKS_VOTES;";
+            $num_of_votes = parent::select($query);
+            $this->num_of_votes = $num_of_votes["COUNT(ID)"];
+
             $query = "SELECT * FROM USER ORDER BY CREATE_DATE DESC;";
             $user_table = parent::select_multi($query);
             return $user_table;

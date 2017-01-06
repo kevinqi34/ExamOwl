@@ -1,7 +1,4 @@
 
-div.content_wrapper {
-  width: 100%;
-}
 
 div.menu {
   position: relative;
@@ -111,6 +108,9 @@ div.menu div.category a {
 
 @media screen and (max-width : 600px){
 
+div.content_wrapper {
+  width: 100%;
+}
 
 div.menu {
   width: 300px;
