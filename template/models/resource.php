@@ -146,7 +146,7 @@ class resource extends db {
  public function upload_img($url) {
    $name = basename($url);
    file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/images/uploads/' . $name, file_get_contents($url));
-   chmod($_SERVER['DOCUMENT_ROOT'] . '/images/uploads/' . $name, 0777);
+   chmod($_SERVER['DOCUMENT_ROOT'] . '/images/uploads/' . $name, 0775);
    return $name;
  }
 
