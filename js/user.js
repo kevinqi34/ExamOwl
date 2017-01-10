@@ -10,7 +10,7 @@ function redirect() {
   if (redirect == 'true' && error == 0) {
     var output = "Thank you for signing up. Please verify your email address by checking your email account."
     if (url == '/user/signup.php') {
-    window.location.href = "../?output=" + output;
+    window.location.href = "../?msg=" + output;
   } else {
     window.location.href = "../";
   }

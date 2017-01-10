@@ -37,7 +37,7 @@ if ($verifier == $data["VERIFY_HASH"]) {
   $update_sql  = "UPDATE USER SET VERIFIED='1' WHERE EMAIL = '$email'";
   if ($new_conn->query($update_sql)) {
     $output="Your email has been verified";
-    header('Location: ../?ouput=' . $output);
+    header('Location: ../?msg=' . $output);
 
   }
 

@@ -208,6 +208,7 @@ class thread extends db {
         // Create Threads
         include($_SERVER['DOCUMENT_ROOT'] . '/data/forum/thread.php');
     } else {
+      echo '<p id="error" style="display: none;">'.$this->error.'</p>';
       echo "No threads found.";
       return false;
     }
@@ -259,7 +260,6 @@ class thread extends db {
           $query = "INSERT INTO THREADS (CAT_ID, USER_ID, TITLE, SLUG, CREATE_DATE, AUTHOR, CONTENT, TYPE, NUM_OF_COMMENTS) VALUES ('$category_id', '$this->user_id', '$thread_title', '$slug', '$this->date', '$this->author', '$thread_text','$thread_option', '0');";
         } else {
           $query = "INSERT INTO THREADS (CAT_ID, USER_ID, TITLE, SLUG, CREATE_DATE, AUTHOR, CONTENT, NUM_OF_COMMENTS) VALUES ('$category_id', '$this->user_id', '$thread_title', '$slug', '$this->date', '$this->author', '$thread_text', '0');";
-          echo $query;
         }
         if (parent::query($query)) {
           // Update Category Post Count
@@ -470,6 +470,9 @@ class post extends db {
         } else {
           // Get Variables
           $text = $_POST['text'];
+          if (!$text) {
+            return false;
+          } else {
           // Validate Data
           $error = false;
           $comment_body = new validation($text);
@@ -491,7 +494,7 @@ class post extends db {
                 $this->error = "Success";
                 return true;
               } else {
-                echo "Thread count faild to update.";
+                echo "Thread count failed to update.";
                 return false;
               }
             } else {
@@ -501,6 +504,7 @@ class post extends db {
           }
         }
       }
+    }
 
 
   }
@@ -539,7 +543,7 @@ class post extends db {
           $query = "DELETE FROM COMMENTS WHERE ID = '$id';";
           $query2 = "UPDATE THREADS SET NUM_OF_COMMENTS = NUM_OF_COMMENTS - 1 WHERE ID = '$this->thread_id';";
           if (parent::query($query) && parent::query($query2)) {
-            $this->error = $success;
+            $this->error = "Success";
             return true;
           } else {
             echo "Comment not deleted";

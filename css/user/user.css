@@ -1,3 +1,6 @@
+#message {
+  color: red;
+}
 
 #user {
   width: 300px;
@@ -6,7 +9,6 @@
   position: relative;
   margin-top: 50px;
   margin-bottom: 50px;
-
 
 }
 
@@ -21,6 +23,14 @@
 
 }
 
+p span {
+  color: skyblue;
+}
+
+p span:hover {
+  color: gray;
+
+}
 
 #user form input {
   height: 45px;

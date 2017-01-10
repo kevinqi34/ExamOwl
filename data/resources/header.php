@@ -7,3 +7,4 @@
     <img src="<?php echo url(); ?>images/menu/<?php echo $data["ICON_URL"]; ?>" />
   </div>
 </div>
+<p id="error" style="display: none"><?php echo $this->error; ?></p>

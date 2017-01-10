@@ -68,7 +68,17 @@ function check_login() {
 		$msg = "Please login to use this feature.";
 		header("Location: ". url() . "user/login.php?msg=" . $msg);
 	} else {
-		return false;
+		// Check if user has email verified
+		$query = "SELECT VERIFIED FROM USER WHERE EMAIL = '$user';";
+		$db = new db();
+		$verify = $db->select($query);
+		$verify = $verify["VERIFIED"];
+		if ($verify != 1) {
+		$msg = "You must verify your email address before you can have full access to ExamOwl.";
+		header("Location: ". url() . "user/verify_email.php?msg=" . $msg);
+		} else {
+			return false;
+		}
 	}
 
 }

@@ -16,6 +16,7 @@ class user extends db {
   public $num_of_comments;
   public $num_of_res;
   public $num_of_votes;
+  public $num_of_ver_users;
 
   // Error
   public $error;
@@ -384,6 +385,10 @@ class user extends db {
       $data = parent::select($query);
       if ($data) {
           if ($data['USER_TYPE'] == 'admin') {
+            // Get Num of Comments
+            $query  = "SELECT COUNT(ID) FROM USER WHERE VERIFIED = 1;";
+            $num_of_ver_users = parent::select($query);
+            $this->num_of_ver_users = $num_of_ver_users["COUNT(ID)"];
             // Get Num of Threads
             $query  = "SELECT COUNT(ID) FROM THREADS;";
             $num_of_threads = parent::select($query);

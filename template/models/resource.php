@@ -208,7 +208,7 @@ class resource extends db {
         $query = "SELECT * FROM LINKS_VOTES WHERE USER_ID = '$this->user_id' AND LINK_ID = '$upvote';";
         $data = parent::select($query);
         if ($data) {
-        //  $this->error = "Success";
+        $this->error = "Success";
           return false;
         } else {
           // Upvote
@@ -217,7 +217,7 @@ class resource extends db {
             // Insert into vote history
             $query = "INSERT INTO LINKS_VOTES(USER_ID, LINK_ID) VALUES('$this->user_id','$upvote');";
             if (parent::query($query)) {
-          //    $this->error = "Success";
+             $this->error = "Success";
             } else {
               return false;
             }
@@ -243,13 +243,14 @@ class resource extends db {
      if ($downvote) {
      // Validate Data
      if ((!is_numeric($upvote) && !is_numeric($count)) || $count < 1) {
+       $this->error = "Success";
        return false;
      } else {
        // Check if user has voted in the Past
        $query = "SELECT * FROM LINKS_VOTES WHERE USER_ID = '$this->user_id' AND LINK_ID = '$downvote';";
        $data = parent::select($query);
        if ($data) {
-      //   $this->error = "Success";
+       $this->error = "Success";
          return false;
        } else {
          // Upvote
@@ -258,7 +259,7 @@ class resource extends db {
            // Insert into vote history
            $query = "INSERT INTO LINKS_VOTES(USER_ID, LINK_ID) VALUES('$this->user_id','$downvote');";
            if (parent::query($query)) {
-          //  $this->error = "Success";
+           $this->error = "Success";
            } else {
              return false;
            }
@@ -317,7 +318,7 @@ class resource extends db {
          $query = "DELETE FROM LINKS WHERE ID = '$id';";
          $query2 = "UPDATE RESOURCES SET NUM_OF_LINKS = NUM_OF_LINKS - 1 WHERE ID = '$this->id';";
          if (parent::query($query) && parent::query($query2)) {
-           //$this->error = "Success";
+           $this->error = "Success";
          } else {
            echo "Resource failed to delete.";
            return false;
