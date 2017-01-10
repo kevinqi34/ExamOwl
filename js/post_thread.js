@@ -10,7 +10,7 @@ function get_url() {
 function redirect() {
   var error = false;
   var redirect = getUrlParameter('redirect');
-  var title = getUrlParameter('title');
+  var title = getUrlParameter('return-id');
   var id = getUrlParameter('cat-id');
   var error = $('#error').text();
   var url = get_url();
