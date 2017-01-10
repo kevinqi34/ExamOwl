@@ -1,7 +1,7 @@
 <?php
 foreach ($this->data as $table) {
 ?>
-  <a href="./category/<?php echo $table["ID"]; ?>/<?php echo $table["SLUG"]; ?>">
+  <a href="<?php echo $_SERVER['DOCUMENT_ROOT'] ?>/category/<?php echo $table["ID"]; ?>/<?php echo $table["SLUG"]; ?>">
   <div class="category">
     <div class="title">
       <h1><?php echo $table["NAME"]; ?></h1>
