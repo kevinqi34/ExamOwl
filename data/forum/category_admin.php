@@ -25,7 +25,7 @@
       <td><?php echo $table["ICON_URL"]; ?></td>
       <td>
         <form method="post">
-          <input type="hidden" id="remove_cat" name="remove_cat" value="<?php echo $table["ID"]; ?>"required />
+          <input type="hidden" id="remove_category" name="remove_category" value="<?php echo $table["ID"]; ?>"required />
           <button type="submit" value="remove_cat">Remove</button>
         </form>
       </td>

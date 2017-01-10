@@ -35,7 +35,7 @@ class category extends db {
             // Good to go
             $this->add_category();
             // To Powerful, disabled for safety
-            $this->remove_category();
+            //$this->remove_category();
             include($_SERVER['DOCUMENT_ROOT'] . '/data/admin/category.php');
 
           }
@@ -111,7 +111,7 @@ class category extends db {
   public function remove_category() {
     // Check Connection
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      $id = $_POST['remove_cat'];
+      $id = $_POST['remove_category'];
       if ($id != null) {
         // Validate
         if (!is_numeric($id)) {
