@@ -17,7 +17,7 @@ function redirect() {
   var current_url = window.location.href;
 
   if (redirect && error == 0) {
-    window.location.href = url + "/?cat-id=" + redirect;
+    window.location.href = url + "/category/" + redirect + "/" + title;
   } else if (error == "Redirect") {
     msg = "Please login to comment on posts.";
     window.location.href = url + "/user/login.php?msg=" + msg;
