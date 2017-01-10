@@ -1,7 +1,7 @@
 <?php
 foreach ($this->data as $table) {
 ?>
-  <a href="?cat-id=<?php echo $table["ID"]; ?>">
+  <a href="./category/<?php echo $table["ID"]; ?>/<?php echo $table["SLUG"]; ?>">
   <div class="category">
     <div class="title">
       <h1><?php echo $table["NAME"]; ?></h1>
