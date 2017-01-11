@@ -463,11 +463,6 @@ class post extends db {
       }
       // Start Post
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Check if email is verified
-        if (check_verified_email()) {
-          $this->error = "Email_Ver";
-          return false;
-        }
 
 
         if ($redirect) {
@@ -475,6 +470,12 @@ class post extends db {
           $this->error = "Redirect";
           return false;
         } else {
+          // Check if email is verified
+          if (check_verified_email()) {
+            $this->error = "Email_Ver";
+            return false;
+          }
+
           // Get Variables
           $text = $_POST['text'];
           if (!$text) {
