@@ -11,12 +11,13 @@ function get_url() {
 function redirect() {
     var error = false;
     var redirect = getUrlParameter('redirect');
+    var slug = getUrlParameter('slug');
     var error = $('#error').text();
     var url = get_url();
     var current_url = window.location.href;
 
     if (redirect && error == 0) {
-      window.location.href = url + "/resources.php?id=" + redirect;
+      window.location.href = url + "/res/" + redirect + "/" + slug;
     } else if (error == "Success"){
       window.location.href = url + "/data/redirect.php?url=" + current_url;
     }
