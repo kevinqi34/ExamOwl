@@ -56,10 +56,10 @@ class validation {
     foreach($mail_domains_ko as $ko_mail) {
             list(,$mail_domain) = explode('@',$this->data);
             if(strcasecmp($mail_domain, $ko_mail) == 0){
-                    return true;
+                    return "Invalid Spam Email.";
             }
     }
-    return "Invalid Spam Email.";
+    return false;
   }
 
 
