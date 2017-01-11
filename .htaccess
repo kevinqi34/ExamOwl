@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteRule ^resources/([0-9]+)/?$  ?cat-id=$1
+    RewriteRule ^res/([0-9]+)/[A-Za-z-]+/?$       resources.php?id=$1
     RewriteRule ^category/([0-9]+)/[A-Za-z-]+/?$    ?cat-id=$1
     RewriteRule ^thread/([0-9]+)/[A-Za-z-]+/?$    ?thread-id=$1
 
