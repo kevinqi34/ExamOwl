@@ -8,7 +8,7 @@
       <img src="/images/menu/<?php echo $test["ICON_URL"]; ?>" alt="<?php echo $test["TITLE"]; ?>" >
     </div>
     <h3><?php echo $test["TITLE"]; ?></h3>
-    <a href="<?php echo url(); ?>resources/<?php echo $test["ID"]; ?>/<?php echo $test["SLUG"]; ?>"></a>
+    <a href="<?php echo url(); ?>resources/<?php echo $test["ID"]; ?>"></a>
   </div>
 <?php } ?>
 
