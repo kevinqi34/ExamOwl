@@ -1,6 +1,6 @@
 <?php include ($_SERVER['DOCUMENT_ROOT'] . '/controllers/forum/post_thread.php')?>
 
-<h2><a href="<?php echo url(); ?>category/<?php echo $category_id; ?>/<?php $redirect_slug ?>"><img src="./images/menu/return.png" alt="return" class="return"  /></a>Create New Discussion</h2>
+<h2><a href="<?php echo url(); ?>category/<?php echo $category_id; ?>/<?php echo $redirect_slug; ?>"><img src="./images/menu/return.png" alt="return" class="return"  /></a>Create New Discussion</h2>
 <form method="post" action="./post_thread.php?redirect=<?php echo $category_id; ?>&return-id=<?php echo $redirect_slug; ?>&title=<?php echo $redirect_title; ?>">
 <?php if ($threads->privileges == 'admin') { ?>
 <!-- Admin Features -->
