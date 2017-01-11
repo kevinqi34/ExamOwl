@@ -84,6 +84,22 @@ function check_login() {
 }
 
 
+// Checks if user is verified
+function check_verified_email() {
+	$user = $_SESSION['email'];
+	// Check if user has email verified
+	$query = "SELECT VERIFIED FROM USER WHERE EMAIL = '$user';";
+	$db = new db();
+	$verify = $db->select($query);
+	$verify = $verify["VERIFIED"];
+	if ($verify != 1) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+
 // Date Time Conversion
 function time_elapsed_string($datetime, $full = false) {
     $now = new DateTime;
