@@ -23,6 +23,9 @@ function redirect() {
     window.location.href = url + "/user/login.php?msg=" + msg;
   } else if (error == "Success"){
     window.location.href = url + "/data/redirect.php?url=" + current_url;
+  } else if (error == "Email_Ver") {
+    msg = "You must verify your email address before you can have full access to ExamOwl."
+    window.location.href = url + "user/verify_email.php?msg=" + msg;
   }
 
 }
