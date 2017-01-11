@@ -70,7 +70,7 @@
   $GPAcat->pushtoArray("GPA|Final", "ids");
   $GPAcat->pushtoArray("GPA Calculator|Final Grade Calculator", "items");
   $GPAcat->pushtoArray("GPA.png|Final.png", "urlList");
-  $GPAcat->pushtoArray("./tools/othertests/GPA.php|./tools/othertests/finalgrade.php","url");
+  $GPAcat->pushtoArray("./tools/othertests/gpa.php|./tools/othertests/finalgrade.php","url");
   $GPAcat->createSubMenu("GPAcat", "menu1");
 
 
