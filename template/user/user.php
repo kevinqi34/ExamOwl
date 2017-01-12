@@ -476,6 +476,17 @@ class user extends db {
  }
 
 
+ // Remove and blacklist_user
+ public function blacklist_user() {
+   
+
+
+
+ }
+
+
+
+
 
 }
 

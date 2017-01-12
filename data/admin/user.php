@@ -4,7 +4,7 @@
   <h3>Current Admin</h3>
   <?php include($_SERVER['DOCUMENT_ROOT'] . '/data/user/user_admin.php'); ?>
 </div>
-<!-- Add New Category -->
+<!-- Add New Admin -->
 <div class="add_cats">
   <h3>Add New Admin</h3>
   <form id="add_user" method="post">
@@ -12,4 +12,14 @@
     <button type="submit" value="add_user">Add</button>
   </form>
     <p id ="error" ><?php echo $this->error; ?></p>
+</div>
+
+<!-- Delete User -->
+<div class="add_cats">
+  <h3>Remove User</h3>
+  <form id="remove_user" method="post">
+    <input type="text" id="remove_email" name="remove_email" placeholder="Email" required />
+    <button type="submit" value="remove_user">Remove</button>
+  </form>
+  <p id ="error" ><?php echo $this->error; ?></p>
 </div>

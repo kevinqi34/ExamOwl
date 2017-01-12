@@ -15,6 +15,7 @@ foreach($this->data as $thread) {
 <?php
   if ($this->privileges == 'admin') {
 ?>
+<p>Posted by: <?php echo $thread["USER_ID"]; ?></p>
 <form method="post">
   <input type="hidden" id="remove_thread" name="remove_thread" value="<?php echo $thread["ID"]; ?>"required />
   <button type="submit" value="remove_thread">Remove</button>
