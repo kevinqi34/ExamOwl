@@ -291,6 +291,33 @@ class user extends db {
   }
 
 
+  // User Ban Mail
+  function banned_email($name, $email) {
+    $to = $email;
+    $subject = "You have been banned. Get out of Exam Owl.";
+    $msg = "
+    <html>
+    <head>
+    <title>Your Exam Owl Account has been banned for spamming.</title>
+    </head>
+    <body>
+    <p>Dear&nbsp;";
+    $msg=$msg. $name . ",</p>
+    <p>Your Account has been banned. Get out of our community TROLL.</p>";
+    $msg=$msg . "<p>Good Riddance,</p>
+    <p>-- The Exam Owl Team</p>
+    </body>
+    </html>
+    ";
+    // Always set content-type when sending HTML email
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+    $headers .= "From: support@spere.io" . "\r\n";
+    mail($to,$subject,$msg,$headers);
+    return true;
+  }
+
+
   // User Profile -- Displays User Threads
   public function profile() {
     // Grab User Data
@@ -478,19 +505,52 @@ class user extends db {
 
  // Remove and blacklist_user
  public function blacklist_user() {
-   
+   // Check Connection
+   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+     $user_id = $_POST["blacklist_user"];
+     // Validate
+     if ($user_id) {
+       if (!is_numeric($user_id)) {
+         return false;
+       } else {
+         // Begin Blacklist Process
+         // Check if user exists
+         $query = "SELECT * FROM USER WHERE ID = '$user_id';";
+         $user_data = parent::select($query);
+         if ($user_data) {
+           // Grab User Variables
+           $user_name = $user_data["NAME"];
+           $user_email = $user_data["EMAIL"];
 
-
-
+           // Add User to Blacklist
+           $query = "INSERT INTO USER_BLACKLIST (EMAIL) VALUES ('$user_email');";
+           if (parent::query($query)) {
+             // Delete User and Send Angry Email
+             $delete_user = "DELETE FROM USER WHERE ID = '$user_id';";
+             if(parent::query($delete_user) && $this->banned_email($user_name, $user_email)) {
+               echo "User Succesfully Deleted";
+               // Return List of Things to Delete
+               
+             } else {
+               $this->error = "User failed to delete";
+             }
+           } else {
+            $this->error = "User failed to insert into Blacklist";
+            return false;
+           }
+         } else {
+           $this->error = "User not found.";
+           return false;
+         }
+       }
+     } else {
+       return false;
+     }
+   } else {
+     return false;
+   }
  }
 
 
-
-
-
 }
-
-
-
-
 ?>

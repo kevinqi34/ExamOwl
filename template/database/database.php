@@ -55,6 +55,12 @@ class db {
 
   }
 
+  // Return Number of affected Rows
+  public function return_affected_count() {
+    $row_count = $this->connection->affected_rows;
+    return $row_count;
+  }
+
   // Returns Last Error from Database
   public function error() {
     return $this->connection->error;
