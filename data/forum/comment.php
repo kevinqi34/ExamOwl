@@ -10,7 +10,7 @@ foreach($data as $comment) {
     if ($this->privileges == 'admin') {
   ?>
   <!-- User ID -->
-  <p>Posted by: <?php echo $comment["USER_ID"]; ?></p>
+  <p class="info">Posted by: <?php echo $comment["USER_ID"]; ?></p>
   <form method="post">
     <input type="hidden" id="remove_comment" name="remove_comment" value="<?php echo $comment["ID"]; ?>"required />
     <button type="submit" value="remove_comment">Remove</button>
