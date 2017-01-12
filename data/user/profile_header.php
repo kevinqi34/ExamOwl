@@ -71,8 +71,8 @@ $category = new category();
 $category->return_categories();
 echo "<div class='admin'>";
 $category->admin();
-$this->blacklist_user();
 $this->manage_users();
+$this->blacklist_user();
 echo "</div>";
 }
 

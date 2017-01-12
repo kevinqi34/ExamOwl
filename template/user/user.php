@@ -529,17 +529,27 @@ class user extends db {
              $delete_user = "DELETE FROM USER WHERE ID = '$user_id';";
              if(parent::query($delete_user) && $this->banned_email($user_name, $user_email)) {
                echo "User Succesfully Deleted";
-               // Return List of Things to Delete
-               
+               // Return User Comments, Threads and Resources
+               $get_comments = "SELECT * FROM COMMENTS WHERE USER_ID = '$user_id';";
+               $data = parent::select_multi($get_comments);
+               include($_SERVER['DOCUMENT_ROOT'] . '/data/user/user_comments.php');
+               // Return User Threads
+               $get_threads = "SELECT * FROM THREADS WHERE USER_ID = '$user_id';";
+               $data = parent::select_multi($get_threads);
+               include($_SERVER['DOCUMENT_ROOT'] . '/data/user/user_threads.php');
+               // Return User Res
+               $get_res = "SELECT * FROM LINKS WHERE USER_ID = '$user_id';";
+               $data = parent::select_multi($get_res);
+               include($_SERVER['DOCUMENT_ROOT'] . '/data/user/user_res.php');
              } else {
-               $this->error = "User failed to delete";
+               echo "User failed to delete";
              }
            } else {
             $this->error = "User failed to insert into Blacklist";
             return false;
            }
          } else {
-           $this->error = "User not found.";
+           echo "User not found.";
            return false;
          }
        }
