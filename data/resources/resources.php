@@ -29,6 +29,7 @@ foreach($this->data as $test) {
   <?php
     if ($this->privileges == 'admin') {
   ?>
+  <p>Posted by: <?php echo $test["USER_ID"]; ?></p>
   <form method="post">
     <input type="hidden" id="remove_link" name="remove_link" value="<?php echo $test["ID"]; ?>"required />
     <button type="submit" value="remove_link">Remove</button>
