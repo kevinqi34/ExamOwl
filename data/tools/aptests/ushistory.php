@@ -20,6 +20,8 @@
       <p><input type="radio" name="curve" id="curve1" onclick="calculate()">2006 curve<input type="radio" name="curve" id="curve2" onclick="calculate()"/>2001 curve</p>
 
 </div>
+
+
 <div id="calculate2" class="calculate" style="display:none;">
 <h3>Enter your scores below</h3>
 

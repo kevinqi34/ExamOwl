@@ -4,7 +4,7 @@
 <div id="user">
   <h1>Sign Up</h1>
   <form method="post" action="?redirect=true">
-    <input value="<?php echo $name; ?>" type="text" id="name" name="name" placeholder="Name" required />
+    <input value="<?php echo $name; ?>" type="text" id="name" name="name" placeholder="Username" required />
     <input value="<?php echo $email; ?>" type="text" id="email" name="email" placeholder="Email Address" required />
     <input value="<?php echo $password; ?>" type="password" id="password" name="password" placeholder="Password" required />
     <input value="<?php echo $c_password; ?>" type="password" id="c_password" name="c_password" placeholder="Confirm Password" required />

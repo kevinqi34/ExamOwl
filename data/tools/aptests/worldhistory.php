@@ -1,4 +1,12 @@
 <h2>World History<img src="<?php echo url(); ?>/images/menu/Globe.png" alt="Globe"></h2>
+<h3>Version:
+<select id="version" onchange="changediv();">
+<option value="Pos2012">Post 2016</option>
+<option value="Pre2012">Pre 2016</option>
+</select>
+</h3>
+
+
 
 <div id="calculate" class="calculate">
     <h3>Enter your scores below</h3>
@@ -13,6 +21,25 @@
     <p>Choose a score curve</p>
       <p><input type="radio" name="curve" id="curve1" onclick="calculate()" checked/>2007 curve<input type="radio" name="curve" id="curve2" onclick="calculate()"/>2002 curve</p>
 </div>
+
+
+<div id="calculate2" class="calculate" style="display:none;">
+<h3>Enter your scores below</h3>
+
+  <p><label>Multiple Choice Score</label></p>
+      <p><input type="range" id="MC2012" min="0" step="1" max="55" onmouseup="slidervalue('MC2012','MC22012'), calculate2();" ontouchend="slidervalue('MC2012','MC22012'), calculate2();"/><input type="number" min="0" max="55" step="1" id="MC22012" value="28"  onchange="slidervalue('MC22012','MC2012'), calculate2();"/>/55</p>
+    <p><label>Short Answer Score</label></p>
+      <p><input type="range" id="SRQ2012" min="0" step="1" max="12" onmouseup="slidervalue('SRQ2012','SRQ22012'), calculate2();" ontouchend="slidervalue('SRQ2012','SRQ22012'), calculate2();"/><input type="number" min="0" max="12" step="1" id="SRQ22012" value="4"  onchange="slidervalue('SRQ22012','SRQ2012'), calculate2();"/>/12</p>
+    <p><label>DBQ Score</label></p>
+      <p><input type="range" id="DBQ2012" min="0" step="1" max="7"  onmouseup="slidervalue('DBQ2012','DBQ22012'), calculate2();" ontouchend="slidervalue('DBQ2012','DBQ22012'), calculate2();"/><input type="number" min="0" max="7" step="1" id="DBQ22012" value="4"  onchange="slidervalue('DBQ22012','DBQ2012'), calculate2();"/>/7</p>
+    <p><label>Long Essay Score</label></p>
+      <p><input type="range" id="LE2012" min="0" step="1" max="6"  onmouseup="slidervalue('LE2012','LE22012'), calculate2();" ontouchend="slidervalue('LE2012','LE22012'), calculate2();"/><input type="number" min="0" max="6" step="1" id="LE22012" value="3"  onchange="slidervalue('LE22012','LE2012'), calculate2();"/>/6</p>
+    <p>Choose a score curve</p>
+    <p><input style="margin-left: 30px;" type="radio" name="curve" id="curve2012" onclick="calculate()" /checked>2016 curve</p>
+
+</div>
+
+
 <div id="results">
   <h3>Results</h3>
   <p>Weighted Section I Score</p>
