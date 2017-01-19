@@ -54,7 +54,7 @@
   $COLLEGEcat = new tool_menu();
   $COLLEGEcat->pushtoArray("MCAT|GMAT|LSAT", "ids");
   $COLLEGEcat->pushtoArray("MCAT|GMAT|LSAT","items");
-  $COLLEGEcat->pushtoArray("MCAT.jpg|GMAT.jpg|LSAT.jpg", "urlList");
+  $COLLEGEcat->pushtoArray("mcat.jpg|gmat.jpg|lsat.jpg", "urlList");
   $COLLEGEcat->pushtoArray("./tools/college/mcat.php|./tools/college/gmat.php|./tools/college/lsat.php","url");
   $COLLEGEcat->createSubMenu("COLLEGEcat","menu1");
 
