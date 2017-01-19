@@ -3,9 +3,9 @@
 
 
   $menu = new tool_menu();
-  $menu->pushtoArray("AP|GPA|IB|ACT|SAT", "ids");
-  $menu->pushtoArray("AP Score Calculators|GPA/Final Exam Tools|IB Score Calculators|ACT/SAT Score Calculators|SAT Subject Tests Calculators", "items");
-  $menu->pushtoArray("AP.jpg|GPA.jpg|IB.jpg|test.png|sats.png", "urlList");
+  $menu->pushtoArray("AP|GPA|IB|ACT|SAT|COLLEGE", "ids");
+  $menu->pushtoArray("AP Score Calculators|GPA/Final Exam Tools|IB Score Calculators|ACT/SAT Score Calculators|SAT Subject Tests Calculators|College Tests Calculators", "items");
+  $menu->pushtoArray("AP.jpg|GPA.jpg|IB.jpg|test.png|sats.png|college.png", "urlList");
 
 ?>
 
@@ -50,6 +50,14 @@
 
 
 <?php
+
+  $COLLEGEcat = new tool_menu();
+  $COLLEGEcat->pushtoArray("MCAT|GMAT|LSAT", "ids");
+  $COLLEGEcat->pushtoArray("MCAT|GMAT|LSAT","items");
+  $COLLEGEcat->pushtoArray("MCAT.jpg|GMAT.jpg|LSAT.jpg", "urlList");
+  $COLLEGEcat->pushtoArray("./tools/college/mcat.php|./tools/college/gmat.php|./tools/college/lsat.php","url");
+  $COLLEGEcat->createSubMenu("COLLEGEcat","menu1");
+
   $ACTcat = new tool_menu();
   $ACTcat->pushtoArray("ACT2|SAT2|PSAT", "ids");
   $ACTcat->pushtoArray("ACT|SAT|PSAT", "items");

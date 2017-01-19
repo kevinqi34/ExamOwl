@@ -9,5 +9,12 @@
 </div>
 
 
+<?php
+$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+if (strpos($actual_link, 'tools') !== false) {
+?>
+<!-- Share Buttons for tools -->
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-569d8e1db2d98f25"></script>
+
+<?php }	?>
