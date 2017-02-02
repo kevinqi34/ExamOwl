@@ -17,6 +17,11 @@ class user extends db {
   public $num_of_res;
   public $num_of_votes;
   public $num_of_ver_users;
+  public $num_of_dis_users;
+  public $num_of_blacklist_users;
+  public $num_of_admins;
+  // Privelege
+  public $privelege;
 
   // Error
   public $error;
@@ -317,6 +322,33 @@ class user extends db {
     return true;
   }
 
+  // User Disabled Mail
+  function disabled_email($name, $email) {
+    $to = $email;
+    $subject = "Your Exam Owl account has been disabled.";
+    $msg = "
+    <html>
+    <head>
+    <title>Your Exam Owl Account has been disabled for spamming.</title>
+    </head>
+    <body>
+    <p>Dear&nbsp;";
+    $msg=$msg. $name . ",</p>
+    <p>Your Account has been disabled.</p>
+    <p>To appeal for re-enablement, reply to this email with an explanation for your spamming behaviour.</p>";
+    $msg=$msg . "<p>Sincerely,</p>
+    <p>-- The Exam Owl Team</p>
+    </body>
+    </html>
+    ";
+    // Always set content-type when sending HTML email
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+    $headers .= "From: support@spere.io" . "\r\n";
+    mail($to,$subject,$msg,$headers);
+    return true;
+  }
+
 
   // User Profile -- Displays User Threads
   public function profile() {
@@ -338,9 +370,11 @@ class user extends db {
         date_default_timezone_set ( "UTC" );
         $date = time_elapsed_string($user_data["CREATE_DATE"]);
         $size = sizeof($thread_data);
+        // Set Variables
+        $this->email = $email;
+        $this->privelege = $user_data["USER_TYPE"];
         // Create Profile
-        include($_SERVER['DOCUMENT_ROOT'] . '/data/user/profile_header.php');
-
+        include($_SERVER['DOCUMENT_ROOT'] . '/data/user/profile/profile_template.php');
       } else {
           echo "Data not recieved.";
           return false;
@@ -411,7 +445,7 @@ class user extends db {
       $query = "SELECT USER_TYPE FROM USER WHERE EMAIL = '$this->email';";
       $data = parent::select($query);
       if ($data) {
-          if ($data['USER_TYPE'] == 'admin') {
+          if ($data['USER_TYPE'] == 'admin' || $data['USER_TYPE'] == 'sadmin') {
             // Get Num of Comments
             $query  = "SELECT COUNT(ID) FROM USER WHERE VERIFIED = 1;";
             $num_of_ver_users = parent::select($query);
@@ -432,6 +466,18 @@ class user extends db {
             $query  = "SELECT COUNT(ID) FROM LINKS_VOTES;";
             $num_of_votes = parent::select($query);
             $this->num_of_votes = $num_of_votes["COUNT(ID)"];
+            // Get Num of Disabled Users
+            $query  = "SELECT COUNT(ID) FROM USER WHERE STATUS = 'disabled';";
+            $num_of_dis_users = parent::select($query);
+            $this->num_of_dis_users = $num_of_dis_users["COUNT(ID)"];
+            // Get Num of Banned Users
+            $query  = "SELECT COUNT(ID) FROM USER_BLACKLIST";
+            $num_of_blacklist_users = parent::select($query);
+            $this->num_of_blacklist_users = $num_of_blacklist_users["COUNT(ID)"];
+            // Get Num of Admins
+            $query  = "SELECT COUNT(ID) FROM USER WHERE USER_TYPE = 'admin';";
+            $num_of_admins = parent::select($query);
+            $this->num_of_admins = $num_of_admins["COUNT(ID)"];
 
             $query = "SELECT * FROM USER ORDER BY CREATE_DATE DESC;";
             $user_table = parent::select_multi($query);
@@ -448,12 +494,140 @@ class user extends db {
   }
 
 
+
+
+ // Disable Users
+ public function disable_users() {
+   // Add Logic
+   $this->disable();
+   // Reverse
+   $this->undisable();
+   // Display
+   // Get Data
+   $query = "SELECT * FROM USER WHERE STATUS = 'disabled';";
+   $data = parent::select_multi($query);
+   include($_SERVER['DOCUMENT_ROOT'] . '/data/user/profile/disable_user.php');
+ }
+
+ // Disable logic
+ public function disable() {
+   // Check Connection
+   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+     $user_id = $_POST["disable_user"];
+     // Validate
+     // Exclude Sadmin
+     $query = "SELECT USER_TYPE FROM USER WHERE ID = '$user_id';";
+     $user_type = parent::select($query);
+     $user_type = $user_type["USER_TYPE"];
+     if ($user_type == "sadmin") {
+       $user_id = null;
+     }
+     if ($user_id) {
+       if (!is_numeric($user_id)) {
+         return false;
+       } else {
+         // Begin Disable Process
+         // Check if user exists
+         $query = "SELECT * FROM USER WHERE ID = '$user_id';";
+         $user_data = parent::select($query);
+         if ($user_data) {
+           // Grab User Variables
+           $user_name = $user_data["NAME"];
+           $user_email = $user_data["EMAIL"];
+           // Disable User and Send Email
+           $query = "UPDATE USER SET STATUS = 'disabled' WHERE ID = '$user_id';";
+           if (parent::query($query) && $this->disabled_email($user_name, $user_email)) {
+             echo "User disabled successfully.";
+             // Create Output Buffer
+             ob_start();
+
+             // Return User Comments, Threads and Resources
+             $get_comments = "SELECT * FROM COMMENTS WHERE USER_ID = '$user_id';";
+             $data = parent::select_multi($get_comments);
+             include $_SERVER['DOCUMENT_ROOT'] . '/data/user/profile/deleted_user_comments.php';
+             // Return User Threads
+             $get_threads = "SELECT * FROM THREADS WHERE USER_ID = '$user_id';";
+             $data = parent::select_multi($get_threads);
+             include $_SERVER['DOCUMENT_ROOT'] . '/data/user/profile/deleted_user_threads.php';
+             // Return User Res
+             $get_res = "SELECT * FROM LINKS WHERE USER_ID = '$user_id';";
+             $data = parent::select_multi($get_res);
+             include $_SERVER['DOCUMENT_ROOT'] . '/data/user/profile/deleted_user_res.php';
+             // Assign Content
+             $content = ob_get_contents();
+             // Clear Output Buffer
+             ob_end_clean();
+
+             // Write to File
+             $this->write_file($user_name . '_' . $user_id, $content, "disabled");
+
+           } else {
+             $this->error = "User failed to be disabled.";
+             return false;
+           }
+
+         } else {
+           $this->error = "This user doesn't exist.";
+           return false;
+         }
+       }
+     } else {
+       return false;
+     }
+   } else {
+     return false;
+   }
+
+ }
+
+
+ // Undisable users
+ public function undisable() {
+   // Check Connection
+   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+     $user_id = $_POST["undisable_user"];
+     if ($user_id) {
+       // Get Data
+       $query  = "SELECT * FROM USER WHERE ID = '$user_id';";
+       $data = parent::select($query);
+       $user_name = $data["NAME"];
+       // Undisable
+       $query = "UPDATE USER SET STATUS = 'active' WHERE ID = '$user_id';";
+       if (parent::query($query)) {
+         echo "User undisabled";
+         // Remove From User Records
+         $url = "user_records/disabled_user_" . $user_name . '_' . $user_id . '.html';
+
+         $query = "DELETE FROM USER_RECORDS WHERE SLUG = '$url';";
+         if (parent::query($query)) {
+           //echo "User data updated.";
+         } else {
+           echo "Unable to update user table.";
+           return false;
+         }
+
+       } else {
+         echo "User not undisabled.";
+         return false;
+       }
+
+     } else {
+       return false;
+     }
+   } else {
+     return false;
+   }
+ }
+
+
  // Manage Users
  public function manage_users() {
    // Get Admins
    $query = "SELECT * FROM USER WHERE USER_TYPE='admin';";
+   // Admin Logic
    $this->add_admin();
    $this->remove_admin();
+   // Display Data
    $data = parent::select_multi($query);
    include($_SERVER['DOCUMENT_ROOT'] . '/data/admin/user.php');
 
@@ -464,9 +638,18 @@ class user extends db {
  public function add_admin() {
    // Check Connection
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-     $user_name = $_POST["add_username"];
-     if ($user_name) {
-       $query = "UPDATE USER SET USER_TYPE = 'admin' WHERE NAME = '$user_name';";
+     $user_id = $_POST["add_username"];
+     // Validation
+     // Exclude Sadmin
+     $query = "SELECT USER_TYPE FROM USER WHERE ID = '$user_id';";
+     $user_type = parent::select($query);
+     $user_type = $user_type["USER_TYPE"];
+     if ($user_type == "sadmin") {
+       $user_id = null;
+     }
+     // Update Users
+     if ($user_id) {
+       $query = "UPDATE USER SET USER_TYPE = 'admin' WHERE ID = '$user_id';";
        if (parent::query($query)) {
          $this->error = "User added as admin.";
        } else {
@@ -474,6 +657,7 @@ class user extends db {
          return false;
        }
      } else {
+       $this->error = "User ID invalid.";
        return false;
      }
    } else {
@@ -487,7 +671,7 @@ class user extends db {
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
      $user_id = $_POST["remove_user"];
      if ($user_id) {
-       $query = "UPDATE USER SET USER_TYPE = 'reg' WHERE ID = '$user_id';";
+       $query = "UPDATE USER SET USER_TYPE = 'user' WHERE ID = '$user_id';";
        if (parent::query($query)) {
          $this->error = "User removed as admin.";
        } else {
@@ -500,6 +684,17 @@ class user extends db {
    } else {
      return false;
    }
+ }
+
+
+
+ // Delete User
+ public function blacklist() {
+   // Add logic
+   $this->blacklist_user();
+   // Display
+   include($_SERVER['DOCUMENT_ROOT'] . '/data/user/profile/delete_user.php');
+
  }
 
 
@@ -529,18 +724,30 @@ class user extends db {
              $delete_user = "DELETE FROM USER WHERE ID = '$user_id';";
              if(parent::query($delete_user) && $this->banned_email($user_name, $user_email)) {
                echo "User Succesfully Deleted";
+
+               // Create Output Buffer
+               ob_start();
+
                // Return User Comments, Threads and Resources
                $get_comments = "SELECT * FROM COMMENTS WHERE USER_ID = '$user_id';";
                $data = parent::select_multi($get_comments);
-               include($_SERVER['DOCUMENT_ROOT'] . '/data/user/user_comments.php');
+               include $_SERVER['DOCUMENT_ROOT'] . '/data/user/profile/deleted_user_comments.php';
                // Return User Threads
                $get_threads = "SELECT * FROM THREADS WHERE USER_ID = '$user_id';";
                $data = parent::select_multi($get_threads);
-               include($_SERVER['DOCUMENT_ROOT'] . '/data/user/user_threads.php');
+               include $_SERVER['DOCUMENT_ROOT'] . '/data/user/profile/deleted_user_threads.php';
                // Return User Res
                $get_res = "SELECT * FROM LINKS WHERE USER_ID = '$user_id';";
                $data = parent::select_multi($get_res);
-               include($_SERVER['DOCUMENT_ROOT'] . '/data/user/user_res.php');
+               include $_SERVER['DOCUMENT_ROOT'] . '/data/user/profile/deleted_user_res.php';
+               // Assign Content
+               $content = ob_get_contents();
+               // Clear Output Buffer
+               ob_end_clean();
+
+               // Write to File
+               $this->write_file($user_name . '_' . $user_id, $content, 'deleted');
+
              } else {
                echo "User failed to delete";
              }
@@ -559,6 +766,44 @@ class user extends db {
    } else {
      return false;
    }
+ }
+
+
+ // Creates a file in the user records folder to keep deleted User Records
+ public function write_file($name, $content, $type) {
+    // Create file name
+    $filename = $_SERVER['DOCUMENT_ROOT'] . '/user_records/' . $type . '_user_' . $name . '.html';
+    // Open File
+    $myfile = fopen($filename, "w") or die("Unable to open file!");
+    // Write file
+    fwrite($myfile, $content);
+    // Close File
+    fclose($myfile);
+
+    // Save URL to DB
+    $slug = 'user_records/' . $type . '_user_' . $name . '.html';
+    $query = "INSERT INTO USER_RECORDS (SLUG) VALUES ('$slug');";
+    if (parent::query($query)) {
+      return true;
+    } else {
+      $this->error = "Error inserting slug to DB.";
+      return false;
+    }
+
+ }
+
+
+ // Returns Public Offenders List
+ public function return_offenders($privelege) {
+    // Check if admin
+    if ($privelege == 'admin') {
+      // Get Data
+      $query = "SELECT * FROM USER_RECORDS";
+      $data = parent::select_multi($query);
+      return $data;
+    } else {
+      return false;
+    }
  }
 
 

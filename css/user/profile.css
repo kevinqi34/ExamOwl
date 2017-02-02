@@ -71,6 +71,19 @@ div.dashboard p {
 
 }
 
+div.records {
+  display: none;
+  padding: 20px;
+  font-size: 13px;
+
+}
+
+div.records a {
+  width: 100%;
+  display: block;
+
+}
+
 p.menu {
   width: calc(100% - 20px);
   margin: auto;

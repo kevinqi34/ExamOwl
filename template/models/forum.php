@@ -24,21 +24,21 @@ class category extends db {
   }
 
   // Check for Admin Account - Load Admin Functionality
-  public function admin() {
+  public function admin($privelege) {
     $this->email = $_SESSION['email'];
     // check if null
     if ($this->email != null) {
-      $query = "SELECT USER_TYPE FROM USER WHERE EMAIL = '$this->email';";
-      $data = parent::select($query);
-      if ($data) {
-          if ($data['USER_TYPE'] == 'admin') {
+      //$query = "SELECT USER_TYPE FROM USER WHERE EMAIL = '$this->email';";
+      //$data = parent::select($query);
+      //if ($data) {
+          if ($privelege == 'admin') {
             // Good to go
             $this->add_category();
             // To Powerful, disabled for safety
             //$this->remove_category();
             include($_SERVER['DOCUMENT_ROOT'] . '/data/admin/category.php');
 
-          }
+      //    }
 
       } else {
         return false;
@@ -117,6 +117,10 @@ class category extends db {
         if (!is_numeric($id)) {
           return false;
         } else {
+          // Redirect
+          $this->error = "Success";
+
+          /*
           // Remove Category
           $query = "DELETE FROM CATEGORY WHERE ID = '$id';";
           if (parent::query($query)) {
@@ -124,12 +128,13 @@ class category extends db {
           } else {
             return false;
           }
+          */
         }
       } else {
         return false;
       }
-
     } else {
+
       return false;
     }
   }
