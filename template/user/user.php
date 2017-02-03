@@ -139,7 +139,12 @@ class user extends db {
 
         }
          } else {
-           $this->error = "Password is wrong. Please try again.";
+           // If disabled
+           if ($data["STATUS"] == 'disabled') {
+             $this->error = "Your account has been disabled and is unreachable. Please check your email.";
+           } else {
+             $this->error = "Password is wrong. Please try again.";
+           }
          }
        } else {
            $this->error = "Invalid Email Address. Please try again.";

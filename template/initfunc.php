@@ -75,13 +75,13 @@ function check_login() {
 		header("Location: ". url() . "user/login.php?msg=" . $msg);
 	} else {
 		// Check if user has email verified
-		$query = "SELECT VERIFIED FROM USER WHERE EMAIL = '$user';";
-		$db = new db();
-		$verify = $db->select($query);
-		$verify = $verify["VERIFIED"];
-		if ($verify != 1) {
+		if (check_verified_email($user)) {
 		$msg = "You must verify your email address before you can have full access to ExamOwl.";
 		header("Location: ". url() . "user/verify_email.php?msg=" . $msg);
+		} else if (check_disabled_email($user)) {
+			// Check if user has been disabled
+			$msg = "Your account has been disabled.";
+			header("Location: " . url() . "user/disabled_account.php?msg=" . $msg);
 		} else {
 			return false;
 		}
@@ -90,15 +90,28 @@ function check_login() {
 }
 
 
-// Checks if user is verified
-function check_verified_email() {
-	$user = $_SESSION['email'];
+// Checks if user is verified -- input email
+function check_verified_email($user) {
 	// Check if user has email verified
 	$query = "SELECT VERIFIED FROM USER WHERE EMAIL = '$user';";
 	$db = new db();
 	$verify = $db->select($query);
 	$verify = $verify["VERIFIED"];
 	if ($verify != 1) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+// Checks if user is disabled -- input email
+function check_disabled_email($user) {
+	// Check if user has been disabled
+	$query = "SELECT STATUS FROM USER WHERE EMAIL = '$user';";
+	$db = new db();
+	$status = $db->select($query);
+	$status = $status["STATUS"];
+	if ($status == "disabled") {
 		return true;
 	} else {
 		return false;

@@ -15,7 +15,6 @@ function redirect() {
   var error = $('#error').text();
   var url = get_url();
   var current_url = window.location.href;
-  console.log(error);
 
   if (redirect && error == 0) {
     window.location.href = url + "/category/" + redirect + "/" + title;
