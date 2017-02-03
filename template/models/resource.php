@@ -188,7 +188,10 @@ class resource extends db {
        // Assign User Data
        $this->author = $data['NAME'];
        $this->user_id = $data['ID'];
-       $this->privileges = $data['USER_TYPE'];
+       // Assign Priveleges to admin or sadmin users
+       if ($data['USER_TYPE'] == 'admin' || $data['USER_TYPE'] == 'sadmin') {
+         $this->privileges = 'admin';
+       }
      } else {
        return false;
      }
