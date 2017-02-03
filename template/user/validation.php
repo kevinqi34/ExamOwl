@@ -144,7 +144,7 @@ class validation {
       }
     } else {
     // Create Query
-    $query = "SELECT CREATE_DATE FROM $type WHERE USER_ID = '$user_id' ORDER BY CREATE_DATE DESC LIMIT 3;";
+    $query = "SELECT CREATE_DATE FROM $type WHERE USER_ID = '$user_id' ORDER BY CREATE_DATE DESC LIMIT 5;";
     // Get Data
     $db = new db();
     $data = $db->select_multi($query);
@@ -161,7 +161,7 @@ class validation {
         }
       }
       // If count is 3, then set session timer and return error msg
-      if ($count == 3) {
+      if ($count == 5) {
         $_SESSION["timer"] = $this->add_time($this->data, 120);
         return "You have been too active recently. Please wait 2 mins before posting again.";
       } else {

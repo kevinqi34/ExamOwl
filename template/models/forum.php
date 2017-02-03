@@ -497,6 +497,11 @@ class post extends db {
           $error = $comment_body->check_empty();
           if (!$error) {
             $error = $comment_body->check_char();
+            // Anti Spam
+            if (!$error) {
+              $anti_spam = new validation($this->date);
+              $error = $anti_spam->anti_spam('COMMENTS', $this->user_id);
+            }
           }
           if ($error) {
             $this->error = $error;
