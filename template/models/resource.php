@@ -109,6 +109,11 @@ class resource extends db {
       if (!$error) {
         $val_img = new validation($img_url);
         $error = $val_img->check_char();
+        // Anti Spam
+        if (!$error) {
+          $anti_spam = new validation($this->date);
+          $error = $anti_spam->anti_spam('LINKS', $this->user_id);
+        }
       }
       $this->error = $error;
       if (!$error) {
