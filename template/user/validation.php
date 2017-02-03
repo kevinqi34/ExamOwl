@@ -129,8 +129,68 @@ class validation {
 
   }
 
+  // Anti Spam Filter -- 2 mins
+  public function anti_spam($type, $user_id) {
+    // If session timer than check if time is past wait time
+    if ($_SESSION["timer"]) {
+      $future_date = $_SESSION["timer"];
+      $current_date = $this->data;
+      if ($this->time_dif($future_date, $current_date) >= 0) {
+        return "You have been too active recently. Please wait 2 mins before posting again.";
+      } else {
+        // clear session variable
+        unset($_SESSION["timer"]);
+        return false;
+      }
+    } else {
+    // Create Query
+    $query = "SELECT CREATE_DATE FROM $type WHERE USER_ID = '$user_id' ORDER BY CREATE_DATE DESC LIMIT 3;";
+    // Get Data
+    $db = new db();
+    $data = $db->select_multi($query);
+    if ($data) {
+      // Check for time differences
+      $count = 0;
+      // Iterate through array
+      foreach($data as $date) {
+        $date = $date['CREATE_DATE'];
+        $dif = $this->time_dif($this->data, $date);
+        // Cap at 30 secs
+        if ($dif <= 30) {
+          $count++;
+        }
+      }
+      // If count is 3, then set session timer and return error msg
+      if ($count == 3) {
+        $_SESSION["timer"] = $this->add_time($this->data, 120);
+        return "You have been too active recently. Please wait 2 mins before posting again.";
+      } else {
+        return false;
+      }
+    } else {
+      echo "Database not found.";
+      return false;
+    }
+    }
 
+  }
 
+  // Subtract times -- takes timestamp input, returns dif in seconds
+  // -- First time must be later than second time
+  public function time_dif($time1, $time2) {
+    $time1 = strtotime($time1);
+    $time2 = strtotime($time2);
+    $dif = round(($time1 - $time2));
+    return $dif;
+  }
+
+  // Add Time
+  public function add_time($time, $added) {
+    $time = strtotime($time);
+    $new_time = $time+($added);
+    $new_time = date("Y-m-d H:i:s", $new_time);
+    return $new_time;
+  }
 
 
 

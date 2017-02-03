@@ -1,4 +1,7 @@
 <?php
+// Set Time Zone
+date_default_timezone_set('America/Los_Angeles');
+
 // Include Database
 require_once ($_SERVER['DOCUMENT_ROOT'] . '/template/database/database.php');
 // Adds Citation

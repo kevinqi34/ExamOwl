@@ -257,6 +257,11 @@ class thread extends db {
       $error = $title->check_len(1, 100);
       if (!$error) {
         $error = $title->check_char();
+        // Anti Spam
+        if (!$error) {
+          $anti_spam = new validation($this->date);
+          $error = $anti_spam->anti_spam('THREADS', $this->user_id);
+        }
       }
       $this->error = $error;
       if (!$error) {
