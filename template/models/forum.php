@@ -476,7 +476,7 @@ class post extends db {
           return false;
         } else {
           // Check if email is verified
-          if (check_verified_email()) {
+          if (check_verified_email($this->email)) {
             $this->error = "Email_Ver";
             return false;
           }

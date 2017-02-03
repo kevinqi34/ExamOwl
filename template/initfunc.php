@@ -77,7 +77,7 @@ function check_login() {
 		// Check if user has email verified
 		if (check_verified_email($user)) {
 		$msg = "You must verify your email address before you can have full access to ExamOwl.";
-	//	header("Location: ". url() . "user/verify_email.php?msg=" . $msg);
+		header("Location: ". url() . "user/verify_email.php?msg=" . $msg);
 		} else if (check_disabled_email($user)) {
 			// Check if user has been disabled
 			$msg = "Your account has been disabled.";
@@ -97,7 +97,6 @@ function check_verified_email($user) {
 	$db = new db();
 	$verify = $db->select($query);
 	$verify = $verify["VERIFIED"];
-	echo $verify;
 	if ($verify != 1) {
 		return true;
 	} else {
