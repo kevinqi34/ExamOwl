@@ -533,7 +533,7 @@ class post extends db {
       if ($data) {
           $this->author = $data['NAME'];
           $this->user_id = $data['ID'];
-          if ($data['USER_TYPE'] == 'admin') {
+          if ($data['USER_TYPE'] == 'admin' || $data['USER_TYPE'] == 'sadmin') {
             // Good to Go -- Unlock Admin Features
             $this->privileges = 'admin';
           }
