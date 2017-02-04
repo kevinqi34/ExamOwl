@@ -103,6 +103,10 @@ class resource extends db {
         $error = $val_url->check_len(1, 200);
         if (!$error) {
           $error = $val_url->check_char();
+          // Check For Profanity Links
+          if (!$error) {
+            $error = $val_url->is_profanity();
+          }
         }
       }
 

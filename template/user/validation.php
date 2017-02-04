@@ -65,6 +65,19 @@ class validation {
     return false;
   }
 
+  // Profanity Filter for resources
+  public function is_profanity() {
+    $bad_domains = array('https://www.xvideos.com','https://xhamster.com','http://www.pornhub.com','http://www.xnxx.com','http://www.redtube.com','http://www.youporn.com','http://www.tube8.com','https://www.youjizz.com','http://www.hclips.com/?','http://beeg.com','http://www.drtuber.com','http://www.porn.com');
+    foreach($bad_domains as $domain) {
+      if (strcasecmp($domain, $this->data) == 0) {
+        return "Invalid URL.";
+      }
+    }
+    return false;
+  }
+
+
+
   // Check if blacklisted
   public function is_blacklist() {
     $email = $this->data;
@@ -144,7 +157,7 @@ class validation {
       }
     } else {
     // Create Query
-    $query = "SELECT CREATE_DATE FROM $type WHERE USER_ID = '$user_id' ORDER BY CREATE_DATE DESC LIMIT 5;";
+    $query = "SELECT CREATE_DATE FROM $type WHERE USER_ID = '$user_id' ORDER BY CREATE_DATE DESC LIMIT 3;";
     // Get Data
     $db = new db();
     $data = $db->select_multi($query);
@@ -161,7 +174,7 @@ class validation {
         }
       }
       // If count is 3, then set session timer and return error msg
-      if ($count == 5) {
+      if ($count == 3) {
         $_SESSION["timer"] = $this->add_time($this->data, 120);
         return "You have been too active recently. Please wait 2 mins before posting again.";
       } else {
