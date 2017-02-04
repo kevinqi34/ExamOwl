@@ -511,6 +511,7 @@ class post extends db {
           } else {
             $text = str_replace("'","\'", $text);
             $text = str_replace('"','\"', $text);
+            $text = word_filter($text);
             // Update Comment
             $query  = "INSERT INTO COMMENTS (THREAD_ID, CAT_ID, USER_ID, CONTENT, AUTHOR, CREATE_DATE) VALUES ('$this->thread_id', '$this->cat_id', '$this->user_id', '$text', '$this->user_name', '$this->date'); ";
             if (parent::query($query)) {
