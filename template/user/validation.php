@@ -142,6 +142,28 @@ class validation {
 
   }
 
+  // Link Validate
+  public function link_validate() {
+    $error = false;
+    // Check Length
+    $error = $this->check_len(1, 200);
+    if (!$error) {
+      $error = $this->check_char();
+      // Check For Profanity Links
+      if (!$error) {
+        $error = $this->is_profanity();
+      }
+    }
+    // Return Error
+    if ($error) {
+      return $error;
+    } else {
+      return false;
+    }
+  }
+
+
+
   // Anti Spam Filter -- 2 mins
   public function anti_spam($type, $user_id) {
     // If session timer than check if time is past wait time

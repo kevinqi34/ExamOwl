@@ -100,16 +100,8 @@ class resource extends db {
       }
       if (!$error) {
         $val_url = new validation($url);
-        $error = $val_url->check_len(1, 200);
-        if (!$error) {
-          $error = $val_url->check_char();
-          // Check For Profanity Links
-          if (!$error) {
-            $error = $val_url->is_profanity();
-          }
-        }
+        $error = $val_url->link_validate();
       }
-
       if (!$error) {
         $val_img = new validation($img_url);
         $error = $val_img->check_char();
