@@ -165,7 +165,7 @@ function word_filter($text) {
 		// fill word with astericks
 		for ($i = 0; $i < $num_of_matches; $i++) {
 			$replaced = trim($results[0][$i]);
-			$filtered_text = preg_replace('/\b' . $replaced . '\b/', str_repeat("*", strlen($replaced)), $filtered_text);
+			$filtered_text = preg_replace('/\b' . $replaced . '\b/', str_repeat("x", strlen($replaced)), $filtered_text);
 		}
 	}
 	// Retrun filtered content
