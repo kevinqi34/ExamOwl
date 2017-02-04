@@ -128,7 +128,9 @@ class resource extends db {
         if (parent::query($query)) {
           // Update Count
           $query = "UPDATE RESOURCES SET NUM_OF_LINKS = NUM_OF_LINKS + 1 WHERE ID = '$this->id';";
-          if (parent::query($query)) {
+          // Update IQ
+          $query2 = "UPDATE USER SET IQ = IQ + 5 WHERE ID = '$this->user_id';";
+          if (parent::query($query) && parent::query($query2)) {
             return true;
           } else {
             echo "Failed to update couts.";
