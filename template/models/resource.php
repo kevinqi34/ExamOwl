@@ -84,6 +84,7 @@ class resource extends db {
       $title = $_POST["title"];
       $title = str_replace("'","\'", $title);
       $title = str_replace('"','\"', $title);
+      $title = word_filter($title);
       $url = $_POST["url"];
       $url = str_replace("'","\'", $url);
       $url = str_replace('"','\"', $url);
