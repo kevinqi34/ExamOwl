@@ -88,7 +88,7 @@ class user extends db {
         $ver_hash = password_hash($ver, PASSWORD_DEFAULT);
         $pwd_hash = password_hash($this->password, PASSWORD_DEFAULT);
         // If all values pass validation, create new user
-        $query = "INSERT INTO USER (NAME, EMAIL, PASSWORD, VERIFY_HASH, CREATE_DATE, STATUS, USER_TYPE) VALUES('$this->name', '$this->email', '$pwd_hash', '$ver_hash', '$this->date' , 'active', 'user')";
+        $query = "INSERT INTO USER (NAME, EMAIL, PASSWORD, VERIFY_HASH, CREATE_DATE, STATUS, USER_TYPE, IQ) VALUES('$this->name', '$this->email', '$pwd_hash', '$ver_hash', '$this->date' , 'active', 'user', 0)";
         if (parent::query($query)) {
         // Send Welcome Mail
         $this->welcome_mail($this->name, $this->email, $ver_hash);

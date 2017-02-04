@@ -1,5 +1,6 @@
 <div class="profile_header">
   <h2><?php echo $user_data["NAME"]; ?></h2>
+  <p>IQ: <b><?php echo $user_data["IQ"]; ?></b></p>
   <p>Joined <?php echo $date ?></p>
   <p># of Posts: <?php echo $size; ?></p>
   <p id="error" style="display:none;"><?php echo $this->error; ?></p>

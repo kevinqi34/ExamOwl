@@ -277,7 +277,9 @@ class thread extends db {
         if (parent::query($query)) {
           // Update Category Post Count
           $query = "UPDATE CATEGORY SET NUM_OF_POSTS = NUM_OF_POSTS + 1, LATEST_POST = '$thread_title', LATEST_POST_DATE = '$this->date' WHERE ID = '$category_id';";
-          if (parent::query($query)) {
+          // Update IQ
+          $query2 = "UPDATE USER SET IQ = IQ + 5 WHERE ID = '$this->user_id';";
+          if (parent::query($query) && parent::query($query2)) {
             return true;
           } else {
             $this->error = "Category count not updated properly.";
@@ -517,7 +519,9 @@ class post extends db {
             if (parent::query($query)) {
               // Update Thread Table
               $query = "UPDATE THREADS SET NUM_OF_COMMENTS = NUM_OF_COMMENTS + 1, LATEST_COMMENT_DATE = '$this->date', LATEST_COMMENT_AUTHOR = '$this->user_name' WHERE ID = '$this->thread_id';";
-              if (parent::query($query)) {
+              // Update IQ
+              $query2 = "UPDATE USER SET IQ = IQ + 5 WHERE ID = '$this->user_id';";
+              if (parent::query($query) && parent::query($query2)) {
                 $this->error = "Success";
                 return true;
               } else {
