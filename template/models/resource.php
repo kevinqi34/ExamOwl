@@ -99,6 +99,7 @@ class resource extends db {
         $error = $val_title->check_char();
       }
       if (!$error) {
+        // Validate URL
         $val_url = new validation($url);
         $error = $val_url->link_validate();
       }

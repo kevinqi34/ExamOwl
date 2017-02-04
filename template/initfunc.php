@@ -153,6 +153,29 @@ function time_elapsed_string($datetime, $full = false) {
 }
 
 
+// Word Filter
+function word_filter($text) {
+	// Profane Language
+	$filter = array('\bass(es|holes|hole?)?\b','\bf+u+c+k(s|ers|ing?)?\b','\bshit(ty|y|ting|s?)?\b','\bcunt(s?)?\b','\bnigg(a|s|er?)?\b','\bwhor(es|ing|e?)?\b','\bporn(o|os|s|vid|vids?)?\b', '\bbitch(es|y|s?)?\b');
+	$filtered_text = $text;
+	// Go through filter
+	foreach($filter as $word) {
+		// censor word
+		$num_of_matches = preg_match_all('/'. $word . '/i', $filtered_text, $results);
+		// fill word with astericks
+		for ($i = 0; $i < $num_of_matches; $i++) {
+			$replaced = trim($results[0][$i]);
+			$filtered_text = preg_replace('/\b' . $replaced . '\b/', str_repeat("*", strlen($replaced)), $filtered_text);
+		}
+	}
+	// Retrun filtered content
+	return $filtered_text;
+}
+
+
+
+
+
 // Template Class
 
 class template {

@@ -67,7 +67,7 @@ class validation {
 
   // Profanity Filter for resources
   public function is_profanity() {
-    $bad_domains = array('https://www.xvideos.com','https://xhamster.com','http://www.pornhub.com','http://www.xnxx.com','http://www.redtube.com','http://www.youporn.com','http://www.tube8.com','https://www.youjizz.com','http://www.hclips.com/?','http://beeg.com','http://www.drtuber.com','http://www.porn.com');
+    $bad_domains = array('https://www.xvideos.com','https://xhamster.com','https://www.pornhub.com','https://www.xnxx.com','https://www.redtube.com','https://www.youporn.com','https://www.tube8.com','https://www.youjizz.com','https://www.hclips.com/?','https://beeg.com','https://www.drtuber.com','https://www.porn.com');
     foreach($bad_domains as $domain) {
       if (strcasecmp($domain, $this->data) == 0) {
         return "Invalid URL.";
@@ -77,6 +77,16 @@ class validation {
   }
 
 
+  // Check for proper URL format
+  public function link_format() {
+    $format = 'https://';
+    // Check if link contains format
+    if (strpos($this->data,$format) !== false) {
+      return false;
+    } else {
+      return "The URL must be formated with " . $format;
+    }
+  }
 
   // Check if blacklisted
   public function is_blacklist() {
@@ -148,10 +158,14 @@ class validation {
     // Check Length
     $error = $this->check_len(1, 200);
     if (!$error) {
-      $error = $this->check_char();
-      // Check For Profanity Links
+      // Check for Format
+      $error = $this->link_format();
       if (!$error) {
-        $error = $this->is_profanity();
+        $error = $this->check_char();
+        // Check For Profanity Links
+        if (!$error) {
+          $error = $this->is_profanity();
+        }
       }
     }
     // Return Error

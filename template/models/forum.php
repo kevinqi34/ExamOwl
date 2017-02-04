@@ -247,10 +247,13 @@ class thread extends db {
       $thread_title = $_POST['title'];
       $thread_title = str_replace("'","\'", $thread_title);
       $thread_title = str_replace('"','\"', $thread_title);
+      $thread_title = word_filter($thread_title);
       $thread_text = $_POST['text'];
       $thread_text = str_replace("'","\'", $thread_text);
       $thread_text = str_replace('"','\"', $thread_text);
+      $thread_text = word_filter($thread_text);
       $thread_option = $_POST['option'];
+
       $error = false;
       // Validate Data
       $title = new validation($thread_title);
