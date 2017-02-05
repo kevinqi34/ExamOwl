@@ -325,7 +325,7 @@ class thread extends db {
         if (!is_numeric($id)) {
           return false;
         } else {
-          // Get User Post ID
+          // Get User POST ID
           $post_id = "SELECT USER_ID FROM THREADS WHERE ID = '$id';";
           $post_id = parent::select($post_id);
           $post_id = $post_id["USER_ID"];
@@ -600,10 +600,14 @@ class post extends db {
         if (!is_numeric($id)) {
           return false;
         } else {
+          $post_id = "SELECT USER_ID FROM COMMENTS WHERE ID = '$id';";
+          $post_id = parent::select($post_id);
+          $post_id = $post_id["USER_ID"];
           // Remove Comment
           $query = "DELETE FROM COMMENTS WHERE ID = '$id';";
           $query2 = "UPDATE THREADS SET NUM_OF_COMMENTS = NUM_OF_COMMENTS - 1 WHERE ID = '$this->thread_id';";
-          if (parent::query($query) && parent::query($query2)) {
+          $query3 = "UPDATE USER SET IQ = IQ - 3 WHERE ID = '$post_id';";
+          if (parent::query($query) && parent::query($query2) && parent::query($query3)) {
             $this->error = "Success";
             return true;
           } else {
