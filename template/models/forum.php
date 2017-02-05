@@ -325,15 +325,16 @@ class thread extends db {
         if (!is_numeric($id)) {
           return false;
         } else {
+          // Get User Post ID
+          $post_id = "SELECT USER_ID FROM THREADS WHERE ID = '$id';";
+          $post_id = parent::select($post_id);
+          $post_id = $post_id["USER_ID"];
           // Remove Category
           $query = "DELETE FROM THREADS WHERE ID = '$id';";
           $query2 = "DELETE FROM COMMENTS WHERE THREAD_ID = '$id';";
           if (parent::query($query) && parent::query($query2)) {
             $query = "UPDATE CATEGORY SET NUM_OF_POSTS = NUM_OF_POSTS - 1 WHERE ID = '$this->cat_id';";
             // Update IQ
-            $post_id = "SELECT USER_ID FROM THREADS WHERE ID = '$id';";
-            $post_id = parent::select($post_id);
-            $post_id = $post_id["USER_ID"];
             $query2 = "UPDATE USER SET IQ = IQ - 3 WHERE ID = '$post_id';";
             if (parent::query($query) && parent::query($query2)) {
               $this->error = "Success";
