@@ -7,7 +7,7 @@ foreach($data as $comment) {
   <?php echo $comment["CONTENT"]; ?>
   <p class="info">Posted <?php echo $date; ?> by <?php echo $comment["AUTHOR"]; ?></p>
   <?php
-    if ($this->privileges == 'admin') {
+    if ($this->privileges == 'admin' || $this->user_id == $comment["USER_ID"]) {
   ?>
   <!-- User ID -->
   <p class="info">Posted by: <?php echo $comment["USER_ID"]; ?></p>
