@@ -537,9 +537,10 @@ class post extends db {
               if (parent::query($query) && parent::query($query2)) {
                 // If User different from author
                 if ($this->user_id != $this->thread_user_id) {
+                  echo "hello";
                   // Update IQ
                   if (parent::query($query3)) {
-                    $this->error = "Success";
+                    //$this->error = "Success";
                     return true;
                   } else {
                     return false;
