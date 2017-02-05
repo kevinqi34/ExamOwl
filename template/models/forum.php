@@ -422,7 +422,6 @@ class post extends db {
 
   // Returns Header
   public function create_header() {
-    echo $this->thread_user_id;
     if (!$this->error) {
     $error  = false;
     // Validation
@@ -531,11 +530,25 @@ class post extends db {
             if (parent::query($query)) {
               // Update Thread Table
               $query = "UPDATE THREADS SET NUM_OF_COMMENTS = NUM_OF_COMMENTS + 1, LATEST_COMMENT_DATE = '$this->date', LATEST_COMMENT_AUTHOR = '$this->user_name' WHERE ID = '$this->thread_id';";
-              // Update IQ
+              // Update YOUR IQ
               $query2 = "UPDATE USER SET IQ = IQ + 5 WHERE ID = '$this->user_id';";
+              // Update Author's IQ
+              $query3 = "UPDATE USER SET ID = ID + 2 WHERE ID = '$this->thread_user_id';";
               if (parent::query($query) && parent::query($query2)) {
-                $this->error = "Success";
-                return true;
+
+                // If User different from author
+                if ($this->user_id != $this->thread_user_id) {
+                  // Update IQ
+                  if (parent::query($query3)) {
+                    $this->error = "Success";
+                    return true;
+                  } else {
+                    return false;
+                  }
+                } else {
+                    $this->error = "Success";
+                    return true;
+                }
               } else {
                 echo "Thread count failed to update.";
                 return false;
