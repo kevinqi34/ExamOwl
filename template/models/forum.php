@@ -535,7 +535,6 @@ class post extends db {
               // Update Author's IQ
               $query3 = "UPDATE USER SET ID = ID + 2 WHERE ID = '$this->thread_user_id';";
               if (parent::query($query) && parent::query($query2)) {
-
                 // If User different from author
                 if ($this->user_id != $this->thread_user_id) {
                   // Update IQ
@@ -546,7 +545,8 @@ class post extends db {
                     return false;
                   }
                 } else {
-                    $this->error = "Success";
+                    echo "hello";
+                    //$this->error = "Success";
                     return true;
                 }
               } else {
