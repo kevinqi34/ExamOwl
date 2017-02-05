@@ -407,8 +407,8 @@ class post extends db {
     $this->date = gmdate('Y-m-d H:i:s');
     $this->thread_name = $thread_name;
     $this->thread_id = $thread_id;
-    $this->get_user_id();
     parent::__construct();
+    $this->get_user_id();
   }
 
   // Get Thread User ID
