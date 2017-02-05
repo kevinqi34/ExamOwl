@@ -333,10 +333,15 @@ class resource extends db {
           // Delete file
           unlink($_SERVER['DOCUMENT_ROOT'] . $img_url);
          }
+         // Get USER ID
+         $post_id = "SELECT USER_ID FROM LINKS WHERE ID = '$id';";
+         $post_id = parent::select($post_id);
+         $post_id = $post_id["USER_ID"];
          // Remove Resource
          $query = "DELETE FROM LINKS WHERE ID = '$id';";
          $query2 = "UPDATE RESOURCES SET NUM_OF_LINKS = NUM_OF_LINKS - 1 WHERE ID = '$this->id';";
-         if (parent::query($query) && parent::query($query2)) {
+         $query3 = "UPDATE USER SET IQ = IQ - 3 WHERE ID = '$post_id';";
+         if (parent::query($query) && parent::query($query2) && parent::query($query3)) {
            $this->error = "Success";
          } else {
            echo "Resource failed to delete.";
