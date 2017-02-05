@@ -388,6 +388,7 @@ class post extends db {
   // Thread Variables
   private $thread_name;
   private $thread_id;
+  private $thread_user_id;
   // Category Variables
   private $cat_id;
   private $cat_name;
@@ -406,11 +407,22 @@ class post extends db {
     $this->date = gmdate('Y-m-d H:i:s');
     $this->thread_name = $thread_name;
     $this->thread_id = $thread_id;
+    $this->get_user_id();
     parent::__construct();
+  }
+
+  // Get Thread User ID
+  public function get_user_id() {
+    $query = "SELECT USER_ID FROM THREADS WHERE ID = '$this->thread_id';";
+    $id = parent::select($query);
+    $id = $id["USER_ID"];
+    // Assign ID
+    $this->thread_user_id = $id;
   }
 
   // Returns Header
   public function create_header() {
+    echo $this->thread_user_id;
     if (!$this->error) {
     $error  = false;
     // Validation

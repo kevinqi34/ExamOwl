@@ -224,7 +224,12 @@ class resource extends db {
           if (parent::query($query)) {
             // Insert into vote history
             $query = "INSERT INTO LINKS_VOTES(USER_ID, LINK_ID) VALUES('$this->user_id','$upvote');";
-            if (parent::query($query)) {
+            // Update IQ
+            $get_user_id = "SELECT USER_ID FROM LINKS WHERE ID = '$upvote';";
+            $post_user = parent::select($get_user_id);
+            $post_user = $post_user["USER_ID"];
+            $query2 = "UPDATE USER SET IQ = IQ + 1 WHERE ID = '$post_user';";
+            if (parent::query($query) && parent::query($query2)) {
              $this->error = "Success";
             } else {
               return false;
@@ -266,7 +271,13 @@ class resource extends db {
          if (parent::query($query)) {
            // Insert into vote history
            $query = "INSERT INTO LINKS_VOTES(USER_ID, LINK_ID) VALUES('$this->user_id','$downvote');";
-           if (parent::query($query)) {
+           // Update IQ
+           $get_user_id = "SELECT USER_ID FROM LINKS WHERE ID = '$downvote';";
+           $post_user = parent::select($get_user_id);
+           $post_user = $post_user["USER_ID"];
+           $query2 = "UPDATE USER SET IQ = IQ - 1 WHERE ID = '$post_user';";
+
+           if (parent::query($query) && parent::query($query2)) {
            $this->error = "Success";
            } else {
              return false;
