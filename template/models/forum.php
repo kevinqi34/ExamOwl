@@ -545,9 +545,9 @@ class post extends db {
                 if ($this->user_id != $this->thread_user_id) {
                   // Update IQ
                   if (parent::query($query3)) {
-                    $this->error = "Success";
-                    // Send Email if not yourself
-                    
+                    //$this->error = "Success";
+                    // Send Email if not thread author
+                    echo $email;
 
 
                     return true;
