@@ -11,7 +11,7 @@ foreach($this->data as $thread) {
 <?php } ?>
   <h3><?php echo $thread["TITLE"]; ?></h3>
   <p># of Responses: <?php echo $thread["NUM_OF_COMMENTS"]; ?></p>
-  <p>Posted <?php echo $date; ?> by <?php echo $thread["AUTHOR"]; ?></p>
+  <p>Posted <?php echo $date; ?> by <a href="<?php echo url(); ?>user/<?php echo $thread["USER_ID"]; ?>"><?php echo $thread["AUTHOR"]; ?></a></p>
 <?php
   if ($this->privileges == 'admin') {
 ?>
