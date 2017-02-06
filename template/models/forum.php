@@ -545,12 +545,14 @@ class post extends db {
                 if ($this->user_id != $this->thread_user_id) {
                   // Update IQ
                   if (parent::query($query3)) {
-                    $this->error = "Success";
+                    //$this->error = "Success";
                     // Send Email if not thread author
                     $query = "SELECT NAME, EMAIL FROM USER WHERE ID = '$this->thread_user_id';";
                     $email_data = parent::select($query);
                     $name = $email_data["NAME"];
                     $email = $email_data["EMAIL"];
+                    $url =  $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+                    echo $url;
 
                     echo $name;
                     echo $email;
