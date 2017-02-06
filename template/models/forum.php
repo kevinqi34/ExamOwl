@@ -551,6 +551,7 @@ class post extends db {
                     $email_data = parent::select($query);
                     $name = $email_data["NAME"];
                     $email = $email_data["EMAIL"];
+                    $protocol = "https://";
                     $url =  $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                     echo $url;
 
