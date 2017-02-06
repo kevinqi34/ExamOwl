@@ -4,6 +4,9 @@
 <!-- Threads -->
 <?php include($_SERVER['DOCUMENT_ROOT'] . '/data/user/profile/user_threads.php') ?>
 
+<!-- Settings -->
+<?php include($_SERVER['DOCUMENT_ROOT'] . '/data/user/profile/user_settings.php') ?>
+
 <!-- Dashboard -->
 <?php include($_SERVER['DOCUMENT_ROOT'] . '/data/user/profile/user_dashboard.php') ?>
 

@@ -1,4 +1,28 @@
 <div class="profile_posts profile_header">
+<!-- If viewing other's profile -->
+<?php if ($privelege == "none") {?>
+  <?php
+  if ($size == 0) {
+    echo "<p style='text-align:center;'>This user hasn't posted anything yet.</p>";
+
+  } else {
+  ?>
+    <h3>User Posts</h3>
+  <?php
+
+  foreach($thread_data as $thread) {
+  $date = time_elapsed_string($thread["CREATE_DATE"]);
+  ?>
+  <a href="<?php echo url(); ?>thread/<?php echo $thread["ID"]; ?>/<?php echo $thread["SLUG"]; ?>">
+    <div class="thread">
+      <h3><?php echo $thread["TITLE"]; ?></h3>
+      <p># of Responses: <?php echo $thread["NUM_OF_COMMENTS"]; ?></p>
+      <p>Posted <?php echo $date; ?> by <?php echo $thread["AUTHOR"]; ?></p>
+    </div>
+  </a>
+  <?php }} ?>
+<?php } else { ?>
+<!-- If viewing own profile -->
 <?php
 if ($size == 0) {
   echo "<p style='text-align:center;'>You have not posted anything yet.</p>";
@@ -11,6 +35,7 @@ if ($size == 0) {
 foreach($thread_data as $thread) {
 $date = time_elapsed_string($thread["CREATE_DATE"]);
 ?>
+  <a href="<?php echo url(); ?>thread/<?php echo $thread["ID"]; ?>/<?php echo $thread["SLUG"]; ?>">
   <div class="thread">
     <h3><?php echo $thread["TITLE"]; ?></h3>
     <p># of Responses: <?php echo $thread["NUM_OF_COMMENTS"]; ?></p>
@@ -23,8 +48,7 @@ $date = time_elapsed_string($thread["CREATE_DATE"]);
       <p id="error"><?php echo $this->error; ?></p>
     </form>
   </div>
+  </a>
 <?php } ?>
-
-
-<?php } ?>
+<?php }} ?>
 </div>

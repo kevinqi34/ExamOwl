@@ -232,12 +232,15 @@ class template {
 		$category = $_GET["cat-id"];
 		$thread = $_GET["thread-id"];
 		$resource = $_GET["id"];
+		$user = $_GET["user-id"];
 		if ($category) {
 			$query = "SELECT NAME FROM CATEGORY WHERE ID ='$category';";
 		} else if ($thread) {
 			$query = "SELECT TITLE FROM THREADS WHERE ID='$thread';";
 		} else if ($resource) {
 			$query = "SELECT TITLE FROM RESOURCES WHERE ID='$resource';";
+		} else if ($user) {
+			$query = "SELECT NAME FROM USER WHERE ID = '$user';";
 		} else {
 			$query = false;
 		}

@@ -50,6 +50,14 @@ class user extends db {
     $this->email = $email;
   }
 
+  // Get Email from id
+  public function get_email($id) {
+    $query = "SELECT EMAIL FROM USER WHERE ID = '$id';";
+    $data = parent::select($query);
+    $data = $data["EMAIL"];
+    return $data;
+  }
+
 
   // Create User Account
   public function create_user() {
@@ -195,6 +203,59 @@ class user extends db {
 
   }
 
+
+  // User settings
+  public function user_settings() {
+    // Grab Variables
+    $email = $_SESSION["email"];
+    $name = $_POST["new_user"];
+    $password = $_POST["new_pwd"];
+    $c_password= $_POST["new_pwd_c"];
+    // Assign Variables
+    $this->construct_signup($name, $email, $password, $c_password);
+
+    // Change username
+    if ($name != null) {
+      $this->change_username();
+    } else if ($password != null) {
+      // Change Password
+      $this->change_password();
+    } else {
+      return false;
+    }
+
+  }
+
+
+  // Change Username
+  public function change_username() {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      // Validate Data
+      $error = false;
+      // Validate Name
+      $name = new validation($this->name);
+      $error = $name->gen_validate(3,30);
+      $this->error = $error;
+      if ($error != false) {
+        // Exit if error
+        return false;
+      } else {
+        // Update Username
+        $query = "UPDATE USER SET NAME = '$this->name' WHERE EMAIL = '$this->email';";
+        if (parent::query($query)) {
+          $this->error = "Username successfully changed";
+        } else {
+          return false;
+        }
+      }
+    } else {
+      return false;
+    }
+
+
+  }
+
+
   // Change Password
   public function change_password() {
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -231,6 +292,8 @@ class user extends db {
         $user_browser =  $_SERVER['HTTP_USER_AGENT'];
         $_SESSION['email'] = $this->email;
         $_SESSION['login_string'] = hash('sha256', $data["PASSWORD"] . $user_browser);
+        $this->error = "Password successfully changed";
+
       } else {
         return false;
       }
@@ -356,7 +419,9 @@ class user extends db {
 
 
   // User Profile -- Displays User Threads
-  public function profile() {
+  public function profile($email) {
+    // Own Profile
+    if (!$email) {
     // Grab User Data
     $email = $_SESSION["email"];
     // Validate
@@ -388,6 +453,37 @@ class user extends db {
       $this->error = $error;
       return false;
     }
+  } else { // Return other profiles
+    // Validate
+    $error = false;
+    $val_email = new validation($email);
+    $error = $val_email->check_mail();
+    if (!$error) {
+      // Grab Data
+      $query = "SELECT * FROM USER WHERE EMAIL = '$email';";
+      if (parent::select($query)) {
+        $user_data = parent::select($query);
+        $user_id = $user_data["ID"];
+        // Grab Thread Data
+        $query = "SELECT * FROM THREADS WHERE USER_ID = '$user_id';";
+        $thread_data = parent::select_multi($query);
+        date_default_timezone_set ( "UTC" );
+        $date = time_elapsed_string($user_data["CREATE_DATE"]);
+        $size = sizeof($thread_data);
+        // Set Variables
+        $this->email = $email;
+        $this->privelege = "none";
+        // Create Profile
+        include($_SERVER['DOCUMENT_ROOT'] . '/data/user/profile/profile_view_template.php');
+      } else {
+          echo "Data not recieved.";
+          return false;
+      }
+    } else {
+      $this->error = $error;
+      return false;
+    }
+  }
 
   }
 

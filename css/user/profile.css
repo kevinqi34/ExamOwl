@@ -36,6 +36,10 @@ div.thread {
   color: black;
 }
 
+div.thread:hover {
+  border-color: skyblue;
+}
+
 div.thread h3 {
   padding: 0px;
   margin: 0px;
@@ -49,16 +53,13 @@ div.thread p {
 
 }
 
-div.dashboard {
+div.dashboard, div.admin, div.settings, div.records {
   padding: 25px;
   display: none;
 
 
 }
 
-div.admin {
-  display: none;
-}
 
 div.dashboard h3 {
   padding: 0px;
@@ -71,16 +72,11 @@ div.dashboard p {
 
 }
 
-div.records {
-  display: none;
-  padding: 20px;
-  font-size: 13px;
-
-}
 
 div.records a {
   width: 100%;
   display: block;
+  font-size: 13px;
 
 }
 

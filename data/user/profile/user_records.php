@@ -1,4 +1,5 @@
 <div class="records">
+<h3>User Records</h3>  
 <?php
 // Get Data
 $data = $this->return_offenders($privelege);

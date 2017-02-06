@@ -10,6 +10,8 @@
 <?php
   if ($this->privelege == "admin" || $this->privelege == "sadmin") {
     $privelege = "admin";
+  } else if ($this->privelege == "none") {
+    $privelege = "none";
   } else {
     $privelege = "user";
   }
@@ -20,9 +22,17 @@
 if ($privelege == "admin") {
 ?>
 <p class="menu" id="posts">My Posts</p>
+<p class="menu" id="settings">Settings</p>
 <p class="menu" id="dashboard">Dashboard</p>
 <p class="menu" id="admin">Admin</p>
 <p class="menu" id="records">User Records</p>
 <hr />
 
-<?php } ?>
+<?php } else if ($privelege == "user") { ?>
+<p class="menu" id="posts">My Posts</p>
+<p class="menu" id="settings">Settings</p>
+<hr />
+<?php } else if ($privelege == "none") { ?>
+<!-- For Viewing other profiles -->
+
+<?php } else { return false; } ?>
