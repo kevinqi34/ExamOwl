@@ -546,6 +546,10 @@ class post extends db {
                   // Update IQ
                   if (parent::query($query3)) {
                     $this->error = "Success";
+                    // Send Email if not yourself
+                    
+
+
                     return true;
                   } else {
                     return false;
@@ -641,8 +645,23 @@ class post extends db {
     }
 
 
+  }
 
 
+  // Email Reminder when someone comments
+  public function email_reminder($email, $name, $url) {
+    $to = $email;
+    $subject = "Your thread has recieved a response.";
+    $msg="";
+    $msg=$msg . "<p>Dear " . $name . ",</p>";
+    $msg=$msg . "<p>Your thread has recieved a response.</p>";
+    $msg=$msg . "<p>To view your thread, <a href='" . $url . "'>click here</a>.</p>";
+    $msg = $msg . "<p>-- The Exam Owl Team</p>";
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+    $headers .= "From: support@spere.io" . "\r\n";
+    mail($to,$subject,$msg,$headers);
+    return true;
   }
 
 
