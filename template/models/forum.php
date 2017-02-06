@@ -547,8 +547,7 @@ class post extends db {
                   if (parent::query($query3)) {
                     //$this->error = "Success";
                     // Send Email if not thread author
-                    echo $email;
-
+                    echo $this->thread_user_id;
 
                     return true;
                   } else {
