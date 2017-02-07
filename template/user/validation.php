@@ -67,7 +67,7 @@ class validation {
 
   // Profanity Filter for resources
   public function is_profanity() {
-    $bad_domains = array('https://www.xvideos.com','https://xhamster.com','https://www.pornhub.com','https://www.xnxx.com','https://www.redtube.com','https://www.youporn.com','https://www.tube8.com','https://www.youjizz.com','https://www.hclips.com/?','https://beeg.com','https://www.drtuber.com','https://www.porn.com');
+    $bad_domains = array('https://www.xvideos.com','https://www.xhamster.com','https://www.pornhub.com','https://www.xnxx.com','https://www.redtube.com','https://www.youporn.com','https://www.tube8.com','https://www.youjizz.com','https://www.hclips.com/?','https://beeg.com','https://www.drtuber.com','https://www.porn.com');
     foreach($bad_domains as $domain) {
       if (strcasecmp($domain, $this->data) == 0) {
         return "Invalid URL.";
@@ -79,7 +79,7 @@ class validation {
 
   // Check for proper URL format
   public function link_format() {
-    $format = 'https://';
+    $format = 'https://www';
     // Check if link contains format
     if (strpos($this->data,$format) !== false) {
       return false;
@@ -211,8 +211,8 @@ class validation {
       }
       // If count is 3, then set session timer and return error msg
       if ($count == 3) {
-        $_SESSION["timer"] = $this->add_time($this->data, 120);
-        return "You have been too active recently. Please wait 2 mins before posting again.";
+        $_SESSION["timer"] = $this->add_time($this->data, 1800);
+        return "You have been too active recently. Please wait before posting again.";
       } else {
         return false;
       }
