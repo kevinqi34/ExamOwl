@@ -12,33 +12,35 @@
 
 		<div id="college" style="display: none;" class="calculate">
 			<form id="ptgpa4">
-				<p>Number of A+'s (Credit Hours): <input type="text" id="GPA12" placeholder="(ex.10)"/></p>
+				<p style="display: none;">Number of A+'s (Credit Hours): <input type="text" id="CGPA12" placeholder="(ex.10)" value=0 /></p>
 
-				<p>&nbsp;Number of A's (Credit Hours): <input type="text" id="GPA13" placeholder="(ex.10)"/></p>
+				<p>&nbsp;Number of A's (Credit Hours): <input type="text" id="CGPA13" placeholder="(ex.10)"/></p>
 
-				<p>Number of A-'s (Credit Hours): <input type="text" id="GPA14" placeholder="(ex.10)"/></p>
+				<p>Number of A-'s (Credit Hours): <input type="text" id="CGPA14" placeholder="(ex.10)"/></p>
 
-				<p>Number of B+'s (Credit Hours): <input type="text" id="GPA15" placeholder="(ex.10)"/></p>
+				<p>Number of B+'s (Credit Hours): <input type="text" id="CGPA15" placeholder="(ex.10)"/></p>
 
-				<p>&nbsp;Number of B's (Credit Hours): <input type="text" id="GPA16" placeholder="(ex.10)"/></p>
+				<p>&nbsp;Number of B's (Credit Hours): <input type="text" id="CGPA16" placeholder="(ex.10)"/></p>
 
-				<p>Number of B-'s (Credit Hours): <input type="text" id="GPA17" placeholder="(ex.10)"/></p>
+				<p>Number of B-'s (Credit Hours): <input type="text" id="CGPA17" placeholder="(ex.10)"/></p>
 
-				<p>Number of C+'s (Credit Hours): <input type="text" id="GPA18" placeholder="(ex.10)"/></p>
+				<p>Number of C+'s (Credit Hours): <input type="text" id="CGPA18" placeholder="(ex.10)"/></p>
 
-				<p>&nbsp;Number of C's (Credit Hours): <input type="text" id="GPA19" placeholder="(ex.10)"/></p>
+				<p>&nbsp;Number of C's (Credit Hours): <input type="text" id="CGPA19" placeholder="(ex.10)"/></p>
 
-				<p>Number of C-'s (Credit Hours): <input type="text" id="GPA20" placeholder="(ex.10)"/></p>
+				<p>Number of C-'s (Credit Hours): <input type="text" id="CGPA20" placeholder="(ex.10)"/></p>
 
-				<p>Number of D+'s (Credit Hours): <input type="text" id="GPA21" placeholder="(ex.10)"/></p>
+				<p>Number of D+'s (Credit Hours): <input type="text" id="CGPA21" placeholder="(ex.10)"/></p>
 
-				<p>&nbsp;Number of D's (Credit Hours): <input type="text" id="GPA22" placeholder="(ex.10)"/></p>
+				<p>&nbsp;Number of D's (Credit Hours): <input type="text" id="CGPA22" placeholder="(ex.10)"/></p>
 
-				<p>Number of D-'s (Credit Hours): <input type="text" id="GPA23" placeholder="(ex.10)"/></p>
+				<p>Number of D-'s (Credit Hours): <input type="text" id="CGPA23" placeholder="(ex.10)"/></p>
 
-				<p>&nbsp;Number of F's (Credit Hours): <input type="text" id="GPA24" placeholder="(ex.10)"/></p>
+				<p>&nbsp;Number of F's (Credit Hours): <input type="text" id="CGPA24" placeholder="(ex.10)"/></p>
 
 			</form>
+
+			<p><button onclick="gpa4();">Determine My GPA</button><button onclick="resetform('ptgpa4');">Reset</button></p>
 		</div>
 
 
