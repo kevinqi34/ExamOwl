@@ -3,23 +3,37 @@ function switchdivs() {
 	var a = document.getElementById('selection').value;
 	var b = document.getElementById('4pt');
 	var c = document.getElementById('5pt');
-	var d =document.getElementById('4ptplumin');
+	var d = document.getElementById('4ptplumin');
+	var e = document.getElementById('college');
+
 	if (a == "4pt" ) {
 		b.style.display = "block";
 		c.style.display = "none";
 		d.style.display = "none";
+		e.style.display = "none";
 		}
 	if (a == "5pt") {
 		b.style.display ="none";
 		c.style.display = "block";
 		d.style.display = "none";
+		e.style.display = "none";
 		}
 	if (a == "plusminus") {
 		b.style.display = "none";
 		c.style.display = "none";
 		d.style.display = "block";
+		e.style.display = "none";
+
 		}
+	if (a == "college") {
+		b.style.display = "none";
+		c.style.display = "none";
+		d.style.display = "none";
+		e.style.display = "block";
 	}
+
+
+}
 
 
 function gpa1() {
@@ -29,9 +43,9 @@ function gpa1() {
 		var d = document.getElementById('GPA4').value;
 		var e = document.getElementById('GPA5').value;
 		//var f = document.getElementById('STD').value;
-		
+
 //validate inputs
-	
+
 		if (a.length <= 0) {
 			alert("A number must be entered!");
 			return;
@@ -64,7 +78,7 @@ function gpa1() {
 			alert("Only numbers are accepted!");
 			return;
 		}
-		if (e.length <= 0) { 
+		if (e.length <= 0) {
 			alert("A number must be entered!");
 			return;
 		}
@@ -79,18 +93,18 @@ function gpa1() {
 	       		d = parseInt(d);
 	       		e = parseInt(e);
 	       	//	f = parseInt(f);
-	       
+
 	        //calculate GPA
-	       
+
 				var gpa1 =Math.round((( a*4 + b*3 + c*2 + d*1)/(a + b + c + d + e))*100)/100;
 				//alert("Your GPA is " + gpa1 + ".");
 		document.getElementById("score1").innerHTML = gpa1;
-		
-		
+
+
 			var a = document.getElementById("score1");
-	
-	
-	
+
+
+
 	if (a.value <= 1 && a.value >= 0) {
 		a.style.color = "red";
 		}
@@ -106,15 +120,15 @@ function gpa1() {
 	if (a.value <= 5 && a.value > 4) {
 		a.style.color = "black";
 		}
-	
-		
-		
+
+
+
 		/*
 		else {
-		
+
 			if (isNaN(f) == true) {
 				alert("Only numbers are accepted!");
-				return;		
+				return;
 			}
 			else {
 				var a = parseInt(a);
@@ -123,7 +137,7 @@ function gpa1() {
 	       			d = parseInt(d);
 	       			e = parseInt(e);
 	       		//	f = parseInt(f);
-	       
+
 	       //calculate GPA
 	      			var gpa1 =Math.round((( a*4 + b*3 + c*2 + d*1)/(a + b + c + d + e))*100)/100;
 						/*
@@ -140,7 +154,7 @@ function gpa1() {
 							alert("Your GPA is " + gpa1 + ". You should apply to a flagship state college.");
 							}
 						if (f > 30 && f <= 36) {
-							alert("Your GPA is " + gpa1 + ".You should apply to a prestigious private university.");					
+							alert("Your GPA is " + gpa1 + ".You should apply to a prestigious private university.");
 							}
 						if (f > 36 && f <= 1200) {
 							alert("Your GPA is " + gpa1 + ". You should apply to a good community college.");
@@ -157,8 +171,8 @@ function gpa1() {
 						if (f > 2400) {
 							alert("Please enter a proper score.");
 							}
-							
-						
+
+
 
 			}
 */
@@ -175,7 +189,7 @@ function gpa2() {
 		var e = document.getElementById('GPA10').value;
 		var f = document.getElementById('GPA11').value;
 	//	var g = document.getElementById('STD2').value;
-		
+
 	if (a.length <= 0) {
 			alert("A number must be entered!");
 			return;
@@ -210,7 +224,7 @@ function gpa2() {
 		}
 		if (e.length <= 0) {
 			alert("A number must be entered!");
-			return;		
+			return;
 		}
 		if (isNaN(e) == true) {
 			alert("Only numbers are accepted!");
@@ -224,7 +238,7 @@ function gpa2() {
 			alert("Only numbers are accepted!");
 			return;
 		}
-	
+
 			 var a = parseInt(a);
 	       		b = parseInt(b);
 	       		c = parseInt(c);
@@ -232,19 +246,19 @@ function gpa2() {
 	       		e = parseInt(e);
 	       		f = parseInt(f);
 	       	//	g = parseInt(g)
-	       
+
 	        //calculate GPA
-	       
+
 				var gpa1 =Math.round((( a*5 + b*4 + c*3 + d*2 + e*1)/(a + b + c + d + e + f))*100)/100;
 			//	alert("Your GPA is " + gpa1 + ".");
-				
+
 				document.getElementById("score1").innerHTML = gpa1;
-		
-		
+
+
 			var a = document.getElementById("score1");
-	
-	
-	
+
+
+
 	if (a.value <= 1 && a.value >= 0) {
 		a.style.color = "red";
 		}
@@ -262,10 +276,10 @@ function gpa2() {
 		}
 		/*
 		else {
-			
+
 			if (isNaN(g) == true) {
 				alert("Only numbers are accepted!");
-				return;		
+				return;
 			}
 			else {
 				var a = parseInt(a);
@@ -275,11 +289,11 @@ function gpa2() {
 	       			e = parseInt(e);
 	       			f = parseInt(f);
 	       	//		g = parseInt(g);
-	       
+
 	       //calculate GPA
 	      			var gpa1 =Math.round((( a*5 + b*4 + c*3 + d*2 + e*1)/(a + b + c + d + e + f))*100)/100;
-						
-						
+
+
 						/*if (g <= 0) {
 							alert("Please enter a proper score.");
 							}
@@ -293,7 +307,7 @@ function gpa2() {
 							alert("Your GPA is " + gpa1 + ". You should apply to a flagship state college.");
 							}
 						if (g > 30 && g <= 36) {
-							alert("Your GPA is " + gpa1 + ".You should apply to a prestigious private university.");					
+							alert("Your GPA is " + gpa1 + ".You should apply to a prestigious private university.");
 							}
 						if (g > 36 && g <= 1200) {
 							alert("Your GPA is " + gpa1 + ". You should apply to a good community college.");
@@ -332,9 +346,9 @@ function gpa3() {
 		var l = document.getElementById('GPA23').value;
 		var m = document.getElementById('GPA24').value;
 	//	var n = document.getElementById('STD3').value;
-		
-		
-		
+
+
+
 	if (a.length <= 0) {
 			alert("A number must be entered!");
 			return;
@@ -369,13 +383,13 @@ function gpa3() {
 		}
 		if (e.length <= 0) {
 			alert("A number must be entered!");
-			return;		
+			return;
 		}
 		if (isNaN(e) == true) {
 			alert("Only numbers are accepted!");
 			return;
 			}
-			
+
 		if (f.length <= 0) {
 			alert("A number must be entered!");
 			return;
@@ -410,7 +424,7 @@ function gpa3() {
 		}
 		if (j.length <= 0) {
 			alert("A number must be entered!");
-			return;		
+			return;
 		}
 		if (isNaN(j) == true) {
 			alert("Only numbers are accepted!");
@@ -420,7 +434,7 @@ function gpa3() {
 			alert("A number must be entered!");
 			return;
 		}
-		
+
 		if (isNaN(k) == true) {
 			alert("Only numbers are accepted!");
 			return;
@@ -429,7 +443,7 @@ function gpa3() {
 			alert("A number must be entered!");
 			return;
 		}
-		
+
 		if (isNaN(l) == true) {
 			alert("Only numbers are accepted!");
 			return;
@@ -438,13 +452,13 @@ function gpa3() {
 			alert("A number must be entered!");
 			return;
 		}
-		
+
 		if (isNaN(m) == true) {
 			alert("Only numbers are accepted!");
 			return;
 		}
-		
-		
+
+
 
 			 var a = parseInt(a);
 	       		b = parseInt(b);
@@ -460,19 +474,19 @@ function gpa3() {
 	       		l = parseInt(l);
 	       		m = parseInt(m);
 	       	//	n = parseInt(n)
-	       
+
 	        //calculate GPA
-	       
+
 				var gpa1 =Math.round((( a*4.3 + b*4 + c*3.7 + d*3.3 + e*3 + f*2.7 + g*2.3 + h*2 + i*1.7 + j*1.3 + k*1 + l*0.7)/(a + b + c + d + e + f + g + h +i + j + k + l + m))*100)/100;
 			//	alert("Your GPA is " + gpa1 + ".");
-				
+
 				document.getElementById("score1").innerHTML = gpa1;
-		
-		
+
+
 			var a = document.getElementById("score1");
-	
-	
-	
+
+
+
 	if (a.value <= 1 && a.value >= 0) {
 		a.style.color = "red";
 		}
@@ -488,14 +502,14 @@ function gpa3() {
 	if (a.value <= 5 && a.value > 4) {
 		a.style.color = "black";
 		}
-				
-				
+
+
 	/*
 		else {
-			
+
 			if (isNaN(g) == true) {
 				alert("Only numbers are accepted!");
-				return;		
+				return;
 			}
 			else {
 				var a = parseInt(a);
@@ -512,7 +526,7 @@ function gpa3() {
 	       		l = parseInt(l);
 	       		m = parseInt(m);
 	       //	n = parseInt(n)
-	       
+
 	       //calculate GPA
 	      			var gpa1 =Math.round((( a*4.3 + b*4 + c*3.7 + d*3.3 + e*3 + f*2.7 + g*2.3 + h*2 + i*1.7 + j*1.3 + k*1 + l*0.7)/(a + b + c + d + e + f + g + h +i + j + k + l + m))*100)/100;
 					/*	if (n <= 0) {
@@ -528,7 +542,7 @@ function gpa3() {
 							alert("Your GPA is " + gpa1 + ". You should apply to a flagship state college.");
 							}
 						if (n > 30 && n <= 36) {
-							alert("Your GPA is " + gpa1 + ".You should apply to a prestigious private university.");					
+							alert("Your GPA is " + gpa1 + ".You should apply to a prestigious private university.");
 							}
 						if (n > 36 && n <= 1200) {
 							alert("Your GPA is " + gpa1 + ". You should apply to a good community college.");
@@ -545,8 +559,8 @@ function gpa3() {
 						if (n > 2400) {
 							alert("Please enter a proper score.");
 							}
-						
-						}	
+
+						}
 
 			}*/
 
@@ -555,20 +569,7 @@ function gpa3() {
 
 
 function resetform(a) {
-		
+
 		document.getElementById(a).reset();
-		
-	}	
-		
-	
-	
 
-
-
-
-
-
-
-
-
-		
+	}
