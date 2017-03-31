@@ -8,7 +8,7 @@
 
 <url>
   <loc>http://www.examowl.co/</loc>
-  <changefreq>monthly</changefreq>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://www.examowl.co/tools.php</loc>
@@ -16,31 +16,31 @@
 </url>
 <url>
   <loc>http://www.examowl.co/resources.php</loc>
-  <changefreq>monthly</changefreq>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://www.examowl.co/category/1/advanced-placement</loc>
-  <changefreq>monthly</changefreq>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://www.examowl.co/category/2/international-baccalaureate</loc>
-  <changefreq>monthly</changefreq>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://www.examowl.co/category/3/major-hs-exams</loc>
-  <changefreq>monthly</changefreq>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://www.examowl.co/category/4/major-college-exams</loc>
-  <changefreq>monthly</changefreq>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://www.examowl.co/category/5/finals-week</loc>
-  <changefreq>monthly</changefreq>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://www.examowl.co/category/6/chill</loc>
-  <changefreq>monthly</changefreq>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://www.examowl.co/other/privacypolicy.php</loc>
@@ -280,19 +280,19 @@
 </url>
 <url>
   <loc>http://www.examowl.co/res/1/advanced-placement</loc>
-  <changefreq>monthly</changefreq>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://www.examowl.co/res/2/international-baccalaureate</loc>
-  <changefreq>monthly</changefreq>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://www.examowl.co/res/3/act</loc>
-  <changefreq>monthly</changefreq>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://www.examowl.co/res/4/sat</loc>
-  <changefreq>monthly</changefreq>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://www.examowl.co/thread/116/b</loc>
