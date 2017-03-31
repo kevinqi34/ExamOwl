@@ -157,7 +157,7 @@ function time_elapsed_string($datetime, $full = false) {
 // Word Filter
 function word_filter($text) {
 	// Profane Language
-	$filter = array('\bass(es|holes|hole?)?\b','\bf+u+c+k(s|ers|ing?)?\b','\bshit(ty|y|ting|s?)?\b','\bcunt(s?)?\b','\bnigg(a|s|er?)?\b','\bwhor(es|ing|e?)?\b','\bporn(o|os|s|vid|vids?)?\b', '\bbitch(es|y|s?)?\b' , '\bboob(y|s|es|ys?)?\b');
+	$filter = array('\bass(es|holes|hole?)?\b','\bf+u+c+k(s|ers|ing?)?\b','\bshit(ty|y|ting|s?)?\b','\bcunt(s?)?\b','\bnigg(a|s|er?)?\b','\bwhor(es|ing|e?)?\b','\bporn(o|os|s|vid|vids?)?\b', '\bbitch(es|y|s?)?\b' , '\bboob(y|s|es|ys?)?\b', '\bhoe(s)?\b');
 	$filtered_text = $text;
 	// Go through filter
 	foreach($filter as $word) {
