@@ -41,7 +41,7 @@ echo '<p>Icons made by Freepik from <a href="http:/www.flaticon.com">www.flatico
 
 
 function clean($string) {
-	 $string = str_replace('-', ' ', $string); // Replaces all hyphens with spaces.
+	 $string = str_replace('-', '', $string); // Replaces all hyphens with no spaces.
    $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
 
    return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
