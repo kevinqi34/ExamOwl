@@ -898,11 +898,9 @@ class user extends db {
    // Create Title
    $title =  $type . '_user_' . $name;
    // Create Content
-  // $content = str_replace("'","\'", $content);
-   //echo $content;
-
+   $content = str_replace("'","\'", $content);
    // Save Title and Content into Database
-   $query = 'INSERT INTO USER_RECORDS (TITLE, CONTENT) VALUES ("$title", "$content");';
+   $query = "INSERT INTO USER_RECORDS (TITLE, CONTENT) VALUES ('$title', '$content');";
    if (parent::query($query)) {
      return true;
    } else {
