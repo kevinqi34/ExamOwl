@@ -897,10 +897,8 @@ class user extends db {
  private function write_database($name, $content, $type) {
    // Create Title
    $title =  $type . '_user_' . $name;
-   // Create Content
-   $content = mysql_real_escape_string($content);
    // Save Title and Content into Database
-   $query = "INSERT INTO USER_RECORDS (TITLE, CONTENT) VALUES ('$title', '$content');";
+   $query = "INSERT INTO USER_RECORDS (TITLE, CONTENT) VALUES ('$title', '" . mysql_real_escape_string($content) . "');";
    if (parent::query($query)) {
      return true;
    } else {
