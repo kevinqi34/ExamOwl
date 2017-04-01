@@ -898,8 +898,6 @@ class user extends db {
    // Create Title
    $title =  $type . '_user_' . $name;
    // Create Content
-   $content =  html_entity_decode($content);
-   $content = mysql_real_escape_string($content);
    echo $content;
    /*
    // Save Title and Content into Database
