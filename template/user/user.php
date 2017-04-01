@@ -659,8 +659,8 @@ class user extends db {
              // Clear Output Buffer
              ob_end_clean();
 
-             // Write to File
-             $this->write_file($user_name . '_' . $user_id, $content, "disabled");
+             // Write to database
+             $this->write_database($user_name . '_' . $user_id, $content, "disabled");
 
            } else {
              $this->error = "User failed to be disabled.";
@@ -871,7 +871,7 @@ class user extends db {
 
 
  // Creates a file in the user records folder to keep deleted User Records
- public function write_file($name, $content, $type) {
+ private function write_file($name, $content, $type) {
     // Create file name
     $filename = $_SERVER['DOCUMENT_ROOT'] . '/user_records/' . $type . '_user_' . $name . '.html';
     // Open File
@@ -892,6 +892,15 @@ class user extends db {
     }
 
  }
+
+ // Creates user record in database
+ private function write_database($name, $content, $type) {
+   echo $name;
+   
+
+
+ }
+
 
 
  // Returns Public Offenders List
