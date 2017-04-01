@@ -5,7 +5,7 @@
     RewriteRule ^user/([0-9]+)      user/profile.php?user-id=$1
     RewriteRule ^category/([0-9]+)/[A-Za-z-]+/?$    ?cat-id=$1
     RewriteRule ^thread/([0-9]+)/[A-Za-z-]+/?$    ?thread-id=$1
-    RewriteRule ^thread/([0-9]+)/[A-Za-z-]+/([0-9]+) ?thread-id=$1&page-id=$2
+    RewriteRule ^thread/([0-9]+)/[A-Za-z-]+/([0-9]+)?$ ?thread-id=$1&page-id=$2
     
 
 </IfModule>
