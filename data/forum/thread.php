@@ -35,7 +35,11 @@ foreach($this->data as $thread) {
     if ($val) {
       $val = $val + 1;
     } else {
-      $val = 1;
+      if ($page_id) {
+        $val = $page_id + 1;
+      } else {
+        $val = 1;
+      }
     }
     echo '<div id="load">';
     echo '<p id="load_more">Load More</p>';
