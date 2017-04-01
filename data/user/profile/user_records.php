@@ -10,7 +10,7 @@ if (sizeof($data) != 0) {
 // Loop through data
 foreach ($data as $offender) {
 ?>
-<a href="<?php echo url() . "record/" . $offender["ID"] . "/" . $offender["TITLE"] ?>"><?php echo $offender["TITLE"]; ?></a>
+<a href="<?php echo url() . "record/" . $offender["ID"]?>"><?php echo $offender["TITLE"]; ?></a>
 <?php
 }
 } else {
