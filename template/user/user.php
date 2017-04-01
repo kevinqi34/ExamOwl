@@ -847,7 +847,7 @@ class user extends db {
                ob_end_clean();
 
                // Write to File
-               $this->write_file($user_name . '_' . $user_id, $content, 'deleted');
+               $this->write_database($user_name . '_' . $user_id, $content, 'deleted');
 
              } else {
                echo "User failed to delete";
