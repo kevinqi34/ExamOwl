@@ -31,6 +31,7 @@ foreach($this->data as $thread) {
 ?>
 <?php
   $size = sizeof($this->data);
+  $page_id = $_GET["page-id"];
   if ($size == $limit) {
     if ($page_id) {
       $val = $page_id + 1;
