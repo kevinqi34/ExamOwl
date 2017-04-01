@@ -48,6 +48,10 @@
 
 }
 
+h1.seo_h1 {
+  display: none;
+}
+
 
 @media screen and (max-width : 1000px){
 
