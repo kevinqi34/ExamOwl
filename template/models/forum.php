@@ -468,7 +468,7 @@ class post extends db {
     if (!is_numeric($this->thread_id)) {
       return false;
     } else {
-      $limit = 20;
+      $limit = 30;
       $query = "SELECT * FROM COMMENTS WHERE THREAD_ID = '$this->thread_id' ORDER BY CREATE_DATE LIMIT $limit;";
       $data = parent::select_multi($query);
       // Create Comments
