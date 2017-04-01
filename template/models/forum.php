@@ -199,6 +199,7 @@ class thread extends db {
     $this->limit = $limit;
     if ($page_id) {
       $start = $page_id * $limit;
+      echo $page_id;
       $query = "SELECT * FROM THREADS WHERE CAT_ID = '$this->cat_id' ORDER BY TYPE DESC, CREATE_DATE DESC LIMIT $limit, $start;";
     } else {
       $query = "SELECT * FROM THREADS WHERE CAT_ID = '$this->cat_id' ORDER BY TYPE DESC, CREATE_DATE DESC LIMIT $limit;";
