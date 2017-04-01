@@ -929,12 +929,15 @@ class user extends db {
  public function show_records($id) {
    // Validate Data
    if (is_numeric($id)) {
-     $query = "SELECT CONTENT FROM USER_RECORDS WHERE ID = '$id';";
+     $query = "SELECT CONTENT, TITLE FROM USER_RECORDS WHERE ID = '$id';";
      $data = parent::select($query);
      if ($data) {
-       print_r($data);
+       $title = $data["TITLE"];
+       $content = $data["CONTENT"];
+       echo "<h2>" . $title . "</h2>";
+       echo $content;
      } else {
-       echo "No User Records Found.";
+       echo "No User Records Found";
      }
    } else {
     echo "User Record is Invalid.";
