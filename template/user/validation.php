@@ -4,8 +4,8 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/template/database/database.php');
 
 // From Validation Class
 class validation {
-  // Protected User Data
-  protected $data;
+  // Private User Data
+  private $data;
   // For errors
   private $error;
 
@@ -123,6 +123,20 @@ class validation {
     }
     }
   }
+
+  // Username Validate
+  public function username_validate() {
+    $error = false;
+    $query = "SELECT NAME FROM USER WHERE NAME = '$this->data';";
+    $data = parent::select($query);
+    if ($data) {
+      $error = "Username already exists. Please try another one.";
+      return $error;
+    } else {
+      return false;
+    }
+  }
+
 
   // Email Validate
   public function email_validate() {

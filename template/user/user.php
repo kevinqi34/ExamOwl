@@ -235,6 +235,9 @@ class user extends db {
       // Validate Name
       $name = new validation($this->name);
       $error = $name->gen_validate(3,30);
+      if (!$error) {
+        $error = $name->username_validate(); // Validate Username
+      }
       $this->error = $error;
       if ($error != false) {
         // Exit if error
@@ -956,7 +959,7 @@ class user extends db {
  public function get_IQ_winners() {
    $query  = "SELECT NAME, EMAIL, IQ FROM USER WHERE IQ > 1000;";
    $data = parent::select_multi($query);
-   return $data; 
+   return $data;
  }
 
 }
