@@ -927,11 +927,18 @@ class user extends db {
 
  // Show User Records
  public function show_records($id) {
-   // Check if Admin
-   // Redirect if not
-   
-
-
+   // Validate Data
+   if (is_numeric($id)) {
+     $query = "SELECT CONTENT FROM USER_RECORDS WHERE ID = '$id';";
+     $data = parent::select($query);
+     if ($data) {
+       print_r($data);
+     } else {
+       echo "No User Records Found.";
+     }
+   } else {
+    echo "User Record is Invalid.";
+   }
  }
 
 
