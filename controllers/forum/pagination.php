@@ -1,4 +1,5 @@
 <?php
+session_start();
 include ($_SERVER['DOCUMENT_ROOT'] . '/template/models/forum.php');
 // Get Variables
 $page_number = $_POST["page_number"];
