@@ -435,6 +435,22 @@ class user extends db {
         // Set Variables
         $this->email = $email;
         $this->privelege = $user_data["USER_TYPE"];
+        // Determine if own data or others
+        // Own Profile
+        if (!$email) {
+          $user_id = $user_data["ID"];
+          // Grab Thread Data
+          $query = "SELECT * FROM THREADS WHERE USER_ID = '$user_id';";
+          $thread_data = parent::select_multi($query);
+          date_default_timezone_set ( "UTC" );
+          $date = time_elapsed_string($user_data["CREATE_DATE"]);
+          $size = sizeof($thread_data);
+          // Create Profile
+          include($_SERVER['DOCUMENT_ROOT'] . '/data/user/profile/profile_template.php');
+        } else { // Return Other Profiles
+
+
+        }
       } else {
           echo "Data not recieved.";
           return false;
@@ -444,11 +460,7 @@ class user extends db {
       return false;
     }
 
-    echo $this->privelege;
-
-
     /*
-
     // Own Profile
     if (!$email) {
     // Grab User Data
