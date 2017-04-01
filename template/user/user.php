@@ -422,18 +422,18 @@ class user extends db {
   public function profile($email) {
     // Establish Privileges
     // Grab User Data
-    $email = $_SESSION["email"];
+    $session_email = $_SESSION["email"];
     // Validate
     $error = false;
-    $val_email = new validation($email);
+    $val_email = new validation($session_email);
     $error = $val_email->check_mail();
     if (!$error) {
       // Grab Data
-      $query = "SELECT * FROM USER WHERE EMAIL = '$email';";
+      $query = "SELECT * FROM USER WHERE EMAIL = '$session_email';";
       if (parent::select($query)) {
         $user_data = parent::select($query);
         // Set Variables
-        $this->email = $email;
+        $this->email = $session_email;
         $this->privelege = $user_data["USER_TYPE"];
         // Determine if own data or others
         // Own Profile
