@@ -870,7 +870,7 @@ class user extends db {
  }
 
 
- // Creates a file in the user records folder to keep deleted User Records
+ // Creates a file in the user records folder
  private function write_file($name, $content, $type) {
     // Create file name
     $filename = $_SERVER['DOCUMENT_ROOT'] . '/user_records/' . $type . '_user_' . $name . '.html';
@@ -893,12 +893,18 @@ class user extends db {
 
  }
 
- // Creates user record in database
+ // Creates user record file in database
  private function write_database($name, $content, $type) {
-   echo $name;
-   
-
-
+   // Create Title
+   $title = $type . '_user_' . $name;
+   // Save Title and Content into Database
+   $query = "INSERT INTO USER_RECORDS (TITLE, CONTENT) VALUES ('$title', '$content');";
+   if (parent::query($query)) {
+     return true;
+   } else {
+     $this->error = "Error inserting record to DB.";
+     return false;
+   }
  }
 
 
