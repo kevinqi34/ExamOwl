@@ -953,6 +953,11 @@ class user extends db {
    return $data;
  }
 
+ public function get_IQ_winners() {
+   $query  = "SELECT NAME, EMAIL, IQ FROM USER WHERE IQ > 1000;";
+   $data = parent::select_multi($query);
+   return $data; 
+ }
 
 }
 ?>
