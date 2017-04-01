@@ -45,7 +45,7 @@ foreach($this->data as $thread) {
     echo '<input type="hidden" value="' . $this->cat_id . '" id="load_id" />';
     echo '</div>';
     // For SEO Purposes
-    $url = url() . "category/" . $this->cat_id . "/" . $data["SLUG"] . "/" . $val . "/";
+    $url = url() . "category/" . $this->cat_id . "/" . $this->cat_slug . "/" . $val . "/";
     echo '<a style="display:none" href="'. $url . '"></a>';
   }
 ?>
