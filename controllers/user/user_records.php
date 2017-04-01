@@ -1,6 +1,7 @@
 <?php
   include ($_SERVER['DOCUMENT_ROOT'] . '/template/user/user.php');
-  echo "hello world";  
+  $record_id = $_GET["record_id"];
+  echo $record_id;
 
 
 
