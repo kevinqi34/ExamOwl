@@ -14,6 +14,7 @@ if ($type == "comment") {
 } else if ($type == "thread") {
   $results = new thread($id);
   $results->delete_threads();
+  echo $this->priveleges;
   $results->pagination($page_number, $size);
 
 } else {
