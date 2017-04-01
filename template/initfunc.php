@@ -315,6 +315,33 @@ class template {
 	}
 
 
+	public function display_description() {
+		// Grab Variables
+		$category = $_GET["cat-id"];
+		$thread = $_GET["thread-id"];
+
+		if ($category) {
+			$query = "SELECT LATEST_POST FROM CATEGORY WHERE ID ='$category';";
+		} else if ($thread) {
+			$query = "SELECT CONTENT FROM THREADS WHERE ID='$thread';";
+		} else {
+			$query = false;
+		}
+		if ($query) {
+			$db = new db();
+			$title = $db->select($query);
+			if ($title["LATEST_POST"]) {
+				echo $title["LATEST_POST"];
+			} else {
+				$content = strip_tags($title["CONTENT"]);
+				echo $content;
+			}
+		} else {
+			echo $template->description;
+		}
+
+	}
+
 
 }
 
