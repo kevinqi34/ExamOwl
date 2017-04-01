@@ -898,6 +898,7 @@ class user extends db {
    // Create Title
    $title =  $type . '_user_' . $name;
    // Create Content
+   $content = str_replace("'","\'", $content);
    echo $content;
    /*
    // Save Title and Content into Database
