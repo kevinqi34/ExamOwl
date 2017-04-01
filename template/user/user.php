@@ -420,6 +420,35 @@ class user extends db {
 
   // User Profile -- Displays User Threads
   public function profile($email) {
+    // Establish Privileges
+    // Grab User Data
+    $email = $_SESSION["email"];
+    // Validate
+    $error = false;
+    $val_email = new validation($email);
+    $error = $val_email->check_mail();
+    if (!$error) {
+      // Grab Data
+      $query = "SELECT * FROM USER WHERE EMAIL = '$email';";
+      if (parent::select($query)) {
+        $user_data = parent::select($query);
+        // Set Variables
+        $this->email = $email;
+        $this->privelege = $user_data["USER_TYPE"];
+      } else {
+          echo "Data not recieved.";
+          return false;
+      }
+    } else {
+      $this->error = $error;
+      return false;
+    }
+
+    echo $this->privelege;
+
+
+    /*
+
     // Own Profile
     if (!$email) {
     // Grab User Data
@@ -472,7 +501,7 @@ class user extends db {
         $size = sizeof($thread_data);
         // Set Variables
         $this->email = $email;
-        $this->privelege = $user_data["USER_TYPE"];
+        $this->privelege = "none";
         // Create Profile
         include($_SERVER['DOCUMENT_ROOT'] . '/data/user/profile/profile_view_template.php');
       } else {
@@ -484,6 +513,8 @@ class user extends db {
       return false;
     }
   }
+
+  */
 
   }
 
