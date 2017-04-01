@@ -73,6 +73,7 @@ function createSlug($string) {
 // Redirects if user is not an admin and logged in
 function check_admin_login() {
 	// First Check Login
+	check_login();
 	if (!check_login()) {
 		$user = $_SESSION['email'];
 		// Find User Type
