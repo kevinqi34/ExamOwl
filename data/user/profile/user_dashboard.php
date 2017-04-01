@@ -22,12 +22,12 @@ $percent = round($this->num_of_ver_users / $num_of_users * 100);
   <!-- Top IQ Users -->
   <br>
   <h3>Top IQ Users</h3>
-  <br>
   <?php $data = $this->get_top_IQ_users(); ?>
   <?php include($_SERVER['DOCUMENT_ROOT'] . '/data/user/profile/user_table.php') ?>
 
   <!-- Users Over 1000 IQ -->
-  <h2>Users Over 1000 IQ</h2>
+  <br>
+  <h3>Users Over 1000 IQ</h3>
   <?php $data = $this->get_IQ_winners(); ?>
   <?php include($_SERVER['DOCUMENT_ROOT'] . '/data/user/profile/user_table.php') ?>
 
