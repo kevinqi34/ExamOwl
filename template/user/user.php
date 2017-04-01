@@ -896,8 +896,6 @@ class user extends db {
  // Creates user record file in database
  private function write_database($name, $content, $type) {
    // Create Title
-   $title = $type . '_user_' . $name;
-   echo $content;
    // Save Title and Content into Database
    $query = "INSERT INTO USER_RECORDS (TITLE, CONTENT) VALUES ('$title', '$content');";
    if (parent::query($query)) {
