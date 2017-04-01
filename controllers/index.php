@@ -18,7 +18,7 @@ if (!$category_id && !$thread_id) {
   $thread->create_header();
   $thread->delete_threads();
   $thread->return_threads();
-  $thread->display_threads();
+  $thread->display_threads($page_id);
   echo '</div>';
 
 } else if ($thread_id) {

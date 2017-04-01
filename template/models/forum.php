@@ -194,10 +194,15 @@ class thread extends db {
   }
 
   // Returns Threads From Database
-  public function return_threads() {
+  public function return_threads($page_id) {
     $limit = 20;
     $this->limit = $limit;
-    $query = "SELECT * FROM THREADS WHERE CAT_ID = '$this->cat_id' ORDER BY TYPE DESC, CREATE_DATE DESC LIMIT $limit;";
+    if ($page_id) {
+      $start = $page_id * $size;
+      $query = "SELECT * FROM THREADS WHERE CAT_ID = '$this->cat_id' ORDER BY TYPE DESC, CREATE_DATE DESC LIMIT $limit, $start;";
+    } else {
+      $query = "SELECT * FROM THREADS WHERE CAT_ID = '$this->cat_id' ORDER BY TYPE DESC, CREATE_DATE DESC LIMIT $limit;";
+    }
     $data = parent::select_multi($query);
     if ($data) {
      $this->data = $data;
