@@ -195,7 +195,7 @@ class thread extends db {
 
   // Returns Threads From Database
   public function return_threads($page_id) {
-    $limit = 20;
+    $limit = 5;
     $this->limit = $limit;
     if ($page_id) {
       $start = $page_id * $limit;
