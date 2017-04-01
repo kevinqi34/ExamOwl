@@ -128,7 +128,8 @@ class validation {
   public function username_validate() {
     $error = false;
     $query = "SELECT NAME FROM USER WHERE NAME = '$this->data';";
-    $data = parent::select($query);
+    $db = new db();
+    $data = $db->select($query);
     if ($data) {
       $error = "Username already exists. Please try another one.";
       return $error;
