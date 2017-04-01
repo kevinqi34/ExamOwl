@@ -1,0 +1,8 @@
+User-Agent: *
+Disallow:
+Allow: /
+
+User-Agent: Googlebot
+Allow: /
+
+Sitemap: https://examowl.co/sitemap.xml
