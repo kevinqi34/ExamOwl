@@ -304,7 +304,7 @@ class thread extends db {
   public function delete_threads() {
     // Check if User is Admin
     $this->email = $_SESSION['email'];
-    echo "hello";
+    echo $this->email;
     // check if null
     if ($this->email != null) {
       $query = "SELECT * FROM USER WHERE EMAIL = '$this->email';";
