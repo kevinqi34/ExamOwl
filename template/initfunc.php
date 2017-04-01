@@ -282,7 +282,35 @@ class template {
 			echo $this->title;
 		}
 
+	}
 
+
+	public function display_keywords() {
+		// Grab Variables
+		$category = $_GET["cat-id"];
+		$thread = $_GET["thread-id"];
+		$resource = $_GET["id"];
+
+		if ($category) {
+			$query = "SELECT NAME FROM CATEGORY WHERE ID ='$category';";
+		} else if ($thread) {
+			$query = "SELECT TITLE FROM THREADS WHERE ID='$thread';";
+		} else if ($resource) {
+			$query = "SELECT TITLE FROM RESOURCES WHERE ID='$resource';";
+		} else {
+			$query = false;
+		}
+		if ($query) {
+			$db = new db();
+			$title = $db->select($query);
+			if ($title["NAME"]) {
+				echo $title["NAME"];
+			} else {
+				echo $title["TITLE"];
+			}
+		} else {
+			echo $template->keywords;
+		}
 
 	}
 
