@@ -898,7 +898,7 @@ class user extends db {
    // Create Title
    $title =  $type . '_user_' . $name;
    // Create Content
-   $content = '"' . $content . '"';
+   $content =  html_entity_decode($content);
    echo $content;
    // Save Title and Content into Database
    $query = "INSERT INTO USER_RECORDS (TITLE, CONTENT) VALUES ('$title', '$content');";
