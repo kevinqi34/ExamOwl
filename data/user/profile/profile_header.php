@@ -3,15 +3,17 @@
   <p>IQ: <b><?php echo $user_data["IQ"]; ?></b></p>
   <p>Joined <?php echo $date ?></p>
   <p># of Posts: <?php echo $size; ?></p>
+<!-- Display User ID -->
 <?php  if ($this->privelege == "admin" || $this->privelege == "sadmin") { ?>
   <p>User ID: <?php echo $user_id; ?></p>
-<?php  } ?>  
+<?php  } ?>
+<!-- -->
   <p id="error" style="display:none;"><?php echo $this->error; ?></p>
 </div>
 
 <!-- Assign Priveleges -->
 <?php
-  if ($this->privelege == "admin" || $this->privelege == "sadmin") {
+  if ($this->privelege == "admin" || $this->privelege == "sadmin" && $SESSION["EMAIL"] != $this->email) {
     $privelege = "admin";
   } else if ($this->privelege == "none") {
     $privelege = "none";
