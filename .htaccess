@@ -6,6 +6,8 @@
     RewriteRule ^category/([0-9]+)/[A-Za-z-]+/?$    ?cat-id=$1
     RewriteRule ^category/([0-9]+)/[A-Za-z-]+/([0-9]+) ?cat-id=$1&page-id=$2
     RewriteRule ^thread/([0-9]+)/[A-Za-z-]+/?$    ?thread-id=$1
+    RewriteCond %{HTTP_USER_AGENT} libwww-perl.*
+    RewriteRule .* ? [F,L]
 
 </IfModule>
 
