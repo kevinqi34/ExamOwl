@@ -17,8 +17,8 @@ if (!$category_id && !$thread_id) {
   echo "<div id='content_box'>";
   $thread->create_header();
   $thread->delete_threads();
-  $thread->return_threads();
-  $thread->display_threads($page_id);
+  $thread->return_threads($page_id);
+  $thread->display_threads();
   echo '</div>';
 
 } else if ($thread_id) {
