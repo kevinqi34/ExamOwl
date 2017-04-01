@@ -23,6 +23,7 @@
 
 <!-- Menu for Admin and SAdmin -->
 <?php
+if ($is_user) {
 if ($privelege == "admin") {
 ?>
 <p class="menu" id="posts">My Posts</p>
@@ -36,7 +37,5 @@ if ($privelege == "admin") {
 <p class="menu" id="posts">My Posts</p>
 <p class="menu" id="settings">Settings</p>
 <hr />
-<?php } else if ($privelege == "none") { ?>
-<!-- For Viewing other profiles -->
-
-<?php } else { return false; } ?>
+<!-- For Viewing other Profiles -->
+<?php }} else { return false; }?>

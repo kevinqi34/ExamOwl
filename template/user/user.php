@@ -445,6 +445,7 @@ class user extends db {
           date_default_timezone_set ( "UTC" );
           $date = time_elapsed_string($user_data["CREATE_DATE"]);
           $size = sizeof($thread_data);
+          $is_user = true; // Determines that this isn't the same user
           // Create Profile
           include($_SERVER['DOCUMENT_ROOT'] . '/data/user/profile/profile_template.php');
         } else { // Return Other Profiles
