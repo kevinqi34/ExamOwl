@@ -6,9 +6,10 @@
     RewriteRule ^category/([0-9]+)/[A-Za-z-]+/?$    ?cat-id=$1
     RewriteRule ^category/([0-9]+)/[A-Za-z-]+/([0-9]+) ?cat-id=$1&page-id=$2
     RewriteRule ^thread/([0-9]+)/[A-Za-z-]+/?$    ?thread-id=$1
-    RewriteCond %{HTTP_HOST} !^www.examowl.co$ [NC]
-    RewriteRule ^(.*)$ https://www.examowl.co/$1 [L,R=301]
-    
+
+    #RewriteCond %{HTTP_HOST} !^www.examowl.co$ [NC]
+    #RewriteRule ^(.*)$ https://www.examowl.co/$1 [L,R=301]
+
 </IfModule>
 
 <IfModule mod_expires.c>
