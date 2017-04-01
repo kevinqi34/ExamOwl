@@ -934,7 +934,7 @@ class user extends db {
      if ($data) {
        $title = $data["TITLE"];
        $content = $data["CONTENT"];
-       echo "<h2>" . $title . "</h2>";
+       echo "<h2>Title: " . $title . "</h2>";
        echo $content;
      } else {
        echo "No User Records Found";
