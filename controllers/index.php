@@ -5,7 +5,6 @@ $category_id = $_GET["cat-id"];
 $thread_id = $_GET["thread-id"];
 $thread_name = $_GET["slug"];
 $page_id = $_GET["page-id"];
-echo $page_id;
 // Load Main Categories when there are no IDs
 if (!$category_id && !$thread_id) {
   $category = new category();

@@ -44,5 +44,8 @@ foreach($this->data as $thread) {
     echo '<input type="hidden" value="thread" id="load_type" />';
     echo '<input type="hidden" value="' . $this->cat_id . '" id="load_id" />';
     echo '</div>';
+    // For SEO Purposes
+    $url = url() . "category/" . $this->cat_id . "/" . $data["SLUG"] . "/" . $val . "/";
+    echo '<a style="display:none" href="'. $url . '"></a>';
   }
 ?>
