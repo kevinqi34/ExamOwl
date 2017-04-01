@@ -899,7 +899,9 @@ class user extends db {
    $title =  $type . '_user_' . $name;
    // Create Content
    $content =  html_entity_decode($content);
+   $content = mysql_real_escape_string($content);
    echo $content;
+   /*
    // Save Title and Content into Database
    $query = "INSERT INTO USER_RECORDS (TITLE, CONTENT) VALUES ('$title', '$content');";
    if (parent::query($query)) {
@@ -908,6 +910,7 @@ class user extends db {
      $this->error = "Error inserting record to DB.";
      return false;
    }
+   */
  }
 
 
