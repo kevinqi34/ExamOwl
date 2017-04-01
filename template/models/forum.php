@@ -304,6 +304,7 @@ class thread extends db {
   public function delete_threads() {
     // Check if User is Admin
     $this->email = $_SESSION['email'];
+    echo "hello";
     // check if null
     if ($this->email != null) {
       $query = "SELECT * FROM USER WHERE EMAIL = '$this->email';";
@@ -366,7 +367,6 @@ class thread extends db {
 
   // pagination
   public function pagination($val, $size) {
-    echo $this->email;
     // Validate Data
     if (!is_numeric($this->cat_id) && !is_numeric($val) && !is_numeric($size)) {
       return false;
