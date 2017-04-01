@@ -3,6 +3,9 @@
   <p>IQ: <b><?php echo $user_data["IQ"]; ?></b></p>
   <p>Joined <?php echo $date ?></p>
   <p># of Posts: <?php echo $size; ?></p>
+<?php  if ($this->privelege == "admin" || $this->privelege == "sadmin") { ?>
+  <p>User ID: <?php echo $user_id; ?></p>
+<?php  } ?>  
   <p id="error" style="display:none;"><?php echo $this->error; ?></p>
 </div>
 
