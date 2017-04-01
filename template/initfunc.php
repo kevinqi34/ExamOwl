@@ -309,7 +309,7 @@ class template {
 				echo $title["TITLE"];
 			}
 		} else {
-			echo $template->keywords;
+			echo $this->keywords;
 		}
 
 	}
@@ -337,7 +337,7 @@ class template {
 				echo $content;
 			}
 		} else {
-			echo $template->description;
+			echo $this->description;
 		}
 
 	}
