@@ -74,6 +74,7 @@ function createSlug($string) {
 function check_admin_login() {
 	// First Check Login
 	check_login();
+	/*
 	if (!check_login()) {
 		$user = $_SESSION['email'];
 		// Find User Type
@@ -90,6 +91,7 @@ function check_admin_login() {
 	} else {
 		return false;
 	}
+	*/
 }
 
 
