@@ -234,6 +234,7 @@ class template {
 		$thread = $_GET["thread-id"];
 		$resource = $_GET["id"];
 		$user = $_GET["user-id"];
+		$record = $_GET["record-id"];
 		if ($category) {
 			$query = "SELECT NAME FROM CATEGORY WHERE ID ='$category';";
 		} else if ($thread) {
@@ -242,6 +243,8 @@ class template {
 			$query = "SELECT TITLE FROM RESOURCES WHERE ID='$resource';";
 		} else if ($user) {
 			$query = "SELECT NAME FROM USER WHERE ID = '$user';";
+		} else if ($record) {
+			$query = "SELECT TITLE FROM USER_RECORDS WHERE ID = '$record';";
 		} else {
 			$query = false;
 		}
