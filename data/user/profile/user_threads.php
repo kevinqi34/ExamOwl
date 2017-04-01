@@ -1,6 +1,6 @@
 <div class="profile_posts profile_header">
 <!-- If viewing other's profile -->
-<?php if ($privelege == "none") {?>
+<?php if (!$is_user) {?>
   <?php
   if ($size == 0) {
     echo "<p style='text-align:center;'>This user hasn't posted anything yet.</p>";
