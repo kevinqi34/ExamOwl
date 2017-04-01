@@ -697,9 +697,9 @@ class user extends db {
        if (parent::query($query)) {
          echo "User undisabled";
          // Remove From User Records
-         $url = "user_records/disabled_user_" . $user_name . '_' . $user_id . '.html';
+         $title =   'disabled_user_'  . $user_name . '_' . $user_id;
 
-         $query = "DELETE FROM USER_RECORDS WHERE SLUG = '$url';";
+         $query = "DELETE FROM USER_RECORDS WHERE TITLE = '$title';";
          if (parent::query($query)) {
            //echo "User data updated.";
          } else {
