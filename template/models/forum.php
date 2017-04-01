@@ -376,13 +376,9 @@ class thread extends db {
       $query = "SELECT * FROM THREADS WHERE CAT_ID = '$this->cat_id' ORDER BY TYPE DESC, CREATE_DATE DESC LIMIT $start, $size;";
       $data = parent::select_multi($query);
       $this->data = $data;
-      // Create Comments
+      // Create Threads
       include($_SERVER['DOCUMENT_ROOT'] . '/data/forum/thread.php');
     }
-
-
-
-
   }
 
 }
