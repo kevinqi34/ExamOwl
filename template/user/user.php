@@ -448,8 +448,33 @@ class user extends db {
           // Create Profile
           include($_SERVER['DOCUMENT_ROOT'] . '/data/user/profile/profile_template.php');
         } else { // Return Other Profiles
-
-
+          // Validate
+          $error = false;
+          $val_email = new validation($email);
+          $error = $val_email->check_mail();
+          if (!$error) {
+            // Grab Data
+            $query = "SELECT * FROM USER WHERE EMAIL = '$email';";
+            if (parent::select($query)) {
+              $user_data = parent::select($query);
+              $user_id = $user_data["ID"];
+              // Grab Thread Data
+              $query = "SELECT * FROM THREADS WHERE USER_ID = '$user_id';";
+              $thread_data = parent::select_multi($query);
+              date_default_timezone_set ( "UTC" );
+              $date = time_elapsed_string($user_data["CREATE_DATE"]);
+              $size = sizeof($thread_data);
+              $is_user = false; // Determines that this isn't the same user
+              // Create Profile
+              include($_SERVER['DOCUMENT_ROOT'] . '/data/user/profile/profile_view_template.php');
+            } else {
+                echo "Data not recieved.";
+                return false;
+            }
+          } else {
+              echo "Email not valid.";
+              return false;
+          }
         }
       } else {
           echo "Data not recieved.";
@@ -460,7 +485,7 @@ class user extends db {
       return false;
     }
 
-    /*
+/*
     // Own Profile
     if (!$email) {
     // Grab User Data
