@@ -8,6 +8,8 @@
 
    <!-- Insert Site Icon -->
    <a href="<?php echo url(); ?>"><img src="<?php echo url(); ?>images/logo.png" alt="logo"></a>
+   <!-- For SEO Purposes -->
+   <h1><?php echo $title ?></h1>
 
    <!-- User Accounts -->
    <?php if ( $_SESSION['email'] ) { ?>
