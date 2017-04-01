@@ -67,6 +67,9 @@ class user extends db {
       // Validate Name
       $name = new validation($this->name);
       $error = $name->gen_validate(3,30);
+      if ($error == false) {
+        $error = $name->username_validate(); // Validate Username
+      }
       // Validate Email
       if ($error == false) {
       $email = new validation($this->email);
