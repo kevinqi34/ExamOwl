@@ -1,4 +1,4 @@
-<h2>Deleted User's Res</h2>
+<h2>User's Res</h2>
 <table>
   <tr>
     <th>ID</th>
