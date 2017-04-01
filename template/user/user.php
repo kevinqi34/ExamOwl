@@ -472,7 +472,7 @@ class user extends db {
         $size = sizeof($thread_data);
         // Set Variables
         $this->email = $email;
-        $this->privelege = "none";
+        $this->privelege = $user_data["USER_TYPE"];
         // Create Profile
         include($_SERVER['DOCUMENT_ROOT'] . '/data/user/profile/profile_view_template.php');
       } else {
