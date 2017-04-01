@@ -945,5 +945,14 @@ class user extends db {
  }
 
 
+
+ // Get User Dashboard Data
+ public function get_top_IQ_users() {
+   $query = "SELECT NAME, EMAIL, IQ FROM USER ORDER BY IQ DESC LIMIT 20;";
+   $data = parent::select_multi($query);
+   return $data;
+ }
+
+
 }
 ?>
