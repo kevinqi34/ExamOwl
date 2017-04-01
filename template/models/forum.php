@@ -366,6 +366,7 @@ class thread extends db {
 
   // pagination
   public function pagination($val, $size) {
+    echo $this->email;
     // Validate Data
     if (!is_numeric($this->cat_id) && !is_numeric($val) && !is_numeric($size)) {
       return false;
