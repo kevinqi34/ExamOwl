@@ -70,6 +70,28 @@ function createSlug($string) {
 
 }
 
+// Redirects if user is not an admin and logged in
+function check_admin_login() {
+	// First Check Login
+	if (!$check_login()) {
+		$user = $_SESSION['email'];
+		// Find User Type
+		$query = "SELECT USER_TYPE FROM USER WHERE EMAIL = '$user';";
+		$db = new db();
+		$user_type = $db->select($query);
+		$user_type = $user_type["USER_TYPE"];
+		if ($user_type == "admin" || $user_type == "sadmin") {
+			return true;
+		} else {
+			// Redirect
+			header("Location: ". url());
+		}
+	} else {
+		return false;
+	}
+}
+
+
 // Redirects if user is not logged in
 function check_login() {
 	$user = $_SESSION['email'];

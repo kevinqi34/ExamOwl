@@ -927,6 +927,8 @@ class user extends db {
 
  // Show User Records
  public function show_records($id) {
+   // Check if Admin
+   // Redirect if not
    
 
 
