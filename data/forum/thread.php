@@ -32,11 +32,11 @@ foreach($this->data as $thread) {
 <?php
   $size = sizeof($this->data);
   if ($size == $limit) {
-    if ($val) {
-      $val = $val + 1;
+    if ($page_id) {
+      $val = $page_id + 1;
     } else {
-      if ($page_id) {
-        $val = $page_id + 1;
+      if ($val) {
+        $val = $val + 1;
       } else {
         $val = 1;
       }
