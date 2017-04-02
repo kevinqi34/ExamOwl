@@ -8,10 +8,6 @@
     RewriteRule ^thread/([0-9]+)/[A-Za-z-]+/?$    ?thread-id=$1
     RewriteCond %{HTTP_USER_AGENT} libwww-perl.*
     RewriteRule .* ? [F,L]
-    RewriteCond %{HTTP_HOST} !^www.examowl.co$ [NC]
-    RewriteRule ^(.*)$ https://www.examowl.co/$1 [L,R=301]
-    RewriteCond %{HTTPS} off
-    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 </IfModule>
 
