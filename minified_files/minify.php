@@ -1,7 +1,7 @@
 <?php
 	include_once("minifier.php");
 
-	/* FILES ARRAYs
+	/* FILES ARRAYS
 	 * Keys as input, Values as output */
 
 	$js = array(
@@ -18,7 +18,7 @@
     "../js/user.js" 	=> "./js/user.min.js",
     // Jquery Folder
     "../js/jquery/jquery-1.11.2.js" => "./js/jquery/jquery-1.11.2.min.js",
-    
+
 
 	);
 
