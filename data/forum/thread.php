@@ -2,6 +2,9 @@
 date_default_timezone_set ( "UTC" );
 foreach($this->data as $thread) {
   $date = time_elapsed_string($thread["CREATE_DATE"]);
+  // For Most Recent Responder
+  $latest_author = $thread["LAST_COMMENT_AUTHOR"];
+  $last_response_date = time_elapsed_string($thread["LAST_COMMENT_DATE"]);
 ?>
 <a href="<?php echo url(); ?>thread/<?php echo $thread["ID"]; ?>/<?php echo $thread["SLUG"]; ?>">
 <?php if ($thread["TYPE"] == 'STICK') { ?>
@@ -12,6 +15,11 @@ foreach($this->data as $thread) {
   <h3><?php echo $thread["TITLE"]; ?></h3>
   <p># of Responses: <?php echo $thread["NUM_OF_COMMENTS"]; ?></p>
   <p>Posted <?php echo $date; ?> by <?php echo $thread["AUTHOR"]; ?></p>
+<?php if ($latest_author) { ?>
+  <p>Last Response by <?php echo $latest_author . " " . $last_response_date; ?></p>
+<?php } else { ?>
+  <p>No Responses Yet</p>
+<?php } ?>
 <?php
   if ($this->privileges == 'admin') {
 ?>
