@@ -16,7 +16,7 @@ foreach($this->data as $thread) {
   <p># of Responses: <?php echo $thread["NUM_OF_COMMENTS"]; ?></p>
   <p>Posted <?php echo $date; ?> by <?php echo $thread["AUTHOR"]; ?></p>
 <?php if ($latest_author) { ?>
-  <p>Last Response by <?php echo $latest_author . " " . $last_response_date; ?></p>
+  <p>Latest Response by <?php echo $latest_author . " " . $last_response_date; ?></p>
 <?php } else { ?>
   <p>No Responses Yet</p>
 <?php } ?>
