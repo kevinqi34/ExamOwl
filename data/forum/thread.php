@@ -3,8 +3,8 @@ date_default_timezone_set ( "UTC" );
 foreach($this->data as $thread) {
   $date = time_elapsed_string($thread["CREATE_DATE"]);
   // For Most Recent Responder
-  $latest_author = $thread["LAST_COMMENT_AUTHOR"];
-  $last_response_date = time_elapsed_string($thread["LAST_COMMENT_DATE"]);
+  $latest_author = $thread["LATEST_COMMENT_AUTHOR"];
+  $last_response_date = time_elapsed_string($thread["LATEST_COMMENT_DATE"]);
 ?>
 <a href="<?php echo url(); ?>thread/<?php echo $thread["ID"]; ?>/<?php echo $thread["SLUG"]; ?>">
 <?php if ($thread["TYPE"] == 'STICK') { ?>
