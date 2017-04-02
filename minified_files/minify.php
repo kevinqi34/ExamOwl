@@ -5,8 +5,21 @@
 	 * Keys as input, Values as output */
 
 	$js = array(
-	//	"js/application.js" 	=> "js/application.min.js",
-	//	"js/main.js" 			=> "js/main.min.js"
+    // JS Main Folder
+		"../js/calculator.js" 	=> "./js/calculator.min.js",
+    "../js/outputs.js" 	=> "./js/outputs.min.js",
+    "../js/pagination.js" 	=> "./js/pagination.min.js",
+    "../js/post_resource.js" 	=> "./js/post_resource.min.js",
+    "../js/post_thread.js" 	=> "./js/post_thread.min.js",
+    "../js/profile.js" 	=> "./js/profile.min.js",
+    "../js/resend_email.js" 	=> "./js/resend_email.min.js",
+    "../js/template.js" 	=> "./js/template.min.js",
+    "../js/tool_menu.js" 	=> "./js/tool_menu.min.js",
+    "../js/user.js" 	=> "./js/user.min.js",
+    // Jquery Folder
+    "../js/jquery/jquery-1.11.2.js" => "./js/jquery/jquery-1.11.2.min.js",
+    
+
 	);
 
 	$css = array(
