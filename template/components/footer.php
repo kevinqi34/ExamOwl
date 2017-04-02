@@ -10,8 +10,7 @@
 
 
 
-<!-- Additional Stylesheets -->
-<?php $template->create_stylesheets($template->css); ?>
+
 
 
 <!-- Template Scripts -->

@@ -18,6 +18,9 @@
 <link rel="stylesheet" href="<?php echo url(); ?>minified_files/css/template/footer.min.css">
 <link rel="stylesheet" href="<?php echo url(); ?>minified_files/css/template/outputs.min.css">
 
-<!-- Scripts and other stylesheets rendered in footer -->
+<!-- Additional Stylesheets -->
+<?php $template->create_stylesheets($template->css); ?>
+
+<!-- Scripts rendered in footer -->
 
 </head>
