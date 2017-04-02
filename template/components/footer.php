@@ -8,13 +8,7 @@
 		<br>
 </div>
 
-<!-- Template Stylesheets -->
-<link rel="stylesheet" href="<?php echo url(); ?>minified_files/css/template/template.min.css">
-<link rel="stylesheet" href="<?php echo url(); ?>minified_files/css/template/header.min.css">
-<link rel="stylesheet" href="<?php echo url(); ?>minified_files/css/template/side_menu.min.css">
-<link rel="stylesheet" href="<?php echo url(); ?>minified_files/css/template/content.min.css">
-<link rel="stylesheet" href="<?php echo url(); ?>minified_files/css/template/footer.min.css">
-<link rel="stylesheet" href="<?php echo url(); ?>minified_files/css/template/outputs.min.css">
+
 
 <!-- Additional Stylesheets -->
 <?php $template->create_stylesheets($template->css); ?>
