@@ -8,7 +8,7 @@
   $description = "Exam Owl is an online community that helps students achieve excellence.";
   $content = "/data/user/verify_email.php";
   $css = ['minified_files/css/user/user.min.css'];
-  $js = ['js/user.js', 'js/resend_email.js'];
+  $js = ['minified_files/js/user.min.js', 'minified_files/js/resend_email.min.js'];
   // Instantiate template
   $template = new template($title, $keywords, $description, $content);
   $template->add_style($css);

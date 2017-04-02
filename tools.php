@@ -8,7 +8,7 @@
   $description = "Find out how prepared you are for the your AP, IB, SAT, ACT or subject test exams using Exam Owl's scoring calculators and tools. Tags: Advanced Placement Calculator, IB diploma Calculator, SAT/ACT Calculator, SAT subject tests Calculator";
   $content = "/data/tools.php";
   $css = ['minified_files/css/template/tool_menu.min.css'];
-  $js = ['js/tool_menu.js'];
+  $js = ['minified_files/js/tool_menu.min.js'];
   // Instantiate template
   $template = new template($title, $keywords, $description, $content);
   $template->add_style($css);

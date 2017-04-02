@@ -9,7 +9,7 @@
   $description = "Exam Owl is an online community that helps students achieve academic excellence.";
   $content = "/data/resources/post_resource.php";
   $css = ['minified_files/css/forum/post_thread.min.css'];
-  $js = ['js/post_resource.js'];
+  $js = ['minified_files/js/post_resource.min.js'];
   // Instantiate template
   $template = new template($title, $keywords, $description, $content);
   $template->add_style($css);
