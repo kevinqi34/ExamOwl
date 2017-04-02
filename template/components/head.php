@@ -11,12 +11,12 @@
 <?php include($_SERVER['DOCUMENT_ROOT']  . '/template/components/seo.php')?>
 
 <!-- Template Stylesheets -->
-<link rel="stylesheet" href="<?php echo url(); ?>css/template/template.css">
-<link rel="stylesheet" href="<?php echo url(); ?>css/template/header.css">
-<link rel="stylesheet" href="<?php echo url(); ?>css/template/side_menu.css">
-<link rel="stylesheet" href="<?php echo url(); ?>css/template/content.css">
-<link rel="stylesheet" href="<?php echo url(); ?>css/template/footer.css">
-<link rel="stylesheet" href="<?php echo url(); ?>css/template/outputs.css">
+<link rel="stylesheet" href="<?php echo url(); ?>minified_files/css/template/template.min.css">
+<link rel="stylesheet" href="<?php echo url(); ?>minified_files/css/template/header.min.css">
+<link rel="stylesheet" href="<?php echo url(); ?>minified_files/css/template/side_menu.min.css">
+<link rel="stylesheet" href="<?php echo url(); ?>minified_files/css/template/content.min.css">
+<link rel="stylesheet" href="<?php echo url(); ?>minified_files/css/template/footer.min.css">
+<link rel="stylesheet" href="<?php echo url(); ?>minified_files/css/template/outputs.min.css">
 
 <!-- Additional Stylesheets -->
 <?php $template->create_stylesheets($template->css); ?>
