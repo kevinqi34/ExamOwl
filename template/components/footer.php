@@ -8,6 +8,18 @@
 		<br>
 </div>
 
+<!-- Template Stylesheets -->
+<link rel="stylesheet" href="<?php echo url(); ?>minified_files/css/template/template.min.css">
+<link rel="stylesheet" href="<?php echo url(); ?>minified_files/css/template/header.min.css">
+<link rel="stylesheet" href="<?php echo url(); ?>minified_files/css/template/side_menu.min.css">
+<link rel="stylesheet" href="<?php echo url(); ?>minified_files/css/template/content.min.css">
+<link rel="stylesheet" href="<?php echo url(); ?>minified_files/css/template/footer.min.css">
+<link rel="stylesheet" href="<?php echo url(); ?>minified_files/css/template/outputs.min.css">
+
+<!-- Additional Stylesheets -->
+<?php $template->create_stylesheets($template->css); ?>
+
+
 <!-- Template Scripts -->
 <script type="text/javascript" src="<?php echo url(); ?>minified_files/js/jquery/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="<?php echo url(); ?>minified_files/js/template.min.js"></script>
