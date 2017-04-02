@@ -7,7 +7,7 @@
   $keywords = "Study for Exams, Exam Community";
   $description = "Exam Owl is an online community that helps students achieve excellence.";
   $content = "/data/user/reset_password.php";
-  $css = ['css/user/user.css'];
+  $css = ['minified_files/css/user/user.min.css'];
   // Instantiate template
   $template = new template($title, $keywords, $description, $content);
   $template->add_style($css);
