@@ -21,13 +21,6 @@
 <!-- Additional Stylesheets -->
 <?php $template->create_stylesheets($template->css); ?>
 
-<!-- Template Scripts 
-<script src="<?php echo url(); ?>minified_files/js/jquery/jquery-1.11.2.min.js"></script>
-<script src="<?php echo url(); ?>minified_files/js/template.min.js"></script>
-<script src="<?php echo url(); ?>minified_files/js/outputs.min.js"></script>
-
- Additional Scripts -->
-<?php $template->create_scripts($template->js); ?>
 
 
 </head>
