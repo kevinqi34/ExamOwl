@@ -8,7 +8,7 @@
   $keywords = "Study for Exams, Exam Community";
   $description = "Exam Owl is an online community that helps students achieve academic excellence.";
   $content = "/data/resources/post_resource.php";
-  $css = ['css/forum/post_thread.css'];
+  $css = ['minified_files/css/forum/post_thread.min.css'];
   $js = ['js/post_resource.js'];
   // Instantiate template
   $template = new template($title, $keywords, $description, $content);

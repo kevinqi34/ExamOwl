@@ -7,7 +7,7 @@
   $keywords = "Advanced Placement Tests Resources, IB Test Resources, SAT/ACT Test Resources";
   $description = "Use Exam Owl's user created resource bank to study for AP, IB, SAT or ACT exams. Tags: AP Test Prep, IB Test Prep, ACT/SAT Test Prep";
   $content = "/data/resources.php";
-  $css = ['css/template/tool_menu.css','css/template/resources.css'];
+  $css = ['minified_files/css/template/tool_menu.min.css','minified_files/css/template/resources.min.css'];
   $js = ['js/post_resource.js'];
   // Instantiate template
   $template = new template($title, $keywords, $description, $content);
