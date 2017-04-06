@@ -28,7 +28,7 @@
 			$handler = fopen($value, 'w') or die("File <a href='" . $value . "'>" . $value . "</a> error!<br />");
 			fwrite($handler, getMinified($url, file_get_contents($key)));
 			fclose($handler);
-			echo "File <a href='" . $value . "'>" . $value . "</a> done!<br />";
+			echo "File ". $value . " done!\n";
 		}
 	}
 

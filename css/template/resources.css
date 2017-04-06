@@ -1,3 +1,11 @@
+#output span {
+  
+  height: 45px;
+  width: 45px;
+
+}
+
+
 div.resource_header {
   text-align: left;
   overflow: auto;
@@ -49,6 +57,7 @@ div.resource_header div.img {
 }
 
 div.img img {
+
   position: absolute;
   margin: auto;
   top: 0px;
@@ -57,6 +66,7 @@ div.img img {
   right: 0px;
   max-height: 95%;
   max-width: 95%;
+
 
 }
 

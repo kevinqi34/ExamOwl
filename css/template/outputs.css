@@ -66,10 +66,49 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: white;
 
 
+}
+
+#output_content div.msg_wrapper {
+  width: 95%;
+
+}
+
+#output_content h2 {
+  width: 100%;
+  padding: 0px;
+  margin-bottom: 0px;
 
 
+}
+
+#output_content p {
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+  font-size: 15px;
+  font-weight: 100;
+
+
+}
+
+
+#output_content a {
+  display: block;
+  width: 100%;
+  color: skyblue;
+  border: 1px solid skyblue;
+  width: 150px;
+  margin: auto;
+  margin-top: 10px;
+
+}
+
+#output_content a:hover {
+  color: white;
+  border-color: white;
 
 }
 

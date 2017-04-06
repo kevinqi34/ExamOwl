@@ -16,6 +16,7 @@
     "../js/template.js" 	=> "./js/template.min.js",
     "../js/tool_menu.js" 	=> "./js/tool_menu.min.js",
     "../js/user.js" 	=> "./js/user.min.js",
+		"../js/cookies.js" => "./js/cookies.min.js",
     // Jquery Folder
     "../js/jquery/jquery-1.11.2.js" => "./js/jquery/jquery-1.11.2.min.js",
 
@@ -45,7 +46,6 @@
     // User Folder
     "../css/user/profile.css" => "./css/user/profile.min.css",
     "../css/user/user.css" => "./css/user/user.min.css"
-
 	);
 
 	minifyJS($js);
