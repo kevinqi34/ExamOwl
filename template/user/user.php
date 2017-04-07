@@ -332,6 +332,7 @@ class user extends db {
     $msg="";
     $msg=$msg . "<p>Dear " . $name . ",</p>";
     $msg=$msg . "<p>Welcome to the exam preparation community.</p>";
+    $msg=$msg . "<p>For a limited time, gain 1000 IQ points by posting in the forum and get rewarded with $10 through paypal or amazon giftcard.</p>";
     $msg=$msg . "<p>Featuring an active community and an extensive suite of tools designed to help test takers of all levels.</p>";
     $msg = $msg . "<p>Please verify your email address by clicking <a href='" . $url . "'>here</a>.</p>";
     $msg = $msg . "<p>-- The Exam Owl Team</p>";
