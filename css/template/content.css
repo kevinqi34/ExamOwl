@@ -16,7 +16,6 @@ div.content_wrapper {
   height: 100%;
   width: calc(100% - 50px);
   margin: auto;
-  padding-top: 25px;
 
 
 }
@@ -35,6 +34,7 @@ div.content_wrapper a {
 div.content_wrapper p {
   width: 95%;
   margin: auto;
+  margin-top: 10px;
 }
 
 
