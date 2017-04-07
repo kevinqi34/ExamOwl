@@ -5,8 +5,8 @@ $title = "Exam Owl | AP Biology";
 $keywords = "AP Bio, AP Biology, Biology Score, AP Score, AP Calculator, AP tests, college prep, AP courses, AP Exam, AP prep";
 $description = "Find out how prepared you are for the your AP Biology Exam using Exam Owl's scoring calculators and tools. Tags: Advanced Placement Calculator, IB diploma Calculator, SAT/ACT Calculator, SAT subject tests Calculator";
 $content = "/data/tools/aptests/biology.php";
-$css = ['css/tools/standard.css'];
-$js = ['js/calculator.js','js/ap/biology.js', 'js/ap/multi.js'];
+$css = ['minified_files/css/tools/standard.min.css'];
+$js = ['minified_files/js/calculator.min.js','minified_files/js/ap/biology.min.js', 'minified_files/js/ap/multi.min.js'];
 // Instantiate template
 $template = new template($title, $keywords, $description, $content);
 $template->add_style($css);

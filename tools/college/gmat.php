@@ -5,8 +5,8 @@ $title = "Exam Owl | GMAT";
 $keywords = "GMAT, GMAT test, Graduate Management Admissions test, GMAT score calculator, GMAT score predictor, college tests, grad school admissions";
 $description = "Find out how prepared you are for the your GMAT Exam using Exam Owl's scoring calculators and tools. Tags: GMAT, GMAT test, Graduate Management Admissions test, GMAT score calculator";
 $content = "/data/tools/college/gmat.php";
-$css = ['css/tools/standard.css'];
-$js = ['js/calculator.js','js/college/gmat.js'];
+$css = ['minified_files/css/tools/standard.min.css'];
+$js = ['minified_files/js/calculator.min.js','minified_files/js/college/gmat.min.js'];
 // Instantiate template
 $template = new template($title, $keywords, $description, $content);
 $template->add_style($css);

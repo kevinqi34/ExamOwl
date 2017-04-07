@@ -5,8 +5,8 @@ $title = "Exam Owl | IB Psychology HL/SL";
 $keywords = "IB Psychology, Psychology, Psychology SL, Psychology HL, IB score, IB Calculator, IB tests, college prep, IB courses, IB Exam, IB prep";
 $description = "Find out how prepared you are for the your IB Psychology HL/SL Exam using Exam Owl's scoring calculators and tools. Tags: Advanced Placement Calculator, IB diploma Calculator, SAT/ACT Calculator, SAT subject tests Calculator";
 $content = "/data/tools/ibtests/psychology.php";
-$css = ['css/tools/standard.css'];
-$js = ['js/calculator.js','js/ib/ibpsychology.js','js/ib/multib.js'];
+$css = ['minified_files/css/tools/standard.min.css'];
+$js = ['minified_files/js/calculator.min.js','minified_files/js/ib/ibpsychology.min.js','minified_files/js/ib/multib.min.js'];
 // Instantiate template
 $template = new template($title, $keywords, $description, $content);
 $template->add_style($css);

@@ -5,8 +5,8 @@ $title = "Exam Owl | AP Computer Science";
 $keywords = "AP Comp Sci, AP Computer Science, Computer Science, AP Score, AP Calculator, AP tests, college prep, AP courses, AP Exam, AP prep";
 $description = "Find out how prepared you are for the your AP Computer Science Exam using Exam Owl's scoring calculators and tools. Tags: Advanced Placement Calculator, IB diploma Calculator, SAT/ACT Calculator, SAT subject tests Calculator";
 $content = "/data/tools/aptests/computerscience.php";
-$css = ['css/tools/standard.css'];
-$js = ['js/calculator.js','js/ap/computerscience.js'];
+$css = ['minified_files/css/tools/standard.min.css'];
+$js = ['minified_files/js/calculator.min.js','minified_files/js/ap/computerscience.min.js'];
 // Instantiate template
 $template = new template($title, $keywords, $description, $content);
 $template->add_style($css);
