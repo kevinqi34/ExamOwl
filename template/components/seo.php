@@ -42,5 +42,13 @@ www.kqi18.com
 
   ga('create', 'UA-61741997-1', 'auto');
   ga('send', 'pageview');
+</script>
 
+<!-- Adsense -->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9947718741109223",
+    enable_page_level_ads: true
+  });
 </script>
