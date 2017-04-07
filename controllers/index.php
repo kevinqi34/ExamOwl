@@ -7,6 +7,11 @@ $thread_name = $_GET["slug"];
 $page_id = $_GET["page-id"];
 // Load Main Categories when there are no IDs
 if (!$category_id && !$thread_id) {
+
+  $sign_up_url = url() . "/user/signup.php";
+  echo "<p><b>Exam Owl</b> helps students ace their exams. Featuring a community of like-minded individuals and a suite of test preparation tools and resources.<br><a href='" . $sign_up_url . "'><big><b>Join Now</b></big></a> and <b>get exam help today</b>.</p>";
+  echo "<h2>Community Home</h2>";
+
   $category = new category();
   $category->return_categories();
   $category->display_categories('home');
