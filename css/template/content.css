@@ -31,10 +31,12 @@ div.content_wrapper a {
 
 }
 
-div.content_wrapper p {
-  width: 95%;
+div.content_wrapper p.p-header {
   margin: auto;
   margin-top: 10px;
+  width: 95%;
+
+
 }
 
 
