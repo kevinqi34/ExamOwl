@@ -69,7 +69,13 @@ class validation {
   public function is_profanity() {
     $bad_domains = array('https://www.xvideos.com','https://www.xhamster.com','https://www.pornhub.com','https://www.xnxx.com','https://www.redtube.com','https://www.youporn.com','https://www.tube8.com','https://www.youjizz.com','https://www.hclips.com/?','https://beeg.com','https://www.drtuber.com','https://www.porn.com');
     foreach($bad_domains as $domain) {
-      if (strcasecmp($domain, $this->data) == 0) {
+      $domain_v1 = $domain;
+      $segment = substr($domain, 12);
+      $domain_v2 = 'http://www.' . $segment;
+      $domain_v3 = 'https://' . $segment;
+      $domain_v4 = 'http://' . $segment;
+
+      if (strcasecmp($domain_v1, $this->data) == 0 || strcasecmp($domain_v2, $this->data) == 0 || strcasecmp($domain_v3, $this->data) == 0 || strcasecmp($domain_v4, $this->data) == 0) {
         return "Invalid URL.";
       }
     }
@@ -79,12 +85,13 @@ class validation {
 
   // Check for proper URL format
   public function link_format() {
-    $format = 'https://www';
+    $format = 'https://';
+    $format2 = 'http://';
     // Check if link contains format
-    if (strpos($this->data,$format) !== false) {
+    if (strpos($this->data,$format) !== false || strpos($this->data,$format2) !== false) {
       return false;
     } else {
-      return "The URL must be formated with " . $format;
+      return "The URL must be formated with " . $format . " or " . $format2;
     }
   }
 
