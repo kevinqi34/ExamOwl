@@ -39,6 +39,10 @@ div.content_wrapper p.p-header {
 
 }
 
+div.content_wrapper p.p-header a {
+ border: 1px solid steelblue;
+}
+
 
 @media screen and (max-width : 1000px){
 
