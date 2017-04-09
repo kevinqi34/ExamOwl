@@ -9,9 +9,9 @@ $page_id = $_GET["page-id"];
 if (!$category_id && !$thread_id) {
 
   $sign_up_url = url() . "/user/signup.php";
-  echo "<p class='p-header'><b>Exam Owl</b> helps students ace their exams. Featuring a community of like-minded individuals and a suite of test preparation tools and resources.</p>";
+  echo "<p class='p-header'>Pass difficult exams with tips and help from other students.</p>";
   echo "<p class='p-header'>For a limited time, gain 1000 IQ points by posting in the forum and get rewarded with <b>$10</b> through paypal or amazon giftcard.</p>";
-  echo "<p class='p-header'><a href='" . $sign_up_url . "'><big><b>Join now</b></big></a> and <b>get exam help today</b>.</p>";
+  echo "<p class='p-header'><big><a href='" . $sign_up_url . "'>Start Passing Exams Now</a><big>.</p>";
   echo "<h2>Community Home</h2>";
 
   $category = new category();
