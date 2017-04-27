@@ -107,7 +107,7 @@ $(document).ready(function() {
   // Outputs
   output();
 
-  conversion_optimization();
+  //conversion_optimization();
 
 
 });
