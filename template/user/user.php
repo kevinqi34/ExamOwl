@@ -76,7 +76,10 @@ class user extends db {
         // Validate Email
         if ($error == false) {
         $email = new validation($this->email);
-        $error = $email->email_validate();
+        $error = $email->email_unique();
+          if ($error == false) {
+            $error = $email->email_validate();
+          }
         }
         if ($error != false) {
           $error = "Email Error: " . $error;
