@@ -279,7 +279,15 @@ class template {
 				echo "Exam Owl | " . $title["TITLE"];
 			}
 		} else {
-			echo $this->title;
+			// Check Url for tools
+			$year = 2017;
+			$url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+			if (strpos($url,'tools') !== false) {
+				echo $this->title . " " . $year;
+			} else {
+			  echo $this->title;
+			}
+
 		}
 
 	}

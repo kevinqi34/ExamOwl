@@ -8,12 +8,13 @@
   $menu->pushtoArray("AP.jpg|GPA.jpg|IB.jpg|test.png|sats.png|college.png", "urlList");
 
 
+/*
   // Conversion msg
   $sign_up_url = url() . "/user/signup.php";
   echo "<p class='p-header'><b>Pass difficult exams with tips and help from other students.</b></p>";
   echo "<p class='p-header'>For a limited time, gain <b>1000</b> IQ points by posting in the forum and get rewarded with <b>$10</b> through paypal or amazon giftcard.</p>";
   echo "<p class='p-header'><big><a href='" . $sign_up_url . "'><u>Start Passing Exams Now</u></a></big></p>";
-
+*/
 ?>
 
 <div class="menu" id="menu1" >
