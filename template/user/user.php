@@ -70,26 +70,36 @@ class user extends db {
       if ($error == false) {
         $error = $name->username_validate(); // Validate Username
       }
-      // Validate Email
-      if ($error == false) {
-      $email = new validation($this->email);
-      $error = $email->email_validate();
+      if ($error != false) {
+        $error = "Username Error: " . $error;
+      } else {
+        // Validate Email
+        if ($error == false) {
+        $email = new validation($this->email);
+        $error = $email->email_validate();
+        }
+        if ($error != false) {
+          $error = "Email Error: " . $error;
+        } else {
+          // Validate Password
+          if ($error == false) {
+          $password = new validation($this->password);
+          $error = $password->gen_validate(6,30);
+          }
+          if ($error == false) {
+          $c_password = new validation($this->c_password);
+          $error = $c_password->gen_validate(6,30);
+          }
+          if ($error == false) {
+          if ($this->password != $this->c_password) {
+            $error = "Passwords don't match.";
+          }
+          }
+          if ($error != false) {
+            $error = "Password Error: " . $error;
+          }
+        }
       }
-      // Validate Password
-      if ($error == false) {
-      $password = new validation($this->password);
-      $error = $password->gen_validate(6,30);
-      }
-      if ($error == false) {
-      $c_password = new validation($this->c_password);
-      $error = $c_password->gen_validate(6,30);
-      }
-      if ($error == false) {
-      if ($this->password != $this->c_password) {
-        $error = "Passwords don't match.";
-      }
-      }
-
       $this->error = $error;
       if ($error != false) {
         return false;
@@ -125,10 +135,16 @@ class user extends db {
     // Validate Email
     $email = new validation($this->email);
     $error = $email->email_validate();
+    if ($error != false) {
+      $error = "Email Error: " . $error;
+    }
     // Validate Password
     if ($error == false) {
     $password = new validation($this->password);
     $error = $password->gen_validate(6,30);
+    if ($error != false) {
+      $error = "Password Error: " . $error;
+    }
     }
 
     $this->error = $error;

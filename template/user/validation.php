@@ -149,27 +149,34 @@ class validation {
   // Email Validate
   public function email_validate() {
     $error = false;
-    $error  = $this->check_empty();
-    if ($error != false) {
+    $query = "SELECT NAME FROM USER WHERE EMAIL = '$this->data';";
+    $db = new db();
+    $data = $db->select($query);
+    if ($data) {
+      $error = "Email already exists. Please login.";
       return $error;
     } else {
-      $error = $this->check_mail();
+      $error  = $this->check_empty();
       if ($error != false) {
         return $error;
       } else {
-        $error = $this->is_temp_mail();
+        $error = $this->check_mail();
         if ($error != false) {
           return $error;
         } else {
-          $error = $this->is_blacklist();
+          $error = $this->is_temp_mail();
           if ($error != false) {
             return $error;
           } else {
-            return false;
+            $error = $this->is_blacklist();
+            if ($error != false) {
+              return $error;
+            } else {
+              return false;
+            }
           }
         }
       }
-
     }
 
   }
