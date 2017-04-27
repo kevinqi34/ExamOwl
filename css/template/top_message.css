@@ -1,0 +1,119 @@
+#top_message {
+  border: 1px solid white;
+  border-bottom: 2px solid gray;
+  height: 300px;
+  position: relative;
+}
+
+#top_message div.wrapper_box {
+  width: 1000px;
+  position: relative;
+  margin: auto;
+  height: 100%;
+
+}
+
+#top_message div.wrapper_box div.text_box {
+  width: 600px;
+  height: 100%;
+  position: relative;
+  float: left;
+  margin-left: 50px;
+  text-align: left;
+}
+
+
+#top_message div.wrapper_box div.text_box h2 {
+  font-size: 25px;
+  margin-bottom: 0px;
+}
+
+#top_message div.wrapper_box div.text_box p {
+  color: #707070;
+  margin-top: 0px;
+  font-size: 16px;
+
+}
+
+#top_message div.wrapper_box div.text_box a {
+  border: 1px solid skyblue;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: white;
+  background-color: skyblue;
+}
+
+#top_message div.wrapper_box div.text_box a:hover {
+  background-color: white;
+  color: skyblue;
+
+}
+
+
+#top_message div.wrapper_box div.image_box {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  float: left;
+
+
+
+}
+
+@media screen and (max-width : 1000px){
+  #left {
+    left: -220px;
+    top: -302px;
+    height: calc(100% + 302px);
+  }
+
+  #top_message div.wrapper_box {
+    width: 100%;
+
+  }
+
+  #top_message div.wrapper_box div.text_box {
+    margin-left: 0px;
+    width: 550px;
+    margin-left: 25px;
+  }
+  #top_message div.wrapper_box div.image_box {
+    display: none;
+  }
+
+}
+
+
+@media screen and (max-width : 600px){
+
+  #top_message div.wrapper_box div.text_box {
+    width: calc(100% - 10px);
+    margin-left: 5px;
+  }
+
+
+}
+
+@media screen and (max-width : 530px){
+  #top_message div.wrapper_box div.text_box h2 {
+    font-size: 18px;
+  }
+
+  #top_message div.wrapper_box div.text_box p {
+    font-size: 14px;
+
+  }
+
+}
+
+
+@media screen and (max-width : 310px){
+  #top_message div.wrapper_box div.text_box p {
+    font-size: 13px;
+
+  }
+
+
+}

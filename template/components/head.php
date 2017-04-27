@@ -17,7 +17,9 @@
 <link rel="stylesheet" href="<?php echo url(); ?>minified_files/css/template/content.min.css">
 <link rel="stylesheet" href="<?php echo url(); ?>minified_files/css/template/footer.min.css">
 <link rel="stylesheet" href="<?php echo url(); ?>minified_files/css/template/outputs.min.css">
-
+<?php if (!check_login_no_redirect() && !check_exist_in_url('user')) { ?>
+<link rel="stylesheet" href="<?php echo url(); ?>minified_files/css/template/top_message.min.css">
+<?php } ?>
 <!-- Additional Stylesheets -->
 <?php $template->create_stylesheets($template->css); ?>
 

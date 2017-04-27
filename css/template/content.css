@@ -21,21 +21,14 @@ div.content_wrapper {
 }
 
 
+
+div.content_wrapper h2.heading {
+  font-weight: bold;
+
+}
+
 div.content_wrapper ul {
   text-align: left;
-
-}
-
-div.content_wrapper a {
-  color: steelblue;
-
-}
-
-div.content_wrapper p.p-header {
-  margin: auto;
-  margin-top: 10px;
-  width: 95%;
-
 
 }
 

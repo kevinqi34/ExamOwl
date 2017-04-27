@@ -11,6 +11,16 @@ div.category {
 
 }
 
+div.category h2 {
+  font-size: 25px;
+  font-weight: 300;
+  position: relative;
+  float: left;
+  width: 100%;
+
+
+}
+
 div.category:hover {
   border-color: skyblue;
 }

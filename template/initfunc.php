@@ -114,6 +114,17 @@ function check_login() {
 
 }
 
+// Returns true if logged in and false otherwise
+function check_login_no_redirect() {
+	$user = $_SESSION['email'];
+	if (!$user) {
+		return false;
+	} else {
+		return true;
+	}
+
+}
+
 
 // Checks if user is verified -- input email
 function check_verified_email($user) {
@@ -195,7 +206,15 @@ function word_filter($text) {
 }
 
 
-
+// Checks if string is in url
+function check_exist_in_url($string) {
+	$url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+	if (strpos($url, $string) !== false) {
+		return true;
+	} else {
+		return false;
+	}
+}
 
 
 // Template Class
@@ -281,8 +300,7 @@ class template {
 		} else {
 			// Check Url for tools
 			$year = 2017;
-			$url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
-			if (strpos($url,'tools') !== false) {
+			if (check_exist_in_url('tools')) {
 				echo $this->title . " " . $year;
 			} else {
 			  echo $this->title;
