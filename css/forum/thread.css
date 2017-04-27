@@ -64,6 +64,9 @@ div.thread {
   color: black;
 
 }
+div.thread h3 {
+  font-weight: 200;
+}
 
 div.thread p {
 
