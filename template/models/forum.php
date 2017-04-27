@@ -31,11 +31,13 @@ class category extends db {
       //$query = "SELECT USER_TYPE FROM USER WHERE EMAIL = '$this->email';";
       //$data = parent::select($query);
       //if ($data) {
-          if ($privelege == 'admin') {
+          if ($privelege == 'admin' || $privelege == 'sadmin') {
             // Good to go
             $this->add_category();
             // To Powerful, disabled for safety
-            //$this->remove_category();
+            if ($privelege == 'sadmin') {
+              $this->remove_category(); // Enable for super admins
+            }
             include($_SERVER['DOCUMENT_ROOT'] . '/data/admin/category.php');
 
       //    }
@@ -120,7 +122,7 @@ class category extends db {
           // Redirect
           $this->error = "Success";
 
-          /*
+
           // Remove Category
           $query = "DELETE FROM CATEGORY WHERE ID = '$id';";
           if (parent::query($query)) {
@@ -128,7 +130,7 @@ class category extends db {
           } else {
             return false;
           }
-          */
+          
         }
       } else {
         return false;

@@ -10,7 +10,7 @@ $category->return_categories();
 <div class='admin'>
 <?php
 // Displays Categories
-$category->admin($privelege);
+$category->admin($user_data["USER_TYPE"]);
 
 // Disable Users Features
 $this->disable_users();
