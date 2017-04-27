@@ -50,6 +50,8 @@ function clean($string) {
 // Creates Slugs
 function createSlug($string) {
 		$string = clean($string);
+		// -- Remove Numbers
+		$string = preg_replace('/[0-9]+/', '', $string);
     $table = array(
             'Š'=>'S', 'š'=>'s', 'Đ'=>'Dj', 'đ'=>'dj', 'Ž'=>'Z', 'ž'=>'z', 'Č'=>'C', 'č'=>'c', 'Ć'=>'C', 'ć'=>'c',
             'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
