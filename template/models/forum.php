@@ -203,7 +203,7 @@ class thread extends db {
     $data = $id;
     // Create Header Template
     // For Recent Activity Category
-      if ($this->category_id == 1000) {
+      if ($this->cat_id == 1000) {
         include($_SERVER['DOCUMENT_ROOT'] . '/data/forum/thread_header_recent_activity.php');
       } else {
         include($_SERVER['DOCUMENT_ROOT'] . '/data/forum/thread_header.php');
