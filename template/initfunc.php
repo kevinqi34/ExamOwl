@@ -278,7 +278,12 @@ class template {
 		$user = $_GET["user-id"];
 		$record = $_GET["record-id"];
 		if ($category) {
-			$query = "SELECT NAME FROM CATEGORY WHERE ID ='$category';";
+			if ($category == 1000) {
+				echo "Exam Owl | Most Recent Threads";
+				return;
+			} else {
+				$query = "SELECT NAME FROM CATEGORY WHERE ID ='$category';";
+			}
 		} else if ($thread) {
 			$query = "SELECT TITLE FROM THREADS WHERE ID='$thread';";
 		} else if ($resource) {
