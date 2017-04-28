@@ -9,6 +9,7 @@ $page_id = $_GET["page-id"];
 if (!$category_id && !$thread_id) {
   echo "<h2 class='heading'>Community Home</h2>";
   $category = new category();
+  $category->return_recent_activities();
   $category->return_categories();
   $category->display_categories('home');
 } else if ($category_id) {

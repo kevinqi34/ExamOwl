@@ -1,3 +1,4 @@
+<!-- For Normal Categories -->
 <?php
 foreach ($this->data as $table) {
 ?>

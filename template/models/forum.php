@@ -51,6 +51,21 @@ class category extends db {
 
   }
 
+  // Return Most Recent Activity From Database
+  public function return_recent_activities() {
+    $query = "SELECT AUTHOR, CREATE_DATE FROM THREADS ORDER BY CREATE_DATE DESC LIMIT 1;";
+    $data = parent::select($query);
+    if ($data) {
+      $latest_author = $data["AUTHOR"];
+      $latest_date = time_elapsed_string($data["CREATE_DATE"]);
+      include($_SERVER['DOCUMENT_ROOT'] . '/data/forum/category_recent_activity.php');
+    } else {
+      return false;
+    }
+
+  }
+
+
   // Return Categories from Database
   public function return_categories() {
     $query = "SELECT * FROM CATEGORY;";
@@ -130,7 +145,7 @@ class category extends db {
           } else {
             return false;
           }
-          
+
         }
       } else {
         return false;
