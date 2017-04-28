@@ -204,7 +204,15 @@ class thread extends db {
     // Create Header Template
     // For Recent Activity Category
       if ($this->cat_id == 1000) {
-        include($_SERVER['DOCUMENT_ROOT'] . '/data/forum/thread_header_recent_activity.php');
+        $query = "SELECT AUTHOR, CREATE_DATE FROM THREADS ORDER BY CREATE_DATE DESC LIMIT 1;";
+        $data = parent::select($query);
+        if ($data) {
+          $latest_author = $data["AUTHOR"];
+          $latest_date = time_elapsed_string($data["CREATE_DATE"]);
+          include($_SERVER['DOCUMENT_ROOT'] . '/data/forum/thread_header_recent_activity.php');
+        } else {
+          return false;
+        }
       } else {
         include($_SERVER['DOCUMENT_ROOT'] . '/data/forum/thread_header.php');
       }
