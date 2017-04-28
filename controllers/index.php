@@ -16,6 +16,7 @@ if (!$category_id && !$thread_id) {
 // Load Threads when Category is Selected
   $thread = new thread($category_id);
   echo "<div id='content_box'>";
+  echo $category_id;
   $thread->create_header();
   $thread->delete_threads();
   $thread->return_threads($page_id);
