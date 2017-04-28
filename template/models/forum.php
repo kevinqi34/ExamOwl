@@ -195,6 +195,7 @@ class thread extends db {
     $error = $cat_id->check_char();
     $this->error = $error;
     // Set Category ID
+    echo $cat_id;
     if (!$error) {
     $query = "SELECT * FROM CATEGORY WHERE ID = '$this->cat_id';";
     $id = parent::select($query);
