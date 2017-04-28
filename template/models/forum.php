@@ -202,7 +202,12 @@ class thread extends db {
     $this->cat_slug = $id['SLUG'];
     $data = $id;
     // Create Header Template
-    include($_SERVER['DOCUMENT_ROOT'] . '/data/forum/thread_header.php');
+    // For Recent Activity Category
+      if ($this->category_id == 1000) {
+        include($_SERVER['DOCUMENT_ROOT'] . '/data/forum/thread_header_recent_activity.php');
+      } else {
+        include($_SERVER['DOCUMENT_ROOT'] . '/data/forum/thread_header.php');
+      }
     } else {
       return false;
     }
