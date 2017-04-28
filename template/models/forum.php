@@ -230,13 +230,13 @@ class thread extends db {
     if ($page_id) {
       $start = $page_id * $limit;
       if ($this->cat_id == 1000) { // For Recent Activity
-        $query = "SELECT * FROM THREADS ORDER BY TYPE DESC, CREATE_DATE DESC LIMIT $start, $limit;";
+        $query = "SELECT * FROM THREADS WHERE TYPE = 'REG' ORDER BY CREATE_DATE DESC LIMIT $start, $limit;";
       } else {
         $query = "SELECT * FROM THREADS WHERE CAT_ID = '$this->cat_id' ORDER BY TYPE DESC, CREATE_DATE DESC LIMIT $start, $limit;";
       }
     } else {
       if ($this->cat_id == 1000) { // For Recent Activity
-        $query = "SELECT * FROM THREADS ORDER BY TYPE DESC, CREATE_DATE DESC LIMIT $limit;";
+        $query = "SELECT * FROM THREADS WHERE TYPE = 'REG' ORDER BY CREATE_DATE DESC LIMIT $limit;";
       } else {
         $query = "SELECT * FROM THREADS WHERE CAT_ID = '$this->cat_id' ORDER BY TYPE DESC, CREATE_DATE DESC LIMIT $limit;";
       }
