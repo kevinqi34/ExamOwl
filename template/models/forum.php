@@ -229,9 +229,17 @@ class thread extends db {
     $this->limit = $limit;
     if ($page_id) {
       $start = $page_id * $limit;
-      $query = "SELECT * FROM THREADS WHERE CAT_ID = '$this->cat_id' ORDER BY TYPE DESC, CREATE_DATE DESC LIMIT $start, $limit;";
+      if ($this->cat_id == 1000) { // For Recent Activity
+        $query = "SELECT * FROM THREADS ORDER BY TYPE DESC, CREATE_DATE DESC LIMIT $start, $limit;";
+      } else {
+        $query = "SELECT * FROM THREADS WHERE CAT_ID = '$this->cat_id' ORDER BY TYPE DESC, CREATE_DATE DESC LIMIT $start, $limit;";
+      }
     } else {
-      $query = "SELECT * FROM THREADS WHERE CAT_ID = '$this->cat_id' ORDER BY TYPE DESC, CREATE_DATE DESC LIMIT $limit;";
+      if ($this->cat_id == 1000) { // For Recent Activity
+        $query = "SELECT * FROM THREADS ORDER BY TYPE DESC, CREATE_DATE DESC LIMIT $limit;";
+      } else {
+        $query = "SELECT * FROM THREADS WHERE CAT_ID = '$this->cat_id' ORDER BY TYPE DESC, CREATE_DATE DESC LIMIT $limit;";
+      }
     }
     $data = parent::select_multi($query);
     if ($data) {
