@@ -123,9 +123,9 @@
     // User Folder
     "../css/user/profile.css" => "./css/user/profile.min.css",
     "../css/user/user.css" => "./css/user/user.min.css"
-	
+
 	);
 
-	//minifyJS($js);
+	minifyJS($js);
 	minifyCSS($css);
 ?>

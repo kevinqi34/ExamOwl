@@ -53,7 +53,7 @@ class category extends db {
 
   // Return Most Recent Activity From Database
   public function return_recent_activities() {
-    $query = "SELECT AUTHOR, CREATE_DATE FROM THREADS ORDER BY CREATE_DATE DESC LIMIT 1;";
+    $query = "SELECT AUTHOR, CREATE_DATE FROM THREADS WHERE TYPE = 'REG' ORDER BY CREATE_DATE DESC LIMIT 1;";
     $data = parent::select($query);
     if ($data) {
       $latest_author = $data["AUTHOR"];
@@ -204,7 +204,7 @@ class thread extends db {
     // Create Header Template
     // For Recent Activity Category
       if ($this->cat_id == 1000) {
-        $query = "SELECT AUTHOR, CREATE_DATE FROM THREADS ORDER BY CREATE_DATE DESC LIMIT 1;";
+        $query = "SELECT AUTHOR, CREATE_DATE FROM THREADS WHERE TYPE = 'REG' ORDER BY CREATE_DATE DESC LIMIT 1;";
         $data = parent::select($query);
         if ($data) {
           $latest_author = $data["AUTHOR"];
