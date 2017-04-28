@@ -412,7 +412,7 @@ class thread extends db {
       $start = $val * $size;
       $limit = $size;
       if ($this->cat_id == 1000) {
-        $query = "SELECT * FROM THREADS ORDER BY CREATE_DATE DESC LIMIT $start, $size;";
+        $query = "SELECT * FROM THREADS WHERE TYPE = 'REG' ORDER BY CREATE_DATE DESC LIMIT $start, $size;";
       } else {
         $query = "SELECT * FROM THREADS WHERE CAT_ID = '$this->cat_id' ORDER BY TYPE DESC, CREATE_DATE DESC LIMIT $start, $size;";
       }
