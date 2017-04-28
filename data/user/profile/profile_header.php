@@ -11,7 +11,8 @@
   <h2><?php echo $user_data["NAME"]; ?></h2>
   <p>IQ: <b><?php echo $user_data["IQ"]; ?></b></p>
   <p>Joined <?php echo $date ?></p>
-  <p># of Posts: <?php echo $size; ?></p>
+  <p># of Threads: <?php echo $size; ?></p>
+  <p># of Comments: <?php echo $num_of_comments; ?></p>
 <!-- Display User ID -->
 <?php  if ($privelege == "admin") { ?>
   <p>User ID: <?php echo $user_id; ?></p>
