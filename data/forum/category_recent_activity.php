@@ -1,5 +1,5 @@
 <!-- For Most Recent Threads -->
-<a href="<?php echo url(); ?>category/10/recent-activity">
+<a href="<?php echo url(); ?>category/1000/recent-activity">
 <div class="category">
   <div class="title">
     <h2>Most Recent Threads</h2>
