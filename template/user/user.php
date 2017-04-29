@@ -462,6 +462,10 @@ class user extends db {
         $this->privelege = $user_data["USER_TYPE"];
         // Determine if own data or others
         // Own Profile
+        // Get Number of Comments
+        $query = "SELECT ID FROM COMMENTS WHERE USER_ID = '$user_id';";
+        $num_of_comments = parent::select_multi($query);
+        $num_of_comments = sizeof($num_of_comments);
         if (!$email) {
           $user_id = $user_data["ID"];
           // Grab Thread Data
@@ -470,9 +474,6 @@ class user extends db {
           date_default_timezone_set ( "UTC" );
           $date = time_elapsed_string($user_data["CREATE_DATE"]);
           $size = sizeof($thread_data);
-          $query = "SELECT ID FROM COMMENTS WHERE USER_ID = '$user_id';";
-          $num_of_comments = parent::select_multi($query);
-          $num_of_comments = sizeof($num_of_comments);
           $is_user = true; // Determines that this isn't the same user
           // Create Profile
           include($_SERVER['DOCUMENT_ROOT'] . '/data/user/profile/profile_template.php');
