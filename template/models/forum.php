@@ -53,6 +53,7 @@ class category extends db {
 
   // Return Most Recent Activity From Database
   public function return_recent_activities() {
+    date_default_timezone_set ( "UTC" );
     $query = "SELECT AUTHOR, CREATE_DATE FROM THREADS WHERE TYPE = 'REG' ORDER BY CREATE_DATE DESC LIMIT 1;";
     $data = parent::select($query);
     if ($data) {
@@ -207,6 +208,7 @@ class thread extends db {
         $query = "SELECT AUTHOR, CREATE_DATE FROM THREADS WHERE TYPE = 'REG' ORDER BY CREATE_DATE DESC LIMIT 1;";
         $data = parent::select($query);
         if ($data) {
+          date_default_timezone_set ( "UTC" );
           $latest_author = $data["AUTHOR"];
           $latest_date = time_elapsed_string($data["CREATE_DATE"]);
           include($_SERVER['DOCUMENT_ROOT'] . '/data/forum/thread_header_recent_activity.php');
