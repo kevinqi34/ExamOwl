@@ -10,7 +10,7 @@
    <a href="<?php echo url(); ?>"><img src="<?php echo url(); ?>images/logo.png" alt="logo"></a>
    <!-- For SEO Purposes -->
    <h1 class="seo_h1"><?php echo $title ?></h1>
-   
+
    <!-- User Accounts -->
    <?php if ( $_SESSION['email'] ) { ?>
    <a class="user" href="<?php echo url(); ?>user/logoff.php">Log Off</a>
