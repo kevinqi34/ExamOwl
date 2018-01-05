@@ -6,7 +6,7 @@
 		<p>Built by <a href="http://www.kqi18.com">KQI</a></p>
     <p><a href="<?php echo url(); ?>other/privacypolicy.php">Privacy Policy</a></p>
 		<p><a href="mailto:support@spere.io">Contact</a></p>
-		<p>© 2017 Spere LLC</p>
+		<p>© 2018 Spere LLC</p>
 		<br>
 </div>
 

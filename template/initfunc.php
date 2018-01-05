@@ -306,7 +306,7 @@ class template {
 			}
 		} else {
 			// Check Url for tools
-			$year = 2017;
+			$year = 2018;
 			if (check_exist_in_url('tools')) {
 				echo $this->title . " " . $year;
 			} else {
